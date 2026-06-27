@@ -1,0 +1,30 @@
+{
+  "discord": {
+    "enabled": false,
+    "url": "",
+    "events": {
+      "ban": true,
+      "punishment": true,
+      "report": true,
+      "faction_activity": true,
+      "server_restart": true
+    }
+  },
+  "telegram": {
+    "enabled": false,
+    "token": "",
+    "chat_id": "",
+    "events": {
+      "ban": true,
+      "punishment": true,
+      "report": true,
+      "faction_activity": false,
+      "server_restart": true
+    }
+  },
+  "formatting": {
+    "timestamp": true,
+    "embed": true,
+    "color": "#FF6B35"
+  }
+}

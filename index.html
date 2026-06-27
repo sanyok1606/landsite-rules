@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landsite Project | Правила сервера</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Landsite Project - правила сервера, RP терминология и наказания">
+    <meta name="theme-color" content="#FF6B35">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Landsite Project - Правила сервера">
+    <meta property="og:description" content="Официальные правила Landsite Project RP сервера">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="assets/logo.png" alt="Landsite Project" class="nav-logo">
+                <span class="brand-text">Landsite Project</span>
+            </div>
+            <div class="nav-links">
+                <a href="#rules" class="nav-link"><i class="fas fa-gavel"></i> Правила</a>
+                <a href="#punishments" class="nav-link"><i class="fas fa-gavel"></i> Наказания</a>
+                <a href="#factions" class="nav-link"><i class="fas fa-users"></i> Фракции</a>
+                <a href="#webhooks" class="nav-link"><i class="fas fa-bell"></i> Уведомления</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-halved"></i>
+                    RP Сервер #1
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Landsite</span> Project
+                </h1>
+                <p class="hero-subtitle">
+                    Погрузись в мир ролевой игры с четкими правилами
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="onlinePlayers">0</span>
+                        <span class="stat-label">Игроков онлайн</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Работа сервера</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Активных игроков</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#rules" class="btn btn-primary">
+                        <i class="fas fa-book"></i> Изучить правила
+                    </a>
+                    <a href="#webhooks" class="btn btn-secondary">
+                        <i class="fas fa-bell"></i> Подписаться
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="rules-section" id="rules">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-gavel"></i> Правила
+                </div>
+                <h2 class="section-title">Общий свод правил</h2>
+                <p class="section-subtitle">
+                    Незнание правил не освобождает вас от ответственности. Заходя на сервер, вы автоматически соглашаетесь со всеми правилами.
+                </p>
+            </div>
+
+            <!-- General Rules -->
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Запрещена продажа валюты</h3>
+                        <p>Продажа игровой валюты за реальные деньги строго запрещена</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Обход наказания</h3>
+                        <p>Смена персонажа/Steam-аккаунта или выход из игры для избежания наказания запрещены</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Уход от RP</h3>
+                        <p>Уход от ролевого процесса без веской причины запрещен</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Ущерб проекту</h3>
+                        <p>Любой ущерб проекту (DDoS, нагрузка сервера, вмешательство) запрещен</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-users-slash"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Провокации и оскорбления</h3>
+                        <p>Провокация и оскорбления в сторону администрации строго запрещены</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-chess-queen"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Стороннее ПО</h3>
+                        <p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RP Terminology Section -->
+    <section class="rp-section" id="punishments">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-skull"></i> Наказания
+                </div>
+                <h2 class="section-title">RP Терминология и сроки</h2>
+                <p class="section-subtitle">
+                    Каждое нарушение имеет четкое наказание. Будьте внимательны и соблюдайте правила.
+                </p>
+            </div>
+
+            <div class="table-container">
+                <table class="punishment-table">
+                    <thead>
+                        <tr>
+                            <th>Термин</th>
+                            <th>Расшифровка</th>
+                            <th>Наказание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="term-badge danger">DM</span></td>
+                            <td>Deathmatch — убийство без причины</td>
+                            <td><span class="punishment severe">Бан 55.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">RDM</span></td>
+                            <td>Убийство 3+ человек без причины</td>
+                            <td><span class="punishment severe">Бан 150.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">MG</span></td>
+                            <td>Metagaming — использование OOC информации в IC</td>
+                            <td><span class="punishment moderate">Бан 8.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">PG</span></td>
+                            <td>Power Gaming — «режим героя»</td>
+                            <td><span class="punishment moderate">Бан 40.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">NRL</span></td>
+                            <td>New Life Rule — 10 минут молчания на спавне</td>
+                            <td><span class="punishment moderate">Бан 30.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">RK</span></td>
+                            <td>Revenge Kill — убийство из мести</td>
+                            <td><span class="punishment severe">Бан 60.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">TK</span></td>
+                            <td>Team Kill — убийство союзника</td>
+                            <td><span class="punishment severe">Бан 50.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">FRP</span></td>
+                            <td>Fear RP — отсутствие страха</td>
+                            <td><span class="punishment moderate">Бан 25.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">Багоюз</span></td>
+                            <td>Использование игровых ошибок</td>
+                            <td><span class="punishment severe">Бан 550.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">PA</span></td>
+                            <td>Prohibition Abuse — использование чужой формы</td>
+                            <td><span class="punishment moderate">100.000-450.000 сек</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factions Section -->
+    <section class="factions-section" id="factions">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-users"></i> Организации
+                </div>
+                <h2 class="section-title">Правила фракций</h2>
+                <p class="section-subtitle">
+                    Строгая иерархия и правила для всех организаций сервера
+                </p>
+            </div>
+
+            <div class="factions-grid">
+                <div class="faction-card police">
+                    <div class="faction-icon">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <h3>Полиция</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Охрана правопорядка</li>
+                        <li><i class="fas fa-check-circle"></i> Работа совместно с SWAT</li>
+                        <li><i class="fas fa-check-circle"></i> Оцепление территории</li>
+                        <li><i class="fas fa-times-circle"></i> Не участвуют в штурмах</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card swat">
+                    <div class="faction-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3>SWAT</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Спецподразделение</li>
+                        <li><i class="fas fa-check-circle"></i> Приоритет на банках</li>
+                        <li><i class="fas fa-check-circle"></i> Штурм зданий</li>
+                        <li><i class="fas fa-check-circle"></i> Работа с армией</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card army">
+                    <div class="faction-icon">
+                        <i class="fas fa-tank"></i>
+                    </div>
+                    <h3>Армия</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Тяжелая техника</li>
+                        <li><i class="fas fa-check-circle"></i> Поддержка на каптах</li>
+                        <li><i class="fas fa-check-circle"></i> Защита государства</li>
+                        <li><i class="fas fa-check-circle"></i> Участие в рейдах</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card opg">
+                    <div class="faction-icon">
+                        <i class="fas fa-skull"></i>
+                    </div>
+                    <h3>ОПГ</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Только ночная активность</li>
+                        <li><i class="fas fa-check-circle"></i> Маски обязательны</li>
+                        <li><i class="fas fa-check-circle"></i> Банки и капты</li>
+                        <li><i class="fas fa-times-circle"></i> Не в форме в городах</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Webhooks Section -->
+    <section class="webhooks-section" id="webhooks">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-bell"></i> Уведомления
+                </div>
+                <h2 class="section-title">Система уведомлений</h2>
+                <p class="section-subtitle">
+                    Получайте важные события сервера в реальном времени через Discord и Telegram
+                </p>
+            </div>
+
+            <div class="webhooks-grid">
+                <div class="webhook-card discord">
+                    <div class="webhook-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord Webhook</h3>
+                    <p>Получайте уведомления о банах, нарушениях и важных событиях</p>
+                    <div class="webhook-form">
+                        <input type="text" id="discordWebhook" placeholder="Введите URL Discord Webhook" class="webhook-input">
+                        <button class="btn btn-discord" onclick="setupDiscordWebhook()">
+                            <i class="fab fa-discord"></i> Подключить
+                        </button>
+                    </div>
+                    <div class="webhook-status" id="discordStatus">
+                        <span class="status-dot inactive"></span>
+                        Не подключено
+                    </div>
+                </div>
+
+                <div class="webhook-card telegram">
+                    <div class="webhook-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram Webhook</h3>
+                    <p>Получайте уведомления о RP-событиях и нарушениях в Telegram</p>
+                    <div class="webhook-form">
+                        <input type="text" id="telegramWebhook" placeholder="Введите токен бота" class="webhook-input">
+                        <input type="text" id="telegramChat" placeholder="ID чата" class="webhook-input small">
+                        <button class="btn btn-telegram" onclick="setupTelegramWebhook()">
+                            <i class="fab fa-telegram"></i> Подключить
+                        </button>
+                    </div>
+                    <div class="webhook-status" id="telegramStatus">
+                        <span class="status-dot inactive"></span>
+                        Не подключено
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Webhook -->
+            <div class="webhook-test">
+                <h3><i class="fas fa-paper-plane"></i> Тестовое уведомление</h3>
+                <div class="test-controls">
+                    <select id="webhookType" class="test-select">
+                        <option value="discord">Discord</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="both">Оба</option>
+                    </select>
+                    <input type="text" id="testMessage" placeholder="Введите тестовое сообщение..." class="test-input">
+                    <button class="btn btn-primary" onclick="sendTestWebhook()">
+                        <i class="fas fa-paper-plane"></i> Отправить тест
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Landsite Project" class="footer-logo">
+                    <h3>Landsite Project</h3>
+                    <p>Играем честно и с душой</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Навигация</h4>
+                        <a href="#rules">Правила</a>
+                        <a href="#punishments">Наказания</a>
+                        <a href="#factions">Фракции</a>
+                        <a href="#webhooks">Уведомления</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакты</h4>
+                        <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                        <a href="#"><i class="fab fa-vk"></i> VK</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Landsite Project. Все права защищены.</p>
+                <p>Версия правил: 2.3.1 | Обновлено: 26.06.2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/webhooks.js"></script>
+</body>
+</html>
