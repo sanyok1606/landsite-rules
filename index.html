@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landsite Project | Правила сервера</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Landsite Project - правила сервера, RP терминология и наказания">
+    <meta name="theme-color" content="#FF6B35">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Landsite Project - Правила сервера">
+    <meta property="og:description" content="Официальные правила Landsite Project RP сервера">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="assets/logo.png" alt="Landsite Project" class="nav-logo">
+                <span class="brand-text">Landsite Project</span>
+            </div>
+            <div class="nav-links">
+                <a href="#rules" class="nav-link"><i class="fas fa-gavel"></i> Правила</a>
+                <a href="#punishments" class="nav-link"><i class="fas fa-gavel"></i> Наказания</a>
+                <a href="#raids" class="nav-link"><i class="fas fa-skull-crossbones"></i> Рейды</a>
+                <a href="#ems" class="nav-link"><i class="fas fa-heartbeat"></i> EMS</a>
+                <a href="#opg" class="nav-link"><i class="fas fa-user-secret"></i> ОПГ</a>
+                <a href="#factions" class="nav-link"><i class="fas fa-users"></i> Фракции</a>
+                <a href="#webhooks" class="nav-link"><i class="fas fa-bell"></i> Уведомления</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-halved"></i>
+                    RP Сервер #1
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Landsite</span> Project
+                </h1>
+                <p class="hero-subtitle">
+                    Погрузись в мир ролевой игры с четкими правилами
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="onlinePlayers">0</span>
+                        <span class="stat-label">Игроков онлайн</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Работа сервера</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Активных игроков</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#rules" class="btn btn-primary">
+                        <i class="fas fa-book"></i> Изучить правила
+                    </a>
+                    <a href="#webhooks" class="btn btn-secondary">
+                        <i class="fas fa-bell"></i> Подписаться
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="rules-section" id="rules">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-gavel"></i> Правила
+                </div>
+                <h2 class="section-title">Общий свод правил</h2>
+                <p class="section-subtitle">
+                    Незнание правил не освобождает вас от ответственности. Заходя на сервер, вы автоматически соглашаетесь со всеми правилами.
+                </p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Запрещена продажа валюты</h3>
+                        <p>Продажа игровой валюты за реальные деньги строго запрещена</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Обход наказания</h3>
+                        <p>Смена персонажа/Steam-аккаунта или выход из игры для избежания наказания запрещены</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Уход от RP</h3>
+                        <p>Уход от ролевого процесса без веской причины запрещен</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Ущерб проекту</h3>
+                        <p>Любой ущерб проекту (DDoS, нагрузка сервера, вмешательство) запрещен</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-users-slash"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Провокации и оскорбления</h3>
+                        <p>Провокация и оскорбления в сторону администрации строго запрещены</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-chess-queen"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Стороннее ПО</h3>
+                        <p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RP Terminology Section -->
+    <section class="rp-section" id="punishments">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-skull"></i> Наказания
+                </div>
+                <h2 class="section-title">RP Терминология и сроки</h2>
+                <p class="section-subtitle">
+                    Каждое нарушение имеет четкое наказание. Будьте внимательны и соблюдайте правила.
+                </p>
+            </div>
+
+            <div class="table-container">
+                <table class="punishment-table">
+                    <thead>
+                        <tr>
+                            <th>Термин</th>
+                            <th>Расшифровка</th>
+                            <th>Наказание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="term-badge danger">DM</span></td>
+                            <td>Deathmatch — убийство без причины</td>
+                            <td><span class="punishment severe">Бан 55.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">RDM</span></td>
+                            <td>Убийство 3+ человек без причины</td>
+                            <td><span class="punishment severe">Бан 150.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">MG</span></td>
+                            <td>Metagaming — использование OOC информации в IC</td>
+                            <td><span class="punishment moderate">Бан 8.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">PG</span></td>
+                            <td>Power Gaming — «режим героя»</td>
+                            <td><span class="punishment moderate">Бан 40.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">NRL</span></td>
+                            <td>New Life Rule — 10 минут молчания на спавне</td>
+                            <td><span class="punishment moderate">Бан 30.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">RK</span></td>
+                            <td>Revenge Kill — убийство из мести</td>
+                            <td><span class="punishment severe">Бан 60.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">TK</span></td>
+                            <td>Team Kill — убийство союзника</td>
+                            <td><span class="punishment severe">Бан 50.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">FRP</span></td>
+                            <td>Fear RP — отсутствие страха</td>
+                            <td><span class="punishment moderate">Бан 25.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">Багоюз</span></td>
+                            <td>Использование игровых ошибок</td>
+                            <td><span class="punishment severe">Бан 550.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">PA</span></td>
+                            <td>Prohibition Abuse — использование чужой формы</td>
+                            <td><span class="punishment moderate">100.000-450.000 сек</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RAIDS & CAPTS SECTION ===== -->
+    <section class="rules-section" id="raids" style="background: var(--darker);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-skull-crossbones"></i> Рейды и Капты
+                </div>
+                <h2 class="section-title">Правила рейдов и каптов</h2>
+                <p class="section-subtitle">
+                    Скоординированные специальные операции по пресечению преступной деятельности
+                </p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Неприкосновенность лидера</h3>
+                        <p>Лидер криминальной структуры получает <strong>5 дней неприкосновенности</strong>. В этот период запрещено собирать улики.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Одобрение рейда</h3>
+                        <p>Рейд проводится только после <strong>одобрения Старшей администрации</strong> и наличия IC причины.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Время удержания</h3>
+                        <p>Гос. структуры удерживают район <strong>30 минут</strong>. Криминал отбивает рейд за <strong>10 минут</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Снятие лидера</h3>
+                        <p>После <strong>3 успешных рейдов</strong> лидер криминальной структуры снимается с поста.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <table class="punishment-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Правило</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="term-badge info">1.1</span></td>
+                            <td>Лидер криминальной структуры при назначении получает <strong>5 дней неприкосновенности</strong>. В этот период запрещено собирать улики.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.2</span></td>
+                            <td>Запрещено убийство людей на территории рейда без IC причин.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.3</span></td>
+                            <td>Рейд может быть проведен только в случае <strong>одобрения Старшей администрации</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.4</span></td>
+                            <td>Рейд для гос. структур считается успешным после удержания титульного района <strong>30 минут</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.5</span></td>
+                            <td>Рейд для криминальных структур считается отбитым после <strong>10 минут</strong> пребывания в титульном районе.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.6</span></td>
+                            <td>Если по окончанию 30 минут на территории остаются игроки обеих сторон — рейд продолжается до победы одной из сторон.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.7</span></td>
+                            <td>После <strong>3 успешных рейдов</strong> лидер криминальной структуры снимается со своего поста.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">1.8</span></td>
+                            <td><strong>Запрещён RK (Revenge Kill)</strong> во время рейдов.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">1.9</span></td>
+                            <td><strong>Запрещено</strong> перекрывать проход в титульный район.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.10</span></td>
+                            <td>Организация рейда проводится исключительно на <strong>военной базе</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">2.1</span></td>
+                            <td>Запрещено проводить рейды без IC причины. Дело и ордер должен одобрить куратор и старшая администрация.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">2.1.1</span></td>
+                            <td>Первой уликой выступает описание одежды, фракционного цвета, автомобилей и условий вступления.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">2.2</span></td>
+                            <td>При проведении рейда <strong>запрещено</strong> увозить членов криминальных организаций на допрос.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">2.3</span></td>
+                            <td>После неудачного рейда фракционный цвет попадает в ориентировку на <strong>24 часа</strong>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMS SECTION ===== -->
+    <section class="rules-section" id="ems" style="background: var(--dark);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-heartbeat"></i> Медицинская служба
+                </div>
+                <h2 class="section-title">Правила для медиков (EMS)</h2>
+                <p class="section-subtitle">
+                    Обязанности и ограничения для сотрудников медицинской службы
+                </p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Обязанности медиков</h3>
+                        <p>Медик обязан оказывать помощь всем игрокам, иметь при себе аптечку и дефибриллятор, прибывать на вызов в течение <strong>3 минут</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Ограничения</h3>
+                        <p>Медикам <strong>запрещено</strong> участвовать в боевых действиях, перевозить оружие (кроме служебного пистолета) и брать взятки.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Взаимодействие</h3>
+                        <p>Медики обязаны сообщать в полицию о поступивших с огнестрельными ранениями и ставить в известность руководство EMS при похищении.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <table class="punishment-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Правило</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="term-badge info">1.1</span></td>
+                            <td>Медик обязан оказывать помощь <strong>всем игрокам</strong> независимо от их фракции.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.2</span></td>
+                            <td>Медик должен всегда иметь при себе <strong>аптечку и дефибриллятор</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.3</span></td>
+                            <td>Медик обязан прибывать на вызов в течение <strong>3 минут</strong> после получения сигнала.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">1.4</span></td>
+                            <td>Медик обязан соблюдать <strong>врачебную тайну</strong> (не разглашать информацию о пациентах).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">2.1</span></td>
+                            <td><strong>Запрещено</strong> участие медиков в боевых действиях.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">2.2</span></td>
+                            <td><strong>Запрещено</strong> перевозить оружие (кроме служебного пистолета).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">2.3</span></td>
+                            <td><strong>Запрещено</strong> отказывать в помощи без веской причины.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">2.4</span></td>
+                            <td><strong>Запрещено</strong> брать взятки за оказание помощи.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.1</span></td>
+                            <td>Медики имеют право <strong>не въезжать</strong> в активную зону боевых действий до её зачистки.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.2</span></td>
+                            <td>Медики обязаны <strong>сообщать в полицию</strong> о поступивших с огнестрельными ранениями.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.3</span></td>
+                            <td>В случае похищения медик обязан поставить в известность <strong>руководство EMS</strong>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OPG SECTION ===== -->
+    <section class="rules-section" id="opg" style="background: var(--darker);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-user-secret"></i> Криминальные структуры
+                </div>
+                <h2 class="section-title">Правила для ОПГ</h2>
+                <p class="section-subtitle">
+                    Права и обязанности криминальных организаций
+                </p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>РП прикрытие</h3>
+                        <p>Криминальная структура обязана иметь <strong>легальный бизнес</strong> или организацию в качестве прикрытия.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-gun"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Оружие в городах</h3>
+                        <p>Запрещено открыто носить оружие в городах <strong>без необходимости</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Право на оборону</h3>
+                        <p>При проведении рейдов криминальные структуры имеют право на <strong>оборону</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 30px;">
+                <table class="punishment-table">
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Правило</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="term-badge info">3.1</span></td>
+                            <td>Криминальная структура обязана иметь <strong>РП прикрытие</strong> (легальный бизнес, организация).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">3.2</span></td>
+                            <td><strong>Запрещено</strong> открыто носить оружие в городах без необходимости.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.3</span></td>
+                            <td>При проведении рейдов криминальные структуры имеют право на <strong>оборону</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">3.4</span></td>
+                            <td><strong>Запрещено</strong> нападать на государственные структуры без IC причины.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.5</span></td>
+                            <td>Криминальная структура обязана <strong>вести учёт</strong> своей деятельности.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge info">3.6</span></td>
+                            <td>ОПГ организациям запрещено находиться в форме и в локации <strong>Г.Доминикано</strong> без банка или RP ситуации.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">3.7</span></td>
+                            <td>ОПГ организациям <strong>запрещена</strong> любая дневная деятельность кроме банка и капта.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factions Section -->
+    <section class="factions-section" id="factions">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-users"></i> Организации
+                </div>
+                <h2 class="section-title">Правила фракций</h2>
+                <p class="section-subtitle">
+                    Строгая иерархия и правила для всех организаций сервера
+                </p>
+            </div>
+
+            <div class="factions-grid">
+                <div class="faction-card police">
+                    <div class="faction-icon">
+                        <i class="fas fa-shield"></i>
+                    </div>
+                    <h3>Полиция</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Охрана правопорядка</li>
+                        <li><i class="fas fa-check-circle"></i> Работа совместно с SWAT</li>
+                        <li><i class="fas fa-check-circle"></i> Оцепление территории</li>
+                        <li><i class="fas fa-times-circle"></i> Не участвуют в штурмах</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card swat">
+                    <div class="faction-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3>SWAT</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Спецподразделение</li>
+                        <li><i class="fas fa-check-circle"></i> Приоритет на банках</li>
+                        <li><i class="fas fa-check-circle"></i> Штурм зданий</li>
+                        <li><i class="fas fa-check-circle"></i> Работа с армией</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card army">
+                    <div class="faction-icon">
+                        <i class="fas fa-tank"></i>
+                    </div>
+                    <h3>Армия</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Тяжелая техника</li>
+                        <li><i class="fas fa-check-circle"></i> Поддержка на каптах</li>
+                        <li><i class="fas fa-check-circle"></i> Защита государства</li>
+                        <li><i class="fas fa-check-circle"></i> Участие в рейдах</li>
+                    </ul>
+                </div>
+
+                <div class="faction-card opg">
+                    <div class="faction-icon">
+                        <i class="fas fa-skull"></i>
+                    </div>
+                    <h3>ОПГ</h3>
+                    <ul class="faction-rules">
+                        <li><i class="fas fa-check-circle"></i> Только ночная активность</li>
+                        <li><i class="fas fa-check-circle"></i> Маски обязательны</li>
+                        <li><i class="fas fa-check-circle"></i> Банки и капты</li>
+                        <li><i class="fas fa-times-circle"></i> Не в форме в городах</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Webhooks Section -->
+    <section class="webhooks-section" id="webhooks">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <i class="fas fa-bell"></i> Уведомления
+                </div>
+                <h2 class="section-title">Система уведомлений</h2>
+                <p class="section-subtitle">
+                    Получайте важные события сервера в реальном времени через Discord и Telegram
+                </p>
+            </div>
+
+            <div class="webhooks-grid">
+                <div class="webhook-card discord">
+                    <div class="webhook-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord Webhook</h3>
+                    <p>Получайте уведомления о банах, нарушениях и важных событиях</p>
+                    <div class="webhook-form">
+                        <input type="text" id="discordWebhook" placeholder="Введите URL Discord Webhook" class="webhook-input">
+                        <button class="btn btn-discord" onclick="setupDiscordWebhook()">
+                            <i class="fab fa-discord"></i> Подключить
+                        </button>
+                    </div>
+                    <div class="webhook-status" id="discordStatus">
+                        <span class="status-dot inactive"></span>
+                        Не подключено
+                    </div>
+                </div>
+
+                <div class="webhook-card telegram">
+                    <div class="webhook-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram Webhook</h3>
+                    <p>Получайте уведомления о RP-событиях и нарушениях в Telegram</p>
+                    <div class="webhook-form">
+                        <input type="text" id="telegramWebhook" placeholder="Введите токен бота" class="webhook-input">
+                        <input type="text" id="telegramChat" placeholder="ID чата" class="webhook-input small">
+                        <button class="btn btn-telegram" onclick="setupTelegramWebhook()">
+                            <i class="fab fa-telegram"></i> Подключить
+                        </button>
+                    </div>
+                    <div class="webhook-status" id="telegramStatus">
+                        <span class="status-dot inactive"></span>
+                        Не подключено
+                    </div>
+                </div>
+            </div>
+
+            <div class="webhook-test">
+                <h3><i class="fas fa-paper-plane"></i> Тестовое уведомление</h3>
+                <div class="test-controls">
+                    <select id="webhookType" class="test-select">
+                        <option value="discord">Discord</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="both">Оба</option>
+                    </select>
+                    <input type="text" id="testMessage" placeholder="Введите тестовое сообщение..." class="test-input">
+                    <button class="btn btn-primary" onclick="sendTestWebhook()">
+                        <i class="fas fa-paper-plane"></i> Отправить тест
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Landsite Project" class="footer-logo">
+                    <h3>Landsite Project</h3>
+                    <p>Играем честно и с душой</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Навигация</h4>
+                        <a href="#rules">Правила</a>
+                        <a href="#punishments">Наказания</a>
+                        <a href="#raids">Рейды</a>
+                        <a href="#ems">EMS</a>
+                        <a href="#opg">ОПГ</a>
+                        <a href="#factions">Фракции</a>
+                        <a href="#webhooks">Уведомления</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакты</h4>
+                        <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                        <a href="#"><i class="fab fa-vk"></i> VK</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Landsite Project. Все права защищены.</p>
+                <p>Версия правил: 2.3.1 | Обновлено: 26.06.2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/webhooks.js"></script>
+</body>
+</html>
