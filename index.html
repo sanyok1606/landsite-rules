@@ -166,6 +166,36 @@
                         <p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены</p>
                     </div>
                 </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Запрещено использовать 2 аккаунта</h3>
+                        <p>Использование второго аккаунта (твинка) строго запрещено</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Межнациональная рознь</h3>
+                        <p>Разжигание межнациональной розни запрещено. 1 раз — предупреждение, 2 раз — бан</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-comment-slash"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Оскорбления</h3>
+                        <p>Завуалированные оскорбления и упоминание родственников запрещены. 1 раз — штраф 100.000, 2 раз — бан 15 дней</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -210,7 +240,7 @@
                         </tr>
                         <tr>
                             <td><span class="term-badge warning">PG</span></td>
-                            <td>Power Gaming — «режим героя»</td>
+                            <td>Power Gaming — «режим героя» (1 против 3+)</td>
                             <td><span class="punishment moderate">Бан 40.000 сек</span></td>
                         </tr>
                         <tr>
@@ -242,6 +272,31 @@
                             <td><span class="term-badge info">PA</span></td>
                             <td>Prohibition Abuse — использование чужой формы</td>
                             <td><span class="punishment moderate">100.000-450.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">SK</span></td>
+                            <td>Spawn Kill — убийство при спавне</td>
+                            <td><span class="punishment severe">Бан 65.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">DB</span></td>
+                            <td>Drive-By — убийство из транспорта</td>
+                            <td><span class="punishment severe">Бан 55.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">SG</span></td>
+                            <td>Save Gun — спасение оружия в инвентарь</td>
+                            <td><span class="punishment moderate">Бан 21.600 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge warning">NonRP</span></td>
+                            <td>Нереалистичное поведение</td>
+                            <td><span class="punishment moderate">От 30.000 сек</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="term-badge danger">Провокация</span></td>
+                            <td>Агрессия без причины</td>
+                            <td><span class="punishment severe">Бан 70.000 сек</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -623,21 +678,21 @@
                     </ul>
                 </div>
 
-                <!-- ОПГ -->
-                <div class="faction-card opg">
+                <!-- Медики (EMS) - НОВАЯ ФРАКЦИЯ -->
+                <div class="faction-card ems">
                     <div class="faction-icon">
-                        <i class="fas fa-skull"></i>
+                        <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h3>ОПГ</h3>
+                    <h3>Медики (EMS)</h3>
                     <ul class="faction-rules">
-                        <li><i class="fas fa-check-circle"></i> Только ночная активность</li>
-                        <li><i class="fas fa-check-circle"></i> Маски обязательны</li>
-                        <li><i class="fas fa-check-circle"></i> Банки и капты</li>
-                        <li><i class="fas fa-times-circle"></i> Не в форме в городах</li>
+                        <li><i class="fas fa-check-circle"></i> Помощь всем игрокам</li>
+                        <li><i class="fas fa-check-circle"></i> Аптечка и дефибриллятор</li>
+                        <li><i class="fas fa-check-circle"></i> Прибытие за 3 минуты</li>
+                        <li><i class="fas fa-times-circle"></i> Не участвуют в боях</li>
                     </ul>
                 </div>
 
-                <!-- Бандиты (НОВАЯ ФРАКЦИЯ) -->
+                <!-- Бандиты -->
                 <div class="faction-card bandits">
                     <div class="faction-icon">
                         <i class="fas fa-mask"></i>
@@ -651,7 +706,7 @@
                     </ul>
                 </div>
 
-                <!-- Мафия (НОВАЯ ФРАКЦИЯ) -->
+                <!-- Мафия -->
                 <div class="faction-card mafia">
                     <div class="faction-icon">
                         <i class="fas fa-user-tie"></i>
@@ -729,4 +784,51 @@
                         <option value="both">Оба</option>
                     </select>
                     <input type="text" id="testMessage" placeholder="Введите тестовое сообщение..." class="test-input">
-                    <button class="btn btn-primary" onclick="sendTest
+                    <button class="btn btn-primary" onclick="sendTestWebhook()">
+                        <i class="fas fa-paper-plane"></i> Отправить тест
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Landsite Project" class="footer-logo">
+                    <h3>Landsite Project</h3>
+                    <p>Играем честно и с душой</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Навигация</h4>
+                        <a href="#rules">Правила</a>
+                        <a href="#punishments">Наказания</a>
+                        <a href="#raids">Рейды</a>
+                        <a href="#ems">EMS</a>
+                        <a href="#opg">ОПГ</a>
+                        <a href="#factions">Фракции</a>
+                        <a href="#webhooks">Уведомления</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Контакты</h4>
+                        <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                        <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                        <a href="#"><i class="fab fa-vk"></i> VK</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Landsite Project. Все права защищены.</p>
+                <p>Версия правил: 2.3.1 | Обновлено: 26.06.2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/webhooks.js"></script>
+</body>
+</html>
