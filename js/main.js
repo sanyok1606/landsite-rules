@@ -125,3 +125,51 @@ document.addEventListener('keydown', (e) => {
         hamburger.classList.remove('active');
     }
 });
+// ===== 3D TILT EFFECT FOR CARDS =====
+document.querySelectorAll('.rule-card, .faction-card, .webhook-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+// ===== COUNTER ANIMATION (для статистики) =====
+function animateCounter(element, target, duration = 2000) {
+    const start = parseInt(element.textContent) || 0;
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (target - start) * eased);
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    requestAnimationFrame(update);
+}
+
+// Анимация для статистики при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const stats = document.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+        const target = parseInt(stat.textContent);
+        if (!isNaN(target) && target > 0) {
+            stat.textContent = '0';
+            setTimeout(() => animateCounter(stat, target, 1500), 500);
+        }
+    });
+});
