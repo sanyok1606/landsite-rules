@@ -885,3 +885,136 @@ body {
         padding: 25px;
     }
 }
+/* ===== ANIMATED BACKGROUND PARTICLES ===== */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== 3D CARD EFFECT ===== */
+.rule-card,
+.faction-card,
+.webhook-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.rule-card:hover,
+.faction-card:hover,
+.webhook-card:hover {
+    transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+    box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+}
+
+/* ===== GLOW TEXT ===== */
+.gradient-text {
+    background: linear-gradient(135deg, #FF6B35, #FF4500, #FF6B35);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ===== FADE IN ON SCROLL ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== PULSING BADGE ===== */
+.hero-badge {
+    animation: pulseBadge 2s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+    50% { box-shadow: 0 0 0 15px rgba(255, 107, 53, 0); }
+}
+
+/* ===== FLOATING STATS ===== */
+.stat-number {
+    animation: floatNumber 3s ease-in-out infinite;
+}
+
+@keyframes floatNumber {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* ===== GLOW BUTTONS ===== */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.btn-primary:hover::after {
+    transform: scale(1);
+}
+
+/* ===== NEON BORDER FOR CARDS ===== */
+.faction-card {
+    position: relative;
+}
+
+.faction-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary), transparent, var(--primary));
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 3s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.faction-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes borderGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ===== RESPONSIVE TWEAKS ===== */
+@media (max-width: 768px) {
+    .rule-card:hover,
+    .faction-card:hover,
+    .webhook-card:hover {
+        transform: translateY(-5px);
+    }
+}
