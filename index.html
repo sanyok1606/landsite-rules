@@ -1,3 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landsite Project | Правила сервера</title>
+    <meta name="description" content="Landsite Project - правила сервера">
+    <meta name="theme-color" content="#FF6B35">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .accordion-container { display:flex; flex-direction:column; gap:12px; margin-top:30px; }
+        .accordion-item { background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius); overflow:hidden; transition:all 0.3s ease; }
+        .accordion-item:hover { border-color:var(--primary); }
+        .accordion-item.active { border-color:var(--primary); box-shadow:0 0 30px rgba(255,107,53,0.1); }
+        .accordion-header { display:flex; align-items:center; gap:15px; padding:18px 25px; cursor:pointer; transition:all 0.3s ease; user-select:none; background:transparent; border:none; width:100%; text-align:left; font-family:inherit; color:var(--light); }
+        .accordion-header:hover { background:rgba(255,107,53,0.05); }
+        .accordion-header .article-number { font-family:'Orbitron',sans-serif; font-size:0.8rem; font-weight:700; color:var(--primary); background:rgba(255,107,53,0.15); padding:4px 12px; border-radius:6px; white-space:nowrap; min-width:70px; text-align:center; }
+        .accordion-header .article-title { font-weight:600; font-size:1rem; flex:1; color:var(--light); }
+        .accordion-header .accordion-icon { font-size:0.9rem; color:var(--gray); transition:transform 0.3s ease; margin-left:auto; }
+        .accordion-item.active .accordion-icon { transform:rotate(180deg); color:var(--primary); }
+        .accordion-body { max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),padding 0.3s ease; padding:0 25px; }
+        .accordion-item.active .accordion-body { max-height:9999px; padding:0 25px 25px 25px; }
+        .accordion-body p { color:var(--gray); line-height:1.8; margin-bottom:10px; font-size:0.95rem; }
+        .accordion-body p:last-child { margin-bottom:0; }
+        .accordion-body strong { color:var(--light); font-weight:700; }
+        .accordion-body .highlight { color:var(--primary); font-weight:600; }
+        .accordion-body ul { list-style:none; padding:0; margin:0 0 10px 0; }
+        .accordion-body ul li { padding:4px 0 4px 25px; position:relative; color:var(--gray); font-size:0.95rem; }
+        .accordion-body ul li::before { content:'▸'; position:absolute; left:0; color:var(--primary); font-weight:700; }
+        .accordion-body .sub-article { background:rgba(255,107,53,0.05); border-left:3px solid var(--primary); padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .sub-article strong { color:var(--primary); }
+        .accordion-body .law-text { color:var(--gray); line-height:1.9; margin-bottom:12px; font-size:0.95rem; }
+        .accordion-body .law-text strong { color:var(--light); font-weight:700; }
+        .accordion-body .law-text .highlight { color:var(--primary); font-weight:600; }
+        .accordion-body .law-ul { list-style:none; padding:0; margin:0 0 10px 0; }
+        .accordion-body .law-ul li { padding:4px 0 4px 25px; position:relative; color:var(--gray); font-size:0.95rem; }
+        .accordion-body .law-ul li::before { content:'▸'; position:absolute; left:0; color:var(--primary); font-weight:700; }
+        .accordion-body .law-sub { background:rgba(255,107,53,0.05); border-left:3px solid var(--primary); padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .law-sub strong { color:var(--primary); }
+        .accordion-body .law-note { background:rgba(0,150,255,0.05); border-left:3px solid #0096ff; padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .law-note strong { color:#0096ff; }
+        .article-content { padding:5px 0; }
+        .article-content .chapter-title { color:var(--primary); font-weight:700; font-size:1.1rem; margin:15px 0 8px 0; display:block; }
+        .article-content .chapter-title:first-child { margin-top:0; }
+        @media (max-width:768px) { .accordion-header { padding:14px 18px; flex-wrap:wrap; } .accordion-header .article-number { font-size:0.7rem; min-width:55px; } .accordion-header .article-title { font-size:0.9rem; } .accordion-item.active .accordion-body { padding:0 18px 18px 18px; } .accordion-body p { font-size:0.85rem; } }
+    </style>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="container"><div class="nav-brand"><img src="assets/logo.png" alt="Landsite Project" class="nav-logo"><span class="brand-text">Landsite Project</span></div><div class="nav-links">
+<a href="#rules" class="nav-link"><i class="fas fa-gavel"></i> Правила</a>
+<a href="#punishments" class="nav-link"><i class="fas fa-skull"></i> Наказания</a>
+<a href="#constitution" class="nav-link"><i class="fas fa-balance-scale"></i> Конституция</a>
+<a href="#criminal" class="nav-link"><i class="fas fa-handcuffs"></i> УК</a>
+<a href="#admin" class="nav-link"><i class="fas fa-file-contract"></i> АК</a>
+<a href="#procedure" class="nav-link"><i class="fas fa-gavel"></i> ПК</a>
+<a href="#raids" class="nav-link"><i class="fas fa-skull-crossbones"></i> Рейды</a>
+<a href="#factions" class="nav-link"><i class="fas fa-users"></i> Фракции</a>
+<a href="#webhooks" class="nav-link"><i class="fas fa-bell"></i> Уведомления</a>
+<button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+</div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div></nav>
+
+<section class="hero" id="hero"><div class="hero-overlay"></div><div class="container"><div class="hero-content"><div class="hero-badge"><i class="fas fa-shield-halved"></i> RP Сервер #1</div><h1 class="hero-title"><span class="gradient-text">Landsite</span> Project</h1><p class="hero-subtitle">Погрузись в мир ролевой игры с четкими правилами</p><div class="hero-stats"><div class="stat"><span class="stat-number" id="onlinePlayers">0</span><span class="stat-label">Игроков онлайн</span></div><div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Работа сервера</span></div><div class="stat"><span class="stat-number">50+</span><span class="stat-label">Активных игроков</span></div></div><div class="hero-buttons"><a href="#rules" class="btn btn-primary"><i class="fas fa-book"></i> Изучить правила</a><a href="#webhooks" class="btn btn-secondary"><i class="fas fa-bell"></i> Подписаться</a></div></div></div></section>
+
+<!-- ===== RULES ===== -->
+<section class="rules-section" id="rules"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-gavel"></i> NRP</div><h2 class="section-title">Общий свод правил</h2><p class="section-subtitle">Незнание правил не освобождает вас от ответственности.</p></div><div class="rules-grid">
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-coins"></i></div><div class="rule-content"><h3>Запрещена продажа валюты</h3><p>Продажа игровой валюты за реальные деньги строго запрещена.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-ban"></i></div><div class="rule-content"><h3>Обход наказания</h3><p>Смена персонажа/Steam-аккаунта или выход из игры запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-shield-halved"></i></div><div class="rule-content"><h3>Уход от RP</h3><p>Уход от ролевого процесса без веской причины запрещен.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-shield"></i></div><div class="rule-content"><h3>Ущерб проекту</h3><p>DDoS, нагрузка сервера, вмешательство в работу админов запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-users-slash"></i></div><div class="rule-content"><h3>Провокации и оскорбления</h3><p>Провокация и оскорбления в сторону администрации запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-chess-queen"></i></div><div class="rule-content"><h3>Стороннее ПО</h3><p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-user-plus"></i></div><div class="rule-content"><h3>Запрещено использовать 2 аккаунта</h3><p>Использование второго аккаунта (твинка) строго запрещено.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-flag"></i></div><div class="rule-content"><h3>Межнациональная рознь</h3><p>Разжигание межнациональной розни запрещено. 1 раз — предупреждение, 2 раз — бан.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-comment-slash"></i></div><div class="rule-content"><h3>Оскорбления</h3><p>Завуалированные оскорбления и упоминание родственников запрещены. 1 раз — штраф 100.000$, 2 раз — бан 15 дней.</p></div></div>
+</div></div></section>
+
+<!-- ===== PUNISHMENTS ===== -->
+<section class="rp-section" id="punishments"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-skull"></i> Наказания</div><h2 class="section-title">RP Терминология и сроки</h2><p class="section-subtitle">Каждое нарушение имеет четкое наказание.</p></div><div class="table-container"><table class="punishment-table"><thead><tr><th>Термин</th><th>Расшифровка</th><th>Наказание</th></tr></thead><tbody>
+<tr><td><span class="term-badge danger">DM</span></td><td>Deathmatch — убийство без причины</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">RDM</span></td><td>Убийство 3+ человек без причины</td><td><span class="punishment severe">Бан 150.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">MG</span></td><td>Metagaming — использование OOC в IC</td><td><span class="punishment moderate">Бан 8.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">PG</span></td><td>Power Gaming — «режим героя» (1 против 3+)</td><td><span class="punishment moderate">Бан 40.000 сек</span></td></tr>
+<tr><td><span class="term-badge info">NRL</span></td><td>New Life Rule — 10 минут молчания</td><td><span class="punishment moderate">Бан 30.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">RK</span></td><td>Revenge Kill — убийство из мести</td><td><span class="punishment severe">Бан 60.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">TK</span></td><td>Team Kill — убийство союзника</td><td><span class="punishment severe">Бан 50.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">FRP</span></td><td>Fear RP — отсутствие страха</td><td><span class="punishment moderate">Бан 25.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">Багоюз</span></td><td>Использование игровых ошибок</td><td><span class="punishment severe">Бан 550.000 сек</span></td></tr>
+<tr><td><span class="term-badge info">PA</span></td><td>Prohibition Abuse — использование чужой формы</td><td><span class="punishment moderate">100.000-450.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">SK</span></td><td>Spawn Kill — убийство при спавне</td><td><span class="punishment severe">Бан 65.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">DB</span></td><td>Drive-By — убийство из транспорта</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">SG</span></td><td>Save Gun — спасение оружия в инвентарь</td><td><span class="punishment moderate">Бан 21.600 сек</span></td></tr>
+<tr><td><span class="term-badge warning">NonRP</span></td><td>Нереалистичное поведение</td><td><span class="punishment moderate">От 30.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">Провокация</span></td><td>Агрессия без причины</td><td><span class="punishment severe">Бан 70.000 сек</span></td></tr>
+</tbody></table></div></div></section>
+
+<!-- ===== CONSTITUTION ===== -->
+<section class="rules-section" id="constitution" style="background:var(--darker);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-balance-scale"></i> RP</div><h2 class="section-title">Конституция штата Доминикан</h2><p class="section-subtitle">Мы, народ штата Доминикан, благодарные Всемогущему Богу за нашу свободу, чтобы обеспечить и увековечить ее благословения, устанавливаем эту Конституцию.</p></div>
+<div class="accordion-container">
+
+<!-- Статья 1 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 1</span><span class="article-title">Человек, его права и свободы</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Человек, его права и свободы являются <span class="highlight">высшей ценностью</span>. Признание, соблюдение и защита прав и свобод человека и гражданина — обязанность государства.</p>
+<p class="law-text">Все права и свободы гарантируются и регулируются действующим законодательством штата Доминикан.</p>
+<p class="law-text">В штате Доминикан признаются и гарантируются права и свободы человека и гражданина согласно настоящей Конституцией.</p>
+<p class="law-text">Основные права и свободы человека <span class="highlight">неотчуждаемы</span> и принадлежат каждому от рождения.</p>
+<p class="law-text">Осуществление прав и свобод человека и гражданина не должно нарушать права и свободы других лиц.</p>
+<p class="law-text">Права и свободы человека и гражданина являются непосредственно действующими. Они определяют смысл, содержание и применение законов, деятельность законодательной и исполнительной власти, местного самоуправления и обеспечиваются правосудием.</p>
+</div></div></div>
+
+<!-- Статья 2 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 2</span><span class="article-title">Народовластие и равенство</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Всякая политическая власть присуща народу. Правительство учреждено для <span class="highlight">защиты, безопасности и пользы людей</span>.</p>
+<p class="law-text">Все равны перед законом и судом.</p>
+<p class="law-text">Государство гарантирует равенство прав и свобод человека и гражданина независимо от <span class="highlight">пола, расы, национальности, языка, происхождения, имущественного и должностного положения, места жительства, отношения к религии, убеждений, принадлежности к общественным объединениям</span>, а также других обстоятельств.</p>
+<p class="law-text">Запрещаются любые формы ограничения прав граждан по признакам социальной, расовой, национальной, языковой или религиозной принадлежности.</p>
+</div></div></div>
+
+<!-- Статья 3 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 3</span><span class="article-title">Территориальная принадлежность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Штат Доминикан является <span class="highlight">неотъемлемой частью Соединенных Штатов Америки</span>.</p>
+</div></div></div>
+
+<!-- Статья 4 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 4</span><span class="article-title">Свобода вероисповедания, слова и собраний</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Право на <span class="highlight">свободное вероисповедание</span> без дискриминации или предпочтения навсегда гарантируется в Штате.</p>
+<p class="law-text">Каждый гражданин может <span class="highlight">свободно говорить, писать и публиковать</span> свое мнение на любую тему, если это не противоречит действующему законодательству.</p>
+<p class="law-text">Народ имеет право <span class="highlight">свободно собираться вместе</span> для обсуждения общего блага или для проведения протестных акций, если это не противоречит действующему законодательству штата Доминикан, за исключением периода действия чрезвычайного или военного положения в Штате.</p>
+<p class="law-text">Каждый гражданин штата Доминикан имеет право <span class="highlight">подавать петиции</span> государственным чиновникам с предложениями по реформам и законодательными инициативами.</p>
+</div></div></div>
+
+<!-- Статья 5 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 5</span><span class="article-title">Права обвиняемого</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">В уголовном преследовании, досудебном разбирательстве и Суде, обвиняемая сторона имеет право на <span class="highlight">скорое и независимое разбирательство</span>.</p>
+<p class="law-text">Правительство обязано предоставить задержанному <span class="highlight">адвоката</span> по запросу.</p>
+<p class="law-text">Ни одно лицо не может <span class="highlight">дважды преследоваться</span> за одно и то же преступление.</p>
+<p class="law-text">Никто не обязан свидетельствовать против себя самого и своего супруга. Не допускается использование доказательств, полученных <span class="highlight">с нарушением закона</span>.</p>
+<p class="law-text">Каждый имеет право на жизнь.</p>
+<p class="law-text"><span class="highlight">Смертная казнь</span> впредь до ее отмены может устанавливаться законом в качестве исключительной меры наказания за преступления против жизни, терроризм.</p>
+</div></div></div>
+
+<!-- Статья 6 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 6</span><span class="article-title">Частная собственность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><span class="highlight">Частная собственность неприкосновенна</span> и не может быть изъята без достойной компенсации за исключением случаев, когда владение им противоречит действующему законодательству штата Доминикан.</p>
+<p class="law-text">Право людей <span class="highlight">защищать свою собственность</span>, документы и персональные данные от незаконных изъятий и обысков, не должно быть нарушено.</p>
+<p class="law-text">Человек имеет право <span class="highlight">защищать себя, свою собственность, права и свободы</span> любым законным способом.</p>
+</div></div></div>
+
+<!-- Статья 7 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 7</span><span class="article-title">Свобода труда</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Людям гарантируется <span class="highlight">свобода труда</span>. Рабство запрещено.</p>
+<p class="law-text">Принудительный труд запрещается, за исключением случаев, когда это является мерой наказания за преступление.</p>
+</div></div></div>
+
+<!-- Статья 8 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 8</span><span class="article-title">Измена</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Измена против государства заключается в <span class="highlight">войне против него, поддержке врагов государства или оказании им помощи</span>.</p>
+</div></div></div>
+
+<!-- Статья 9 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 9</span><span class="article-title">Достоинство личности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><span class="highlight">Достоинство личности охраняется</span> государством. Ничто не может быть основанием для его умаления.</p>
+<p class="law-text">Никто не должен подвергаться <span class="highlight">пыткам, насилию, другому жестокому или унижающему человеческое достоинство обращению или наказанию</span>.</p>
+<p class="law-text">Никто не может быть без добровольного согласия подвергнут медицинским, научным или иным опытам.</p>
+</div></div></div>
+
+<!-- Статья 10 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 10</span><span class="article-title">Обязательность Конституции</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Положения настоящей Конституции являются <span class="highlight">обязательными к исполнению</span>. Конституция это закон прямого действия.</p>
+</div></div></div>
+
+<!-- Статья 11 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 11</span><span class="article-title">Народ — источник власти</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Носителем суверенитета и источником власти в штате Доминикан является <span class="highlight">ее великий народ</span>.</p>
+</div></div></div>
+
+<!-- Статья 12 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 12</span><span class="article-title">Избирательное право</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый гражданин, проживающий на территории штата Доминикан <span class="highlight">не менее 5 лет</span> и имеющий гражданство, а также в полной мере дееспособный, обладает всеми политическими правами и может пользоваться ими в полной мере.</p>
+<p class="law-text">Право каждого гражданина США <span class="highlight">избирать и быть избранным</span> в органы государственной власти и местного самоуправления.</p>
+<p class="law-text">Каждый гражданин имеет право на <span class="highlight">тайное голосование</span>.</p>
+<p class="law-text">Все выборы проводятся путем голосования.</p>
+</div></div></div>
+
+<!-- Статья 13 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 13</span><span class="article-title">Мирные собрания</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Граждане штата имеют право <span class="highlight">мирно, без оружия проводить собрания, митинги, демонстрации, шествия и пикетирования</span>.</p>
+</div></div></div>
+
+<!-- Статья 14 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 14</span><span class="article-title">Запрет препятствования избирательным правам</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Запрещено в любом виде как препятствование, так и принуждение к осуществлению любых избирательных прав граждан Доминикан.</p>
+<p class="law-text">Запрещено любое преследование граждан Доминикан по политическим причинам, за исключением ситуаций, предусмотренных действующих законодательством Доминикан.</p>
+</div></div></div>
+
+<!-- Статья 15 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 15</span><span class="article-title">Высшее выражение власти народа</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Высшим непосредственным выражением власти народа являются референдумы и свободные выборы по вопросам, предусмотренным настоящей Конституцией и законом. Ничто не может препятствовать свободному осуществлению народом своего избирательного права.</p>
+</div></div></div>
+
+<!-- Статья 16 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 16</span><span class="article-title">Презумпция невиновности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый обвиняемый в совершении преступления считается <span class="highlight">невиновным</span>, пока его виновность не будет доказана в предусмотренном порядке.</p>
+<p class="law-text">Подозреваемый или обвиняемый <span class="highlight">не обязан доказывать свою невиновность</span>.</p>
+<p class="law-text"><span class="highlight">Неустранимые сомнения</span> в виновности лица толкуются в пользу обвиняемого.</p>
+<p class="law-text">Обвинительный приговор не может быть основан на предположениях.</p>
+<p class="law-text"><span class="highlight">Бремя доказывания</span> лежит на лице, которое осуществляет обвинение.</p>
+</div></div></div>
+
+<!-- Статья 17 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 17</span><span class="article-title">Свобода и неприкосновенность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый имеет право на <span class="highlight">свободу и личную неприкосновенность</span>.</p>
+<p class="law-text">Каждому гарантируется <span class="highlight">свобода мысли и слова</span>.</p>
+<p class="law-text">Лицо, чья личность или имущество были подвергнуты необоснованному обыску, задержанию или аресту, имеет право <span class="highlight">обжаловать это в суде</span>.</p>
+</div></div></div>
+
+<!-- Статья 18 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 18</span><span class="article-title">Право на образование</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый имеет право на образование. Штат поддерживает различные формы образования и самообразования.</p>
+</div></div></div>
+
+<!-- Статья 19 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 19</span><span class="article-title">Возмещение вреда государством</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый имеет право на возмещение государством вреда, причиненного незаконными действиями (или бездействием) органов государственной власти или их должностных лиц.</p>
+</div></div></div>
+
+<!-- Статья 20 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 20</span><span class="article-title">Обратная сила закона</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Закон, устанавливающий или отягчающий ответственность, обратной силы не имеет. Никто не может нести ответственность за деяние, которое в момент его совершения не признавалось правонарушением. Если после совершения правонарушения ответственность за него устранена или смягчена, применяется новый закон.</p>
+</div></div></div>
+
+<!-- Статья 21 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 21</span><span class="article-title">Ограничение прав и свобод</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Декларация прав не должна толковаться как отрицание или умаление других общепризнанных прав и свобод человека и гражданина. Осуществление прав и свобод человека и гражданина не должны нарушать права и свободы других лиц. Не должны издаваться законы, отменяющие или умаляющие права и свободы человека и гражданина, такие права могут быть ограничены только в той мере, в какой это необходимо в целях защиты нравственности, здоровья, прав и законных интересов других лиц, обеспечения обороны и безопасности штата.</p>
+</div></div></div>
+
+<!-- Статья 22 -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 22</span><span class="article-title">Право на здоровье</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text">Каждый гражданин имеет право на <span class="highlight">охрану здоровья и получение своевременной медицинской помощи</span>.</p>
+<p class="law-text">При оказании помощи гарантируются <span class="highlight">уважительное отношение, недопущение дискриминации, врачебная тайна и защита медицинских данных</span>, кроме случаев, предусмотренных законодательством.</p>
+<p class="law-text">Гражданин вправе получать <span class="highlight">понятную информацию о состоянии здоровья</span> и доступ к своей медицинской документации.</p>
+</div></div></div>
+
+<!-- ГЛАВА II. РАСПРЕДЕЛЕНИЕ ВЛАСТЕЙ -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава II</span><span class="article-title">Распределение властей</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.</strong> Политическая власть в штате Доминикан осуществляется на основе разделения на законодательную, исполнительную и судебную.</p>
+<p class="law-text"><strong>Статья 2.</strong> Органы законодательной, исполнительной и судебной власти самостоятельны.</p>
+</div></div></div>
+
+<!-- ГЛАВА III. ИСПОЛНИТЕЛЬНАЯ ВЛАСТЬ -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава III</span><span class="article-title">Исполнительная власть</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.</strong> Вся исполнительная власть в Штате принадлежит Губернатору. Принято считать, что исполнительными агентствами с собственным денежным балансом являются государственные организации, которые подчиняются правительству. Правительство и исполнительные агентства формируются и возглавляются Губернатором.</p>
+<p class="law-text"><strong>Статья 3.</strong> Исполнительные агентства и Правительство действует на территории всего Штата.</p>
+<p class="law-text"><strong>Статья 4.</strong> Губернатор занимает свою должность сорок пять дней с момента признания выборов и объявления результатов.</p>
+<p class="law-text"><strong>Статья 5.</strong> Губернатор является главнокомандующим национальной гвардии и других военных формирований Штата. Губернатор уполномочен вводить на территории штата или в отдельных его местностях чрезвычайное или военное положение.</p>
+<p class="law-text"><strong>Статья 6.</strong> Губернатор может потребовать от должностных лиц и агентств и их сотрудников предоставления любой информации относящихся к их обязанностям.</p>
+<p class="law-text"><strong>Статья 7.</strong> Вице-губернатор имеет ту же квалификацию и полномочия, что и Губернатор.</p>
+<p class="law-text"><strong>Статья 8.</strong> Вице-губернатор становится исполняющим обязанности Губернатора, когда действующий Губернатор отсутствует.</p>
+<p class="law-text"><strong>Статья 9.</strong> Губернатор уполномочен делегировать свои полномочия исполнительным агентствам, должностным лицам исполнительной власти, кроме тех случаев, когда это прямо запрещено.</p>
+<p class="law-text"><strong>Статья 10.</strong> Губернатор вправе предоставлять отсрочку наказания, осуществлять помилование, замену наказания на более мягкое после вступления в силу приговора.</p>
+<p class="law-text"><strong>Статья 11.</strong> Губернатор устанавливает размер налогообложения в Штате.</p>
+<p class="law-text"><strong>Статья 12.</strong> Губернатор является гарантом Конституции, прав и свобод человека и гражданина. Единственной его обязанностью является добросовестное исполнение законов.</p>
+</div></div></div>
+
+<!-- ГЛАВА IV. СУДЕБНАЯ ВЛАСТЬ И ПРОКУРАТУРА -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IV</span><span class="article-title">Судебная власть и прокуратура</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.</strong> Правосудие осуществляется только судом в лице судей. Судебная власть осуществляется Окружным, Верховным и Федеральным судами. Создание чрезвычайных судов не допускается.</p>
+<p class="law-text"><strong>Статья 2.</strong> Существует Федеральный суд для вынесения надзорных решений, надзорные жалобы подаются в Верховный суд на общих основаниях. Обращение в Федеральный суд допускается только на судебные акты Председателя Верховного суда. Федеральный суд рассматривает судебный акт и выносит свое заключение об обоснованности или необоснованности такого акта.</p>
+<p class="law-text"><strong>Статья 3.</strong> Судебная система устанавливается Конституцией, Конституционным законом "О Правосудии" и актами Верховного суда. Верховный суд является высшим судебным органом конституционного контроля, осуществляющим судебную власть в целях обеспечения верховенства и прямого действия Конституции, а также правильного ее применения.</p>
+<p class="law-text"><strong>Статья 4.</strong> Требования и распоряжения судов и судей при осуществлении ими полномочий обязательны для всех без исключения государственных органов, должностных лиц, организаций и граждан.</p>
+<p class="law-text"><strong>Статья 5.</strong> Судебные акты вступают в законную силу немедленно после их оглашения. Судебные акты, не отмененные в установленном законом порядке, имеют силу закона. Признается прецедентное право Верховного суда. Прецедент является источником права и обязателен к исполнению всеми гражданами.</p>
+<p class="law-text"><strong>Статья 6.</strong> Судьи независимы и подчиняются только Конституции, законам и актам Верховного суда. Всякое вмешательство в деятельность судьи по осуществлению правосудия, проявление неуважения к суду или судьям преследуется по закону.</p>
+<p class="law-text"><strong>Статья 7.</strong> Судьи неприкосновенны. Судья не может быть привлечен к какой-либо ответственности за выраженное им, при отправлении правосудия, мнение или принятое судом решение, если только вступившим в законную силу приговором суда не будет установлена виновность судьи в преступном злоупотреблении либо вынесении заведомо неправосудного судебного акта.</p>
+<p class="law-text"><strong>Статья 8.</strong> Председатель Верховного суда формирует государственные судебные награды, представляет судей к государственным наградам. Председатель Верховного суда формирует специальные советы, коллегии, комитеты и комиссии. Судебная власть финансируется еженедельно из казны правительства.</p>
+<p class="law-text"><strong>Статья 9.</strong> На судебные разбирательства назначаются судебные приставы. При необходимости приставы могут привлекать государственные организации для обеспечения исполнения судебных актов.</p>
+<p class="law-text"><strong>Статья 10.</strong> Федеральный судья назначает Председателя Верховного суда, однако этим правом обладает и Губернатор с согласия Федерального судьи. Иные судьи назначаются Председателем Верховного суда. Верховный суд состоит из четырех Верховных судей, один из которых, по совместительству, является Председателем Верховного суда, который контролирует деятельность органов правосудия.</p>
+<p class="law-text"><strong>Статья 11.</strong> Прокуратура — единая централизованная система органов, осуществляющих надзор за соблюдением Конституции и исполнением законов, надзор за соблюдением прав и свобод человека и гражданина, уголовное преследование, а также выполняющих иные функции. Полномочия и функции прокуратуры, ее организация и порядок деятельности определяются законом.</p>
+</div></div></div>
+
+<!-- ГЛАВА V. ЗАКОНОДАТЕЛЬНАЯ ВЛАСТЬ -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава V</span><span class="article-title">Законодательная власть</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.</strong> Законодательная власть в Штате принадлежит Высшей Палате.</p>
+<p class="law-text"><strong>Статья 2.</strong> На сессиях Высшей Палаты председательствует Государственный Секретарь, организует его работу и контролирует порядок, обеспечивая проведение заседаний.</p>
+<p class="law-text"><strong>Статья 3.</strong> В состав Высшей Палаты входят Вице-Губернатор, Председатель Верховного Суда, Генеральный прокурор, Государственный Секретарь.</p>
+<p class="law-text"><strong>Статья 5.</strong> Главной функцией Высшей Палаты является законотворчество.</p>
+<p class="law-text"><strong>Статья 6.</strong> Правом представлять законопроекты обладают Губернатор и члены Высшей палаты, а также другие лица уполномоченные на то Высшей палатой.</p>
+<p class="law-text"><strong>Статья 7.</strong> Высшая палата принимает решения исключительно в виде законопроектов, общим большинством голосов членов палаты, с присутствием не менее трех членов Высшей Палаты, если иное прямо не предусмотрено.</p>
+<p class="law-text"><strong>Статья 8.</strong> Прежде чем законопроект вступит силу он направляется Губернатору на утверждение. Губернатор вправе отклонить законопроект или утвердить его путем опубликования его на официальном портале Штата для вступления в силу.</p>
+<div class="law-sub"><strong>Примечание 1:</strong> Отклонение законопроекта губернатором происходит посредством процедуры наложения Вето.</div>
+<div class="law-sub"><strong>Примечание 2:</strong> Право вето — это полномочие губернатора, позволяющее последнему отказаться в подписании принятого Высшей Палатой законопроекта. Право вето не является абсолютным, вето может быть преодолено Высшей Палатой путем повторного голосования за законопроект в соответствии с процедурой, предусмотренной профильным законодательством.</div>
+</div></div></div>
+
+<!-- ГЛАВА VI. ОКОНЧАТЕЛЬНЫЕ ПОЛОЖЕНИЯ -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VI</span><span class="article-title">Окончательные положения</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.</strong> Инициативу о пересмотре Конституции и внесение в нее изменений имеет только Губернатор либо поставленные им же лица ответственные за изменения.</p>
+<p class="law-text"><strong>Статья 2.</strong> Иерархия нормативных правовых актов — это структура, которая основывается на юридической силе актов государственной власти. Конституция штата Доминикан является основным законом штата, особый нормативный правовой акт, имеющий высшую юридическую силу. Ни один закон или подзаконный акт не может противоречить или отменять положения Конституции. Если имеется такой закон, который вводит противоречие с Конституцией, то выполняется положение Конституции, а положения закона не выполняются.</p>
+<p class="law-text"><strong>Статья 3.</strong> Иерархия нормативных правовых актов штата Доминикан:</p>
+<ul class="law-ul">
+<li>Конституция;</li>
+<li>Конституционные законы;</li>
+<li>Кодексы, законы, положения Верховного суда;</li>
+<li>Нормативные правовые акты Кабинета Губернатора (Включая нормативные и правовые акты), приоритет над которыми имеет Губернатор;</li>
+<li>Нормативные правовые акты Департаментов, Министерств и Муниципалитетов Правительства (Включая нормативные и правовые акты).</li>
+</ul>
+</div></div></div>
+
+</div></div></section>
+
+<!-- ===== CRIMINAL CODE (ПОЛНЫЙ) ===== -->
+<section class="rules-section" id="criminal" style="background:var(--dark);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-handcuffs"></i> RP</div><h2 class="section-title">Уголовный кодекс штата Доминикан</h2><p class="section-subtitle">Преступлением признается виновно совершенное общественно опасное деяние, запрещенное настоящем Кодексом.</p></div>
+<div class="accordion-container">
+
+<!-- Глава I -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава I</span><span class="article-title">Понятие преступления и покушения</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 1.1.</strong> Преступлением признается <span class="highlight">виновно совершенное общественно опасное деяние</span>, запрещенное настоящем Кодексом под угрозой наказания.</p>
+<div class="law-sub"><strong>Пояснение:</strong> Общественно опасное деяние — деяние, угрожающие существенным нарушением прав или нарушающие права личности (человека), общества и/или государства. Отсутствие общественной опасности автоматически лишает деяние преступности.</div>
+<p class="law-text"><strong>Статья 1.2.</strong> <span class="highlight">Совокупностью преступлений</span> признается совершение двух или более преступлений. Допускается суммирование времени заключения. Без ордера на арест или решения суда допускается суммирование вплоть до 50 месяцев включительно, за исключением случаев, когда лицо обвиняется в совокупности преступлений в числе коих имеется преступления связанные с террористическими актами, в таких случаях допускается суммирование времени заключения вплоть до 100 месяцев включительно без предварительного решения суда или ордера на арест.</p>
+<p class="law-text"><strong>Статья 1.3.</strong> <span class="highlight">Покушением на преступление</span> признаются умышленные действия или бездействие лица, непосредственно направленные на совершение преступления, если при этом преступление не было доведено до конца по не зависящим от этого лица обстоятельствам. Уголовная ответственность за покушение наступает по статье настоящего Кодекса, предусматривающей ответственность за оконченное преступление.</p>
+<p class="law-text"><strong>Статья 1.4.</strong> Уголовный закон, устраняющий преступность деяния, смягчающий наказание или иным образом улучшающий положение лица, совершившего преступление, имеет обратную силу, то есть распространяется на лиц, совершивших соответствующие деяния до вступления такого закона в силу, в том числе на лиц, отбывающих наказание или отбывших наказание, но имеющих судимость. Уголовный закон, устанавливающий преступность деяния, усиливающий наказание или иным образом ухудшающий положение лица, обратной силы не имеет.</p>
+<p class="law-text"><strong>Статья 1.5.</strong> <span class="highlight">Принципы уголовного законодательства:</span></p>
+<ul class="law-ul">
+<li><strong>Принцип законности</strong> — преступность деяния, а также его наказуемость и иные уголовно-правовые последствия определяются только настоящим Кодексом. Применение уголовных статей по аналогии не допускается.</li>
+<li><strong>Принцип вины</strong> — лицо подлежит уголовной ответственности только за те общественно опасные действия и/или бездействие и наступившие общественно опасные последствия, в отношении которых установлена его вина. Объективное вменение не допускается.</li>
+<li><strong>Принцип справедливости</strong> — наказание и иные меры уголовно-правового характера, применяемые к лицу, совершившему преступление, должны быть справедливыми, то есть соответствовать характеру и степени общественной опасности преступления, обстоятельствам его совершения и личности виновного. Никто не может нести уголовную ответственность дважды за одно и то же преступление.</li>
+<li><strong>Принцип гуманизма</strong> — уголовное законодательство, а равно как настоящий Кодекс обеспечивает безопасность человека. Наказание и иные меры уголовно-правового характера, применяемые к лицу, совершившему преступление, не могут иметь своей целью причинение физических страданий или унижение человеческого достоинства.</li>
+</ul>
+<p class="law-text"><strong>Статья 1.6.</strong> Действие уголовного закона во времени. Преступность и наказуемость деяния определяются уголовным законом, действовавшим во время совершения этого деяния. Временем совершения преступления признается время совершения общественно опасного действия (бездействия) независимо от времени наступления последствий.</p>
+<p class="law-text"><strong>Статья 1.7.</strong> Состав и признаки преступления. Состав преступления представляет собой совокупность следующих факторов: объективная часть, то есть деяние должно соответствовать диспозиции соответствующей статьи из тома второго настоящего Кодекса; субъективная часть, то есть деяние должно быть совершено намеренно (умышленно). Исключением являются статьи из тома второго настоящего Кодекса прямо предусматривающие преступность даже в деяниях без прямого умысла. Признаки преступления: виновность, общественная опасность деяния, уголовная противоправность, наказуемость.</p>
+</div></div></div>
+
+<!-- Глава II -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава II</span><span class="article-title">Соучастие в преступлении</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 2.1.</strong> <span class="highlight">Соучастием в преступлении</span> признается умышленное совместное участие двух или более лиц в совершении умышленного преступления.</p>
+<p class="law-text"><strong>Статья 2.2.</strong> Соучастниками преступления наряду с исполнителем признаются организатор, подстрекатель и пособник:</p>
+<ul class="law-ul">
+<li><strong>Исполнитель</strong> — лицо, непосредственно совершившее преступление, либо непосредственно участвовавшее в его совершении совместно с другими лицами (соисполнителями);</li>
+<li><strong>Организатор</strong> — лицо, организовавшее совершение преступления или руководившее его исполнением;</li>
+<li><strong>Подстрекатель</strong> — лицо, склонившее другое лицо к совершению преступления путем уговора, подкупа, угрозы или другим способом;</li>
+<li><strong>Пособник</strong> — лицо, содействовавшее совершению преступления советами, указаниями, предоставлением информации, средств или орудий совершения преступления либо устранением препятствий.</li>
+</ul>
+<p class="law-text"><strong>Статья 2.3.</strong> Ответственность соучастников преступления определяется характером и степенью фактического участия каждого из них в совершении преступления.</p>
+<p class="law-text"><strong>Статья 2.4.</strong> Преступление признается совершенным группой лиц, если в его совершении совместно участвовали два или более исполнителя.</p>
+<p class="law-text"><strong>Статья 2.5.</strong> Совершение преступления <span class="highlight">группой лиц</span> влечет более строгое наказание.</p>
+<p class="law-text"><strong>Статья 2.6.</strong> Лицо, создавшее организованную группу или преступное сообщество (преступную организацию) либо руководившее ими, подлежит уголовной ответственности за их организацию и руководство ими в случае, предусмотренном статьей 19.1 настоящего Кодекса, а также за все совершенные организованной группой или преступным сообществом (преступной организацией) преступления, если они охватывались его умыслом.</p>
+<p class="law-text"><strong>Статья 2.7.</strong> Эксцессом исполнителя признается совершение исполнителем преступления, не охватывающегося умыслом других соучастников. За эксцесс исполнителя другие соучастники преступления уголовной ответственности не подлежат.</p>
+</div></div></div>
+
+<!-- Глава III -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава III</span><span class="article-title">Обстоятельства, исключающие преступность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 3.1.</strong> <span class="highlight">Необходимая оборона</span> — не является преступлением причинение вреда посягающему лицу в состоянии необходимой обороны, при защите личности и прав обороняющегося или других лиц, если это посягательство было сопряжено с насилием, опасным для жизни обороняющегося или другого лица, либо с непосредственной угрозой применения такого насилия.</p>
+<p class="law-text"><strong>Статья 3.2.</strong> При причинении вреда в состоянии необходимой обороны не должны быть нарушены пределы необходимой обороны (умышленные действия, явно не соответствующие характеру и опасности посягательства).</p>
+<p class="law-text"><strong>Статья 3.3.</strong> Не является преступлением причинение вреда лицу, совершившему преступление, при его задержании, если иными средствами задержать такое лицо не представлялось возможным и при этом не было допущено превышения необходимых для этого мер (когда лицу без необходимости причиняется явно чрезмерный, не вызываемый обстановкой вред).</p>
+<p class="law-text"><strong>Статья 3.4.</strong> <span class="highlight">Крайняя необходимость</span> — не является преступлением причинение вреда в состоянии крайней необходимости, то есть для устранения опасности, непосредственно угрожающей личности и правам данного лица или иных лиц, если эта опасность не могла быть устранена иными средствами и при этом не было допущено превышения пределов крайней необходимости (явно не соответствующего характеру и степени угрожавшей опасности и обстоятельствам).</p>
+<p class="law-text"><strong>Статья 3.5.</strong> <span class="highlight">Обоснованный риск</span> — не является преступлением причинение вреда при обоснованном риске для достижения общественно полезной цели, если указанная цель не могла быть достигнута не связанными с риском действиями (бездействием). Риск не признается обоснованным, если он заведомо был сопряжен с угрозой для жизни многих людей.</p>
+<p class="law-text"><strong>Статья 3.6.</strong> Лицо, совершившее преступление во исполнение <span class="highlight">заведомо незаконных приказа или распоряжения</span>, несет уголовную ответственность на общих основаниях с отдавшим таковое распоряжение/приказ. Неисполнение заведомо незаконных приказа или распоряжения исключает уголовную ответственность.</p>
+<p class="law-text"><strong>Статья 3.7.</strong> Не является преступлением деяние, совершенное неумышленно, то есть по неосторожности, кроме случаев, когда иное предусмотрено соответствующими статьями настоящего Кодекса.</p>
+<p class="law-text"><strong>Статья 3.7.1.</strong> Деяние признается умышленным, если лицо осознавало общественную опасность деяния и желало наступления опасных последствий или относилось к их наступлению безразлично.</p>
+<p class="law-text"><strong>Статья 3.7.2.</strong> Деяние признается неумышленно, если лицо предвидело возможность наступления общественно опасных последствий деяния, но без достаточных к тому оснований самонадеянно рассчитывало на предотвращение этих последствий, а равно не предвидело возможности наступления общественно опасных последствий деяния, хотя при необходимой внимательности и предусмотрительности должно было и могло предвидеть эти последствия.</p>
+<p class="law-text"><strong>Статья 3.8.</strong> Деяние признается совершенным невиновно, если лицо, его совершившее, не осознавало и по обстоятельствам дела не могло осознавать общественной опасности своих действий (бездействия) либо не предвидело возможности наступления общественно опасных последствий и по обстоятельствам дела не должно было или не могло их предвидеть.</p>
+<p class="law-text"><strong>Статья 3.8.1.</strong> Деяние признается также совершенным невиновно, если лицо, его совершившее, хотя и предвидело возможность наступления общественно опасных последствий своих действий (бездействия), но не могло предотвратить эти последствия в силу несоответствия своих психофизиологических качеств требованиям экстремальных условий или нервно-психическим перегрузкам.</p>
+<p class="law-text"><strong>Статья 3.9.</strong> В зависимости от характера и степени общественной опасности деяния, предусмотренные настоящим Кодексом, подразделяются на преступления небольшой тяжести, преступления средней тяжести, тяжкие преступления и особо тяжкие преступления.</p>
+<p class="law-text"><strong>Статья 3.9.1.</strong> Преступлениями легкой степени тяжести признаются умышленные и неосторожные деяния, за совершение которых максимальное наказание, предусмотренное настоящим Кодексом, это приоритет розыска 1-2.</p>
+<p class="law-text"><strong>Статья 3.9.2.</strong> Преступлениями средней степени тяжести признаются умышленные или неосторожные деяния, за совершение которых максимальное наказание, предусмотренное настоящим Кодексом, это приоритет розыска 3.</p>
+<p class="law-text"><strong>Статья 3.9.3.</strong> Тяжкими преступлениями признаются умышленные или неосторожные деяния, за совершение которых максимальное наказание, предусмотренное настоящим Кодексом, это приоритет розыска 4.</p>
+<p class="law-text"><strong>Статья 3.9.4.</strong> Особо тяжкими преступлениями признаются умышленные деяния, за совершение которых максимальное наказание, предусмотренное настоящим Кодексом, это приоритет розыска 5.</p>
+<p class="law-text"><strong>Статья 3.9.5.</strong> С учетом фактических обстоятельств преступления и степени его общественной опасности суд вправе при наличии смягчающих наказание обстоятельств и при отсутствии отягчающих наказание обстоятельств изменить категорию преступления на менее тяжкую, но не более чем на одну категорию преступления.</p>
+</div></div></div>
+
+<!-- Глава IV -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IV</span><span class="article-title">Назначение наказания</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 4.1.</strong> Лицу, признанному виновным в совершении преступления, назначается <span class="highlight">справедливое наказание</span> в пределах, предусмотренных соответствующей статьей настоящего Кодекса, и с учетом положений Тома I настоящего Кодекса.</p>
+<p class="law-text"><strong>Статья 4.2.</strong> При назначении наказания учитываются характер и степень общественной опасности преступления и личность виновного, в том числе обстоятельства, <span class="highlight">смягчающие и отягчающие</span> наказание.</p>
+<p class="law-text"><strong>Статья 4.2.1.</strong> Существенным нарушением прав признается нарушение прав и свобод человека и гражданина, закрепленных в Конституции, а также в общепризнанных принципах и нормах международного права.</p>
+<p class="law-text"><strong>Статья 4.2.2.</strong> При совокупности преступлений наказание в виде лишения свободы складывается. Иные взыскания накладываются в соответствии со степенью общественной опасности совершенного деяния.</p>
+<p class="law-text"><strong>Статья 4.2.3.</strong> При задержании государственного служащего меру наказания избирает сотрудник Прокуратуры.</p>
+<p class="law-text"><strong>Статья 4.2.4.</strong> Решением прокуратуры по итогам задержания могут быть назначены следующие виды наказаний: дисциплинарное взыскание, исправительные работы, лишение свободы на определенный срок без создания записи о судимости, в случаях предусмотренных основной частью настоящего Кодекса; лишение свободы на определенный срок с созданием записи о судимости, в случаях предусмотренных основной частью настоящего Кодекса; уголовный штраф.</p>
+<div class="law-sub"><strong>Примечание №1:</strong> Решение, принятое сотрудником прокуратуры по факту задержания лица, совершившего преступление, обязательно к исполнению всеми субъектами задержания. Обжалование решения сотрудника прокуратуры производится путем обращения в вышестоящие инстанции — прокуратура (Юридическую оценку действиям сотрудника прокуратуры дает Генеральный прокурор) или в рамках искового заявления, поданного в Суд.</div>
+<div class="law-sub"><strong>Примечание №2:</strong> Исправительные работы могут быть следующих видов: работа на лесоповале, ловля рыбы на рыбацком стане, общественные работы на улицах города Доминикан, другие виды общественных работ по инициативе сотрудника прокуратуры.</div>
+<div class="law-sub"><strong>Примечание №3:</strong> Максимальное время исправительных работ не может быть больше получаса.</div>
+<div class="law-sub"><strong>Примечание №4:</strong> При вынесении решения прокурором о назначении исправительных работ прокурор обязан дать 48 часов с момента вынесения решения для отработки наказания. В случае невыполнения решения прокурора в течении 48 часов возможна ответственность согласно Уголовному кодексу.</div>
+<p class="law-text"><strong>Статья 4.4.</strong> <span class="highlight">Смягчающие обстоятельства:</span></p>
+<ul class="law-ul">
+<li>Совершение преступления в результате физического или психического принуждения либо в силу материальной, служебной или иной зависимости;</li>
+<li>Совершение преступления при нарушении условий правомерности необходимой обороны, задержания лица, совершившего преступление, крайней необходимости, обоснованного риска, исполнения приказа или распоряжения;</li>
+<li>Противоправность или аморальность поведения потерпевшего, явившегося поводом для преступления;</li>
+<li><span class="highlight">Явка с повинной</span>, активное способствование раскрытию и расследованию преступления, изобличению и уголовному преследованию других соучастников преступления;</li>
+<li><span class="highlight">Сделка со следствием</span>;</li>
+<li>Оказание медицинской и иной помощи потерпевшему после совершения преступления, добровольное возмещение имущественного ущерба и морального вреда, причиненных в результате преступления, иные действия, направленные на заглаживание вреда, причиненного потерпевшему;</li>
+<li>Иные обстоятельства.</li>
+</ul>
+<p class="law-text"><strong>Статья 4.5.</strong> <span class="highlight">Отягчающие обстоятельства:</span></p>
+<ul class="law-ul">
+<li>Совершение преступления в составе группы лиц;</li>
+<li><span class="highlight">Рецидив</span> — совершение лицом нового преступления после осуждения за предыдущее деяние в случае, если судимость не снята и не погашена в установленном законом порядке;</li>
+<li>Совершение преступления по мотивам политической, идеологической, расовой, национальной или религиозной ненависти, или вражды либо по мотивам ненависти или вражды в отношении какой-либо социальной группы;</li>
+<li>Совершение преступления из мести за правомерные действия других лиц, а также с целью скрыть другое преступление или облегчить его совершение;</li>
+<li>Совершение преступления в отношении лица или его близких в связи с осуществлением данным лицом служебной деятельности или выполнением общественного долга;</li>
+<li>Совершение преступления с <span class="highlight">особой жестокостью</span>, садизмом, издевательством, а также мучениями для потерпевшего;</li>
+<li>Совершение преступления с использованием доверия, оказанного виновному в силу его служебного положения или договора;</li>
+<li>Совершение преступления с использованием форменной одежды или документов представителя власти;</li>
+<li>Совершение преступления в состоянии алкогольного или наркотического опьянения;</li>
+<li>Совершение преступления использованием психического давления на потерпевшего;</li>
+<li>Совершение умышленного преступления <span class="highlight">сотрудником правоохранительного органа</span>.</li>
+</ul>
+<p class="law-text"><strong>Статья 4.6.</strong> Время содержания лица под стражей до судебного разбирательства учитывается при вынесении приговора.</p>
+<p class="law-text"><strong>Статья 4.7.</strong> <span class="highlight">Штраф</span> как уголовное наказание есть денежное взыскание, назначаемое за совершение преступления. Таковое может быть назначено как мера наказания в случае наличия смягчающих обстоятельств. Сумма такового регулируется настоящим Кодексом, сумма варьируется в зависимости от тяжести преступления. Суд вправе назначить наказание в виде уголовной штрафной санкции на своё усмотрение, в подобных случаях сумма штрафа также назначается судом на своё усмотрение. Оплата такой санкции обязательна непосредственно на месте в случаях назначения подобного наказания при задержании либо в срок, указанный в судебном решении.</p>
+<div class="law-sub"><strong>Примечание:</strong> По преступлениям связанным с посягательством на жизнь и здоровье граждан штата штраф как уголовное наказания применяться не может.</div>
+<p class="law-text"><strong>Статья 4.8.</strong> В результате судебного процесса по уголовному делу могут быть назначены следующие виды наказаний: уголовный штраф; лишение права занимать определенные должности или заниматься определенной деятельностью; увольнение с государственной службы, в том числе с лишением всех званий, наград и привилегий; общественные работы; ограничение свободы; лишение свободы на определенный срок; отстранение от работы на срок до прохождения переаттестации; наложение дисциплинарных взысканий.</p>
+<p class="law-text"><strong>Статья 4.10.</strong> <span class="highlight">Приоритет розыска</span> является показателем того, в какой степени гражданин нарушил закон и разыскивается правоохранительными структурами.</p>
+<p class="law-text"><strong>Статья 4.10.1.</strong> Приоритет розыска по преступлениям разной тяжести. Преступления легкой степени тяжести влекут за собой приоритет розыска 1-2. Преступления средней степени тяжести влекут за собой приоритет розыска 3. Тяжкие преступления влекут за собой приоритет розыска 4. Особо тяжкие преступления влекут за собой приоритет розыска 5.</p>
+<p class="law-text"><strong>Статья 4.10.2.</strong> Ответственность обозначается приоритетом розыска. Приоритет розыска 1 — до 10 месяцев либо уголовный штраф размером от 5.000$ до 15.000$ включительно. Выход под залог возможен при уплате — 15.000$. Приоритет розыска 2 — до 20 месяцев либо уголовный штраф размером от 20.000$ до 35.000$ включительно. Выход под залог возможен при уплате — 30.000$. Приоритет розыска 3 — до 30 месяцев либо уголовный штраф размером от 40.000$ до 70.000$ включительно. Выход под залог возможен при уплате — 50.000$. Приоритет розыска 4 — до 40 месяцев либо уголовный штраф размером от 50.000$ до 80.000$ включительно. Выход под залог возможен при уплате — 100.000$. Приоритет розыска 5 — до 50 месяцев. Выход под залог невозможен.</p>
+<p class="law-text"><strong>Статья 4.11.</strong> По решению суда или в случае авторизации ордера, предписывающего проведение ареста допускается суммирование времени заключения вплоть до 100 месяцев включительно.</p>
+<p class="law-text"><strong>Статья 4.12.</strong> Преступления направленные против общественного порядка, предусматривающие присвоение гражданину судимости имеют пометку (S).</p>
+</div></div></div>
+
+<!-- Глава V -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава V</span><span class="article-title">Освобождение от ответственности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 5.1.</strong> Лицо, впервые совершившее преступление средней тяжести и ниже, может быть освобождено от уголовной ответственности, до момента задержания либо в момент задержания, если оно примирилось с потерпевшим и загладило причиненный потерпевшему вред.</p>
+<p class="law-text"><strong>Статья 5.2.</strong> Максимальные сроки уголовного дела по факту преступления бессрочны. Лицо освобождается от уголовной ответственности по истечении срока давности преступления (30 дней) при условии, что лицо не находится под следствием за данное деяние.</p>
+<p class="law-text"><strong>Статья 5.2.1.</strong> К лицам, совершившим особо тяжкие преступления, приоритет розыска у которых превышает 4 уровня настоящего Кодекса, сроки давности не применяются.</p>
+<p class="law-text"><strong>Статья 5.3.</strong> Судимость несет в себе двадцати однодневный запрет на работу в государственных структурах с момента истечения срока лишения свободы.</p>
+<p class="law-text"><strong>Статья 5.4.</strong> Лицо освобождается от наказания при уплате суммы залога с созданием записи о наличии судимости, до момента оспаривания в суде.</p>
+<p class="law-text"><strong>Статья 5.5.</strong> Лицо, добровольно сдавшее предметы, указанные в статьях 12.7, 13.1, 13.2, 13.4 настоящего Кодекса, освобождается от уголовной ответственности по соответствующей статье. Не может признаваться добровольной сдачей предметов сдача оных, а равно как изъятие при задержании и/или аресте лица, а также при производстве любых процессуальных и/или следственных действий.</p>
+<p class="law-text"><strong>Статья 5.6.</strong> Государственный служащий находящийся под прикрытием (подтвержденное документально), освобождается от уголовной ответственности, если его действия, преступного характера, были направлены на защиту интересов общества или государства.</p>
+</div></div></div>
+
+<!-- Глава VI -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VI</span><span class="article-title">Преступления против жизни и здоровья</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 6.1.</strong> Умышленное или неоднократное нанесение телесных повреждений. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 6.1.1 (S).</strong> Умышленное или неоднократное нанесение тяжких телесных повреждений, повлекшее за собой потерю сознания. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 6.2 (S).</strong> <span class="highlight">Посягательство на жизнь человека.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Попытка убийства, равно как и убийство, то есть умышленное посягательство на жизнь человека, в том числе повлекшее за собой потерю сознания, совершенное с использованием холодного и/или огнестрельного оружия. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> То же деяние, совершенное в отношении двух или более лиц. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 5.</span></div>
+<p class="law-text"><strong>Статья 6.3.</strong> Причинение тяжких телесных повреждений, повлекших за собой потерю сознания по неосторожности. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 6.4.</strong> Жестокое обращение, насилие, надругательства над животными в целях причинения им боли и/или страданий, а равно из хулиганских побуждений и/или из корыстных побуждений, повлекшее его гибель или увечье. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 6.4.1 (S).</strong> Жестокое обращение, насилие, надругательства над служебной собакой в целях причинения ей боли и/или страданий, а равно из хулиганских побуждений и/или из корыстных побуждений, повлекшее его гибель или увечье. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 6.5 (S).</strong> <span class="highlight">Угроза расправой</span> над гражданским лицом, либо угроза применения насилия или оружия в отношении его близких. <span class="highlight">Приоритет розыска — 4.</span></p>
+</div></div></div>
+
+<!-- Глава VII -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VII</span><span class="article-title">Преступления против свободы, чести и достоинства</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 7.1 (S).</strong> <span class="highlight">Похищение человека.</span> <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 7.2.</strong> <span class="highlight">Клевета</span> — распространение заведомо ложных сведений, порочащих честь и достоинство другого лица или подрывающих его репутацию. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 7.3.</strong> Клевета, содержащаяся в публичном выступлении, средствах массовой информации либо с использованием своего служебного положения. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 7.4.</strong> Клевета, соединенная с обвинением лица в совершении преступления. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 7.5.</strong> <span class="highlight">Бритье головы</span> — применение насильственных действий, направленных на удаление или обрезание волос с головы потерпевшего, независимо от причин и обстоятельств. <span class="highlight">Приоритет розыска — 3.</span></p>
+</div></div></div>
+
+<!-- Глава IX -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IX</span><span class="article-title">Преступления против конституционных прав</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 9.1.</strong> Незаконное собирание или распространение сведений о частной жизни лица, составляющих его личную или семейную тайну, без его согласия либо распространение этих сведений в публичном выступлении, публичном произведении или средствах массовой информации, в том числе с использованием своего служебного положения. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 9.2 (S).</strong> Взлом, равно как и попытка взлома с целью незаконного проникновения в жилище, совершенное в тайне, либо против воли проживающего в нем лица, в том числе с использованием своего служебного положения. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 9.3 (S).</strong> Воспрепятствование свободному осуществлению гражданином своих избирательных прав, в том числе соединенные с подкупом, обманом, принуждением, применением насилия либо с угрозой его применения, на территории штата. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 9.4.</strong> Воспрепятствование законной профессиональной деятельности журналистов путем незаконного ограничения права поиска, получения, передачи, производства и распространения информации любым законным способом, равно как и принуждения их к распространению либо к отказу от распространения. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 9.5 (S).</strong> Запугивание, шантаж, угроза/ы нанесения тяжких телесных, покушения на убийство или убийством, при наличии реальных оснований опасаться осуществления таких действий. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 9.6.</strong> Вымогательство, то есть требование передачи чужого имущества, либо права на имущество, или совершение каких-либо действий имущественного характера под угрозой физического насилия или применением огнестрельного оружия над потерпевшим, либо его близкими родственниками. <span class="highlight">Приоритет розыска — 5.</span></p>
+</div></div></div>
+
+<!-- Глава X -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава X</span><span class="article-title">Преступления против собственности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 10.1.</strong> <span class="highlight">Кража</span> — тайное хищение чужого имущества, стоимостью менее 5.000$. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 10.2 (S).</strong> Кража, то есть тайное хищение чужого имущества, стоимостью <span class="highlight">более 5.000$</span>. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 10.3 (S).</strong> <span class="highlight">Мошенничество</span> — хищение чужого имущества или приобретение права на чужое имущество путем обмана или злоупотребления доверием. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 10.4 (S).</strong> <span class="highlight">Грабеж</span> — открытое хищение чужого имущества, совершенное без насилия над личностью или с насилием, которое не опасно для жизни и здоровья. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 10.5 (S).</strong> <span class="highlight">Разбой</span> — нападение в целях хищения чужого имущества, совершенное с применением оружия или применения физической силы, которой может повлечь за собой причинение вреда здоровью гражданина, опасного для жизни или здоровья, либо с угрозой применения такого насилия. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 10.6.</strong> Неправомерное завладение автомобилем или иным транспортным средством, равно как передвижение на транспортном средстве находящемся в угоне, как с целью хищения, так и без. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 10.6.1 (S).</strong> Неправомерное завладение транспортным средством, принадлежащему <span class="highlight">государству</span> или государственному ведомству, равно как и передвижение на таком транспортном средстве. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 10.7.</strong> Умышленные уничтожение или повреждение чужого имущества, совершенные из хулиганских побуждений, путем поджога, взрыва или иным способом. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 10.8 (S).</strong> Умышленное уничтожение или повреждение государственного имущества, совершенное из хулиганских побуждений, путем поджога, взрыва или иным способом. <span class="highlight">Приоритет розыска — 4.</span></p>
+</div></div></div>
+
+<!-- Глава XI -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XI</span><span class="article-title">Преступления в сфере экономической деятельности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 11.1.</strong> Осуществление предпринимательской деятельности без регистрации. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 11.2.</strong> Принуждение к совершению сделки или к отказу от ее совершения под угрозой применения насилия с помощью огнестрельного оружия или оружия ближнего боя (тупые, острые, режущие, рубящие), уничтожения или повреждения чужого имущества. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 11.3.</strong> Организация азартных игр в общественных местах. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 11.5.</strong> Сокрытие денежных средств либо имущества, за счет которых должно производиться взыскание налогов. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 11.7 (S).</strong> Нецелевое использование средств государственного бюджета. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 11.8 (S).</strong> Присвоение себе финансовых средств, принадлежащих государственной структуре или государственному учреждению. <span class="highlight">Приоритет розыска — 3.</span></p>
+</div></div></div>
+
+<!-- Глава XII -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XII</span><span class="article-title">Преступления против общественной безопасности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 12.1 (S).</strong> <span class="highlight">Терроризм</span> — совершение взрыва, поджога или иных действий устрашающих население и создающих опасность гибели человека, причинения значительного имущественного ущерба либо наступления иных тяжких последствий, в целях дестабилизации деятельности органов власти или международных организаций либо воздействия на принятие ими решений, а также угроза совершения указанных действий в целях воздействия на принятие решений органами власти. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 12.2 (S).</strong> Склонение, вербовка или иное вовлечение лица в терроризм, а равно финансирование терроризма. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 12.3 (S).</strong> Захват или удержание лица в качестве заложника, совершенные в целях понуждения государства, организации или гражданина совершить какое-либо действие или воздержаться от совершения какого-либо действия как условия освобождения заложника. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 12.4 (S).</strong> Заведомо ложное сообщение о готовящихся взрыве, поджоге или иных действиях, создающих опасность гибели людей, причинения значительного имущественного ущерба либо наступления иных общественно опасных последствий. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 12.5 (S).</strong> Организация массовых беспорядков, а равно участие в них, сопровождавшихся насилием, погромами, поджогами, уничтожением имущества, применением оружия, взрывных устройств, взрывчатых, отравляющих либо иных веществ и предметов, представляющих опасность для окружающих, а также оказанием вооруженного сопротивления представителю власти, а равно подготовка лица для организации таких массовых беспорядков или участия в них. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 12.6.</strong> Незаконное нахождение на охраняемой территории, а именно в желтой зоне (обозначенной на картах) в соответствии с законодательством штата Доминикан, а именно законом "О государственных территориях" штата Доминикан. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 12.6.1.</strong> Незаконное проникновение или нахождение на закрытой территории в соответствии с законодательством штата Доминикан, а именно законом "О государственных территориях" штата Доминикан. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 12.7 (S).</strong> Незаконные приобретение, передача, сбыт, хранение, изготовление, перевозка, использование или ношение любых видов оружия, бронежилетов, боеприпасов, взрывчатки или иных взрывчатых веществ, дефибрилляторов, эпинефрина, а также спецсредств государственного образца. <span class="highlight">Приоритет розыска — 4.</span></p>
+</div></div></div>
+
+<!-- Глава XIII -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XIII</span><span class="article-title">Преступления против здоровья населения</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 13.1 (S).</strong> Незаконное приобретение, хранение, перевозка наркотических средств и/или веществ от 10 до 20 грамм включительно. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> Одно растение или же его семя приравнивается к 5 граммам наркотического вещества. Один скрученный косяк приравнивается к 10 граммам.</div>
+<p class="law-text"><strong>Статья 13.2 (S).</strong> Незаконное приобретение, хранение, перевозка наркотических средств и/или веществ свыше 20 грамм. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 13.3.</strong> Употребление наркотических средств в общественных местах. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 13.4 (S).</strong> Употребление, сбыт любых наркотических средств сотрудниками государственных организаций. <span class="highlight">Приоритет розыска — 4.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> При получении нелегальных предметов во время исполнения служебных обязанностей, лицо освобождается от ответственности при наличии обоснованных доказательств.</div>
+<p class="law-text"><strong>Статья 13.5 (S).</strong> Незаконное кустарное производство наркотических веществ в любых размерах. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> Кустарным производством является удобрение, сбор или рассада кустарников, в составе которых имеются каннабиноидные или иные наркотические вещества.</div>
+<p class="law-text"><strong>Статья 13.6 (S).</strong> Незаконный сбыт, равно как пособничество в сбыте наркотических веществ в любом размере. <span class="highlight">Приоритет розыска — 3.</span></p>
+</div></div></div>
+
+<!-- Глава XIV -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XIV</span><span class="article-title">Преступления против конституционного строя</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 14.1 (S).</strong> Посягательство на жизнь государственного или общественного деятеля, совершенное в целях прекращения его государственной или иной политической деятельности либо из мести за такую деятельность. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 14.4 (S).</strong> Публичные призывы к экстремизму — осуществлению действий направленных насильственным действиям против существующего политического, религиозного или социального строя. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 14.5 (S).</strong> Публичные призывы к сепаратизму — действий, направленных на нарушение территориальной целостности штата, направленные против основ конституционного строя и безопасности штата. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 14.6 (S).</strong> Подрыв государственной целостности, путем потери той или иной репутации среди гражданского населения, в виду когнитивных диссонансов или прироста уровня преступности среди сотрудников государственных структур. <span class="highlight">Приоритет розыска — 5.</span></p>
+</div></div></div>
+
+<!-- Глава XV -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XV</span><span class="article-title">Преступления против власти</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 15.1 (S).</strong> <span class="highlight">Превышение должностных полномочий.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Превышение должностных полномочий, то есть совершение должностным лицом действий, явно выходящих за пределы его полномочий и повлекших существенное нарушение прав, и законных интересов граждан или организаций. <span class="highlight">Приоритет розыска — 3.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> Те же деяния, если они совершены: с применением насилия или с угрозой его применения; с применением оружия или специальных средств; с причинением тяжких последствий; группой лиц по предварительному сговору или организованной группой; из корыстной или иной личной заинтересованности. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 3.</strong> То же деяние, совершенное лицом, занимающим руководящую должность государственной структуры, за исключением лиц, занимающих руководящую должность в Правительстве Штата Доминикан. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 4.</strong> Деяние, предусмотренное частью первой настоящей статьи, совершенное лицом, занимающим руководящую государственную должность в Правительстве Штата Доминикан. <span class="highlight">Приоритет розыска — 5.</span></div>
+<div class="law-sub"><strong>Примечание №1.</strong> Должностными лицами в статьях настоящей главы и других статьях настоящего кодекса признаются лица, постоянно, временно или по специальному полномочию осуществляющие функции представителя власти либо выполняющие организационно-распорядительные, административно-хозяйственные функции в государственных органах.</div>
+<div class="law-sub"><strong>Примечание №2.</strong> Под лицами, занимающими руководящую должность государственной структуры, за исключением лиц, занимающих руководящую должность в Правительстве Штата Доминикан, в статьях настоящей главы и других статьях настоящего кодекса понимаются Руководители и Заместители руководителей таких государственных структур Штата, как EMS, FPD, USSS.</div>
+<div class="law-sub"><strong>Примечание №3.</strong> Под лицами, занимающими руководящую государственную должность в Правительстве Штата Доминикан, в статьях настоящей главы и других статьях настоящего кодекса понимаются Губернатор, Вице-Губернатор, Министры и их Заместители, Генеральный Прокурор и его заместители.</div>
+<p class="law-text"><strong>Статья 15.2 (S).</strong> Неисполнение сотрудником государственных организаций требований и/или приказа, не противоречащего законодательной базы штата Доминикан, отданного руководителем отдела или его заместителем, старшим составом организации, контролирующим органом, а также закрепленного за данной организацией Министерства. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 15.3.</strong> Самовольное присвоение гражданином полномочий должностного лица, либо выдача себя за должностное лицо коем гражданин не является. <span class="highlight">Приоритет розыска — 2.</span></p>
+<p class="law-text"><strong>Статья 15.4 (S).</strong> <span class="highlight">Злоупотребление должностными полномочиями.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Использование должностным лицом своих служебных полномочий вопреки интересам службы, если это деяние совершено из корыстной или иной личной заинтересованности и повлекло существенное нарушение прав и законных интересов граждан или организаций либо охраняемых законом интересов общества или государства. <span class="highlight">Приоритет розыска — 3.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> Те же деяния, если они совершены: с применением насилия или с угрозой его применения; с применением оружия или специальных средств; с причинением тяжких последствий; группой лиц по предварительному сговору или организованной группой; из корыстной или иной личной заинтересованности. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 3.</strong> То же деяние, совершенное лицом, занимающим руководящую должность государственной структуры, за исключением лиц, занимающих руководящую должность в Правительстве Штата Доминикан. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 4.</strong> Деяние, предусмотренное частью первой настоящей статьи, совершенное лицом, занимающим руководящую государственную должность в Правительстве Штата Доминикан. <span class="highlight">Приоритет розыска — 4.</span></div>
+<p class="law-text"><strong>Статья 15.5 (S).</strong> <span class="highlight">Дача и/или получение взятки.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Получение взятки, то есть получение должностным лицом, лично и/или через посредника взятки в виде денег, иного имущества, либо в виде оказания ему услуг имущественного характера, либо услуг связанных с его непосредственно занимаемой должностью, предоставления иных имущественных прав за совершение действий и/или бездействие в пользу взяткодателя или представляемых им лиц. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> Дача взятки, либо дача части взятки должностному лицу лично, либо через посредника, равно как попытка подкупа должностного лица. <span class="highlight">Приоритет розыска — 4.</span></div>
+<div class="law-sub"><strong>Примечание 1:</strong> Лицо, давшее взятку, освобождается от уголовной ответственности, если оно способствовало раскрытию и (или) расследованию преступления, либо в отношении его имело место вымогательство взятки со стороны должностного лица, либо лицо после совершения преступления добровольно сообщило в орган, имеющий право возбудить уголовное дело, о даче взятки.</div>
+<div class="law-sub"><strong>Примечание 2:</strong> Чтобы лицо было освобождено от Уголовной ответственности за дачу взятки оно должно написать обращение в прокуратуру или исковое заявление.</div>
+<p class="law-text"><strong>Статья 15.6 (S).</strong> <span class="highlight">Халатность.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Халатность, то есть неисполнение или ненадлежащее исполнение должностным лицом своих обязанностей вследствие недобросовестного или небрежного отношения к службе либо обязанностей по должности, если это повлекло причинение крупного ущерба или существенное нарушение прав и законных интересов граждан или организаций. <span class="highlight">Приоритет розыска — 3.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> Деяние, предусмотренное частью первой настоящей статьи, повлекшее по неосторожности причинение тяжкого вреда здоровью или смерть человека. <span class="highlight">Приоритет розыска — 5.</span></div>
+<p class="law-text"><strong>Статья 15.7 (S).</strong> Незаконная выдача должностным лицом документа государственного образца. Незаконная выдача должностным лицом лицензии, справки или иного документа государственного образца, а равно выдача такого документа без должных на то оснований. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 15.8.</strong> Деструктивное поведение. Совершение должностным лицом умышленных действий, явно содержащих деструктивное по своему характеру поведение, существенно нарушающее установленные законом нормы этики и морали. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Примечание к ст. 15.8:</strong> При классифицировании противоправного деяния стоит учитывать все факторы и обстоятельства, при которых оно совершилось. Такими факторами могут выступать: массовость, неконтролируемость, вспыльчивость, агрессивность, резкость в общении. При избрании санкции необходимо оценивать совокупность всех фактом, которые могут каким-либо образом иметь значение для других лиц.</div>
+</div></div></div>
+
+<!-- Глава XVI -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XVI</span><span class="article-title">Преступления против правосудия</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 16.1 (S).</strong> <span class="highlight">Вмешательство.</span></p>
+<div class="law-sub"><strong>Часть 1.</strong> Вмешательство в какой бы то ни было форме в деятельность суда, в целях воспрепятствования осуществлению правосудия. <span class="highlight">Приоритет розыска — 3.</span></div>
+<div class="law-sub"><strong>Часть 2.</strong> Вмешательство в какой бы то ни было форме в деятельность прокурора в целях воспрепятствования всестороннему, полному и объективному расследованию. <span class="highlight">Приоритет розыска — 3.</span></div>
+<div class="law-sub"><strong>Часть 3.</strong> Вмешательство в какой бы то ни было форме в деятельность прокурора в целях воспрепятствования всестороннему, полному и объективному расследованию, совершенные лицом с использованием своего служебного положения. <span class="highlight">Приоритет розыска — 4.</span></div>
+<p class="law-text"><strong>Статья 16.2 (S).</strong> Угроза, а равно посягательство на жизнь судьи, или иного лица, участвующего в отправлении правосудия, прокурора, защитника и других, а равно их близких в связи с рассмотрением дел в суде, производством расследования либо исполнением приговора, решения суда или иного судебного акта, совершенное в целях воспрепятствования законной деятельности указанных лиц либо из мести за такую деятельность. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.3 (S).</strong> Неуважение к суду, выразившееся в оскорблении участников судебного разбирательства или неуважении суда. <span class="highlight">Приоритет розыска — 4.</span></p>
+<div class="law-sub"><strong>Примечание 1.</strong> Таковым считается: любое действие, кое квалифицируется как таковое законом или актом Верховного суда; неуважительное общение с участником судебного разбирательства или судьей; оскорбление участника судебного разбирательства или судьи; нарушение правил поведения в суде, установленных Верховным судом; иное деяние, признанное как таковое в конкретном случае Верховным судьёй.</div>
+<p class="law-text"><strong>Статья 16.4 (S).</strong> Привлечение заведомо невиновного к уголовной или административной ответственности. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 16.5 (S).</strong> Заведомо незаконное задержание, заключение под стражу или содержание под стражей. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 16.6 (S).</strong> Фальсификация доказательств и/или документов по гражданскому, административному делу лицом, участвующим в деле, или его представителем. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.7 (S).</strong> Фальсификация доказательств по уголовному делу лицом, производящим расследование, прокурором или защитником. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.8 (S).</strong> Вынесение судьей (судьями) заведомо неправомерного приговора, решения или иного судебного акта. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.9 (S).</strong> Заведомо ложный донос о совершении преступления. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 16.10 (S).</strong> Дача заведомо ложных показаний свидетелем, обвиняемым и/или потерпевшим. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 16.11 (S).</strong> Подкуп свидетеля, потерпевшего в целях дачи ими ложных показаний либо эксперта, специалиста в целях дачи ими ложного заключения или ложных показаний. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 16.12 (S).</strong> Злостное неисполнение вступивших в законную силу приговора суда, решения суда или иного судебного акта, постановления прокурора или выданного ордера а равно воспрепятствование их исполнению. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.13 (S).</strong> Сокрытие улик и/или уничтожение улик. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.14 (S).</strong> Уклонение от расследования, задержания и суда, намеренные действия, которые направлены правонарушителем на уклонение от реального уголовного срока или другой уголовной ответственности. Таковыми считаются: Попытка скрыться при публикации ордера на арест, неявка на вызов сотрудника прокуратуры или сотрудника правоохранительных органов уполномоченного вести следствие и задержание, смена фамилии и других идентификационных данных, изменение своего внешнего вида при помощи пластической хирургии и т.д. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 16.15.</strong> Нахождение в розыске, выданного системой безопасности штата. <span class="highlight">Приоритет розыска — от 1 до 5.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> Лица, добровольно явившиеся для оформления явки с повинной, получают 1/2, установленного настоящей статьей, наказания.</div>
+</div></div></div>
+
+<!-- Глава XVII -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XVII</span><span class="article-title">Преступления против порядка управления</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 17.1 (S).</strong> Посягательство на жизнь сотрудника государственной организации, а равно их близких, в связи с исполнением им своих должностных обязанностей либо из мести за таковые обязанности. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 17.2 (S).</strong> Угроза расправой над сотрудником государственной организации и/или угроза применения насилия или оружия в отношении его близких в связи с исполнением им своих должностных обязанностей. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 17.3.</strong> Оскорбление сотрудника (-ов) государственной структуры, при исполнении им (-ими) своих служебных обязанностей. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> Оскорбление — унижение чести и достоинства другого лица, выраженное в неприличной или иной противоречащей общепринятым нормам морали и нравственности форме.</div>
+<p class="law-text"><strong>Статья 17.5.</strong> Самоуправство, то есть самовольное, вопреки установленному законом или иным нормативным правовым актом порядку совершение каких-либо действий. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 17.6.</strong> Неповиновение законному требованию или приказу, распоряжению правомочного лица обладающего такими правами согласно Законодательной Базе. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Исключение:</strong> Данная статья не может быть инкриминировано гражданину, отказавшемуся снять маску.</div>
+<p class="law-text"><strong>Статья 17.7.</strong> Уклонение от уплаты штрафной санкции, отказ от возмещения ущерба согласно законодательству, равно как невозможность оплаты установленной Административным или Уголовным кодексом суммы такой штрафной санкции. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 17.8 (S).</strong> Помеха работе правоохранительных органов, повлекшая за собой упущение задержанного/преследуемого/арестованного. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 17.9.</strong> Провокация государственного служащего при исполнении, путем его отвлечения или помехи выполнения им своих служебных обязанностей. <span class="highlight">Приоритет розыска — 3.</span></p>
+<div class="law-sub"><strong>Примечание:</strong> в случае несущественных помех по типу разговора, вставания на пути сотрудника, сотрудникам требуется выдвинуть предупреждение о недопустимости провокации, иначе настоящая статья не применима.</div>
+<p class="law-text"><strong>Статья 17.10.</strong> Попытка побега, равное побегу с места и/или во время задержания/ареста. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 17.11.</strong> Помеха движению организованного неприкосновенным лицом кортежа или военной либо государственной колонны по обеспечению государственной организации вооружением, ресурсами или материалами. <span class="highlight">Приоритет розыска — 3.</span></p>
+<p class="law-text"><strong>Статья 17.12 (S).</strong> Умышленное или неоднократное нанесение телесных повреждений государственному служащему при исполнении служебных обязанностей. <span class="highlight">Приоритет розыска — 4.</span></p>
+<p class="law-text"><strong>Статья 17.13.</strong> Укрывательство преступника, орудий и средств совершения преступления, следов преступления или предметов, добытых преступлением. <span class="highlight">Приоритет розыска — 3.</span></p>
+</div></div></div>
+
+<!-- Глава XIX -->
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XIX</span><span class="article-title">Организация преступного сообщества</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content">
+<p class="law-text"><strong>Статья 19.1 (S).</strong> <span class="highlight">Создание преступного сообщества</span> (преступной организации) в целях совершения одного или нескольких тяжких или особо тяжких преступлений либо руководство преступным сообществом (преступной организацией) или входящими в него (нее) структурными подразделениями, а равно координация действий организованных групп, создание устойчивых связей между ними, разработка планов и создание условий для совершения преступлений организованными группами, раздел сфер преступного влияния и/или преступных доходов между такими группами. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 19.2 (S).</strong> <span class="highlight">Участие в преступном сообществе.</span> <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 19.3 (S).</strong> Организация массового незаконного производства оружия. <span class="highlight">Приоритет розыска — 5.</span></p>
+<p class="law-text"><strong>Статья 19.4 (S).</strong> Организация наркокартеля и массовое распространение. <span class="highlight">Приоритет розыска — 5.</span></p>
+</div></div></div>
+
+</div></div></section>
 <!-- ===== ADMIN CODE (ПОЛНЫЙ) ===== -->
 <section class="rules-section" id="admin" style="background:var(--darker);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-file-contract"></i> RP</div><h2 class="section-title">Административный кодекс штата Доминикан</h2><p class="section-subtitle">Административный кодекс — кодифицированный нормативный акт, регулирующий общественные отношения по привлечению к административной ответственности.</p></div>
 <div class="accordion-container">
