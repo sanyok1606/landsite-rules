@@ -4,1249 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landsite Project | Правила сервера</title>
-    
-    <meta name="description" content="Landsite Project - правила сервера, RP терминология и наказания">
+    <meta name="description" content="Landsite Project - правила сервера">
     <meta name="theme-color" content="#FF6B35">
-    
-    <meta property="og:title" content="Landsite Project - Правила сервера">
-    <meta property="og:description" content="Официальные правила Landsite Project RP сервера">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/logo.png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
-        /* ===== ACCORDION STYLES ===== */
-        .accordion-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .accordion-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-item:hover {
-            border-color: var(--primary);
-        }
-
-        .accordion-item.active {
-            border-color: var(--primary);
-            box-shadow: 0 0 30px rgba(255, 107, 53, 0.1);
-        }
-
-        .accordion-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-            background: transparent;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-family: inherit;
-            color: var(--light);
-        }
-
-        .accordion-header:hover {
-            background: rgba(255, 107, 53, 0.05);
-        }
-
-        .accordion-header .article-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            background: rgba(255, 107, 53, 0.15);
-            padding: 4px 12px;
-            border-radius: 6px;
-            white-space: nowrap;
-            min-width: 70px;
-            text-align: center;
-        }
-
-        .accordion-header .article-title {
-            font-weight: 600;
-            font-size: 1rem;
-            flex: 1;
-            color: var(--light);
-        }
-
-        .accordion-header .accordion-icon {
-            font-size: 0.9rem;
-            color: var(--gray);
-            transition: transform 0.3s ease;
-            margin-left: auto;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-            color: var(--primary);
-        }
-
-        .accordion-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-            padding: 0 25px;
-        }
-
-        .accordion-item.active .accordion-body {
-            max-height: 5000px;
-            padding: 0 25px 25px 25px;
-        }
-
-        .accordion-body p {
-            color: var(--gray);
-            line-height: 1.8;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .accordion-body p:last-child {
-            margin-bottom: 0;
-        }
-
-        .accordion-body strong {
-            color: var(--light);
-        }
-
-        .accordion-body .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .accordion-body ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .accordion-body ul li {
-            padding: 6px 0 6px 25px;
-            position: relative;
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        .accordion-body ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .accordion-body .sub-article {
-            background: rgba(255, 107, 53, 0.05);
-            border-left: 3px solid var(--primary);
-            padding: 12px 18px;
-            margin: 10px 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .accordion-body .sub-article strong {
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .accordion-header {
-                padding: 14px 18px;
-                flex-wrap: wrap;
-            }
-            .accordion-header .article-number {
-                font-size: 0.7rem;
-                min-width: 55px;
-            }
-            .accordion-header .article-title {
-                font-size: 0.9rem;
-            }
-            .accordion-item.active .accordion-body {
-                padding: 0 18px 18px 18px;
-            }
-            .accordion-body p {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* ===== SECTION BADGE ===== */
-        .section-badge {
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .section-badge.nrp {
-            background: rgba(255, 107, 53, 0.2);
-            color: var(--primary);
-        }
-
-        .section-badge.rp {
-            background: rgba(0, 150, 255, 0.2);
-            color: #0096ff;
-        }
+        .accordion-container { display:flex; flex-direction:column; gap:12px; margin-top:30px; }
+        .accordion-item { background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius); overflow:hidden; transition:all 0.3s ease; }
+        .accordion-item:hover { border-color:var(--primary); }
+        .accordion-item.active { border-color:var(--primary); box-shadow:0 0 30px rgba(255,107,53,0.1); }
+        .accordion-header { display:flex; align-items:center; gap:15px; padding:18px 25px; cursor:pointer; transition:all 0.3s ease; user-select:none; background:transparent; border:none; width:100%; text-align:left; font-family:inherit; color:var(--light); }
+        .accordion-header:hover { background:rgba(255,107,53,0.05); }
+        .accordion-header .article-number { font-family:'Orbitron',sans-serif; font-size:0.8rem; font-weight:700; color:var(--primary); background:rgba(255,107,53,0.15); padding:4px 12px; border-radius:6px; white-space:nowrap; min-width:70px; text-align:center; }
+        .accordion-header .article-title { font-weight:600; font-size:1rem; flex:1; color:var(--light); }
+        .accordion-header .accordion-icon { font-size:0.9rem; color:var(--gray); transition:transform 0.3s ease; margin-left:auto; }
+        .accordion-item.active .accordion-icon { transform:rotate(180deg); color:var(--primary); }
+        .accordion-body { max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),padding 0.3s ease; padding:0 25px; }
+        .accordion-item.active .accordion-body { max-height:9999px; padding:0 25px 25px 25px; }
+        .accordion-body p { color:var(--gray); line-height:1.8; margin-bottom:10px; font-size:0.95rem; }
+        .accordion-body p:last-child { margin-bottom:0; }
+        .accordion-body strong { color:var(--light); }
+        .accordion-body .highlight { color:var(--primary); font-weight:600; }
+        .accordion-body ul { list-style:none; padding:0; margin:0 0 10px 0; }
+        .accordion-body ul li { padding:4px 0 4px 25px; position:relative; color:var(--gray); font-size:0.95rem; }
+        .accordion-body ul li::before { content:'▸'; position:absolute; left:0; color:var(--primary); font-weight:700; }
+        .accordion-body .sub-article { background:rgba(255,107,53,0.05); border-left:3px solid var(--primary); padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .sub-article strong { color:var(--primary); }
+        .accordion-body .law-text { color:var(--gray); line-height:1.9; margin-bottom:12px; font-size:0.95rem; }
+        .accordion-body .law-text strong { color:var(--light); }
+        .accordion-body .law-text .highlight { color:var(--primary); font-weight:600; }
+        .accordion-body .law-ul { list-style:none; padding:0; margin:0 0 10px 0; }
+        .accordion-body .law-ul li { padding:4px 0 4px 25px; position:relative; color:var(--gray); font-size:0.95rem; }
+        .accordion-body .law-ul li::before { content:'▸'; position:absolute; left:0; color:var(--primary); font-weight:700; }
+        .accordion-body .law-sub { background:rgba(255,107,53,0.05); border-left:3px solid var(--primary); padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .law-sub strong { color:var(--primary); }
+        .accordion-body .law-note { background:rgba(0,150,255,0.05); border-left:3px solid #0096ff; padding:12px 18px; margin:10px 0; border-radius:0 8px 8px 0; }
+        .accordion-body .law-note strong { color:#0096ff; }
+        .article-content { padding:5px 0; }
+        @media (max-width:768px) { .accordion-header { padding:14px 18px; flex-wrap:wrap; } .accordion-header .article-number { font-size:0.7rem; min-width:55px; } .accordion-header .article-title { font-size:0.9rem; } .accordion-item.active .accordion-body { padding:0 18px 18px 18px; } .accordion-body p { font-size:0.85rem; } }
     </style>
 </head>
 <body>
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="assets/logo.png" alt="Landsite Project" class="nav-logo">
-                <span class="brand-text">Landsite Project</span>
-            </div>
-            <div class="nav-links">
-                <a href="#rules" class="nav-link"><i class="fas fa-gavel"></i> Правила</a>
-                <a href="#punishments" class="nav-link"><i class="fas fa-skull"></i> Наказания</a>
-                <a href="#constitution" class="nav-link"><i class="fas fa-balance-scale"></i> Конституция</a>
-                <a href="#criminal" class="nav-link"><i class="fas fa-handcuffs"></i> УК</a>
-                <a href="#admin" class="nav-link"><i class="fas fa-file-contract"></i> АК</a>
-                <a href="#procedure" class="nav-link"><i class="fas fa-gavel"></i> ПК</a>
-                <a href="#raids" class="nav-link"><i class="fas fa-skull-crossbones"></i> Рейды</a>
-                <a href="#factions" class="nav-link"><i class="fas fa-users"></i> Фракции</a>
-                <a href="#webhooks" class="nav-link"><i class="fas fa-bell"></i> Уведомления</a>
-                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
-            </div>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
-
-    <section class="hero" id="hero">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-shield-halved"></i> RP Сервер #1</div>
-                <h1 class="hero-title"><span class="gradient-text">Landsite</span> Project</h1>
-                <p class="hero-subtitle">Погрузись в мир ролевой игры с четкими правилами</p>
-                <div class="hero-stats">
-                    <div class="stat"><span class="stat-number" id="onlinePlayers">0</span><span class="stat-label">Игроков онлайн</span></div>
-                    <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Работа сервера</span></div>
-                    <div class="stat"><span class="stat-number">50+</span><span class="stat-label">Активных игроков</span></div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#rules" class="btn btn-primary"><i class="fas fa-book"></i> Изучить правила</a>
-                    <a href="#webhooks" class="btn btn-secondary"><i class="fas fa-bell"></i> Подписаться</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RULES SECTION ===== -->
-    <section class="rules-section" id="rules">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-gavel"></i> NRP</div>
-                <h2 class="section-title">Общий свод правил</h2>
-                <p class="section-subtitle">Незнание правил не освобождает вас от ответственности. Заходя на сервер, вы автоматически соглашаетесь со всеми правилами.</p>
-            </div>
-            <div class="rules-grid">
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-coins"></i></div><div class="rule-content"><h3>Запрещена продажа валюты</h3><p>Продажа игровой валюты за реальные деньги строго запрещена. Нарушение карается перманентным баном.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-ban"></i></div><div class="rule-content"><h3>Обход наказания</h3><p>Смена персонажа/Steam-аккаунта или выход из игры для избежания наказания запрещены.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-shield-halved"></i></div><div class="rule-content"><h3>Уход от RP</h3><p>Уход от ролевого процесса без веской причины запрещен. Наказание — бан до 30.000 секунд.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-shield"></i></div><div class="rule-content"><h3>Ущерб проекту</h3><p>Любой ущерб проекту (DDoS, нагрузка сервера, вмешательство в работу администрации) запрещен.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-users-slash"></i></div><div class="rule-content"><h3>Провокации и оскорбления</h3><p>Провокация и оскорбления в сторону администрации строго запрещены. Наказание — бан до 86.400 секунд.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-chess-queen"></i></div><div class="rule-content"><h3>Стороннее ПО</h3><p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены. Наказание — бан.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-user-plus"></i></div><div class="rule-content"><h3>Запрещено использовать 2 аккаунта</h3><p>Использование второго аккаунта (твинка) строго запрещено. Наказание — бан обоих аккаунтов.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-flag"></i></div><div class="rule-content"><h3>Межнациональная рознь</h3><p>Разжигание межнациональной розни запрещено. 1 раз — предупреждение, 2 раз — бан.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-comment-slash"></i></div><div class="rule-content"><h3>Оскорбления</h3><p>Завуалированные оскорбления и упоминание родственников запрещены. 1 раз — штраф 100.000$, 2 раз — бан 15 дней.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PUNISHMENTS SECTION ===== -->
-    <section class="rp-section" id="punishments">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-skull"></i> Наказания</div>
-                <h2 class="section-title">RP Терминология и сроки</h2>
-                <p class="section-subtitle">Каждое нарушение имеет четкое наказание. Будьте внимательны и соблюдайте правила.</p>
-            </div>
-            <div class="table-container">
-                <table class="punishment-table">
-                    <thead><tr><th>Термин</th><th>Расшифровка</th><th>Наказание</th></tr></thead>
-                    <tbody>
-                        <tr><td><span class="term-badge danger">DM</span></td><td>Deathmatch — убийство без причины</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">RDM</span></td><td>Убийство 3+ человек без причины</td><td><span class="punishment severe">Бан 150.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge warning">MG</span></td><td>Metagaming — использование OOC информации в IC</td><td><span class="punishment moderate">Бан 8.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge warning">PG</span></td><td>Power Gaming — «режим героя» (1 против 3+)</td><td><span class="punishment moderate">Бан 40.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge info">NRL</span></td><td>New Life Rule — 10 минут молчания на спавне</td><td><span class="punishment moderate">Бан 30.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">RK</span></td><td>Revenge Kill — убийство из мести</td><td><span class="punishment severe">Бан 60.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">TK</span></td><td>Team Kill — убийство союзника</td><td><span class="punishment severe">Бан 50.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge warning">FRP</span></td><td>Fear RP — отсутствие страха</td><td><span class="punishment moderate">Бан 25.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">Багоюз</span></td><td>Использование игровых ошибок</td><td><span class="punishment severe">Бан 550.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge info">PA</span></td><td>Prohibition Abuse — использование чужой формы</td><td><span class="punishment moderate">100.000-450.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">SK</span></td><td>Spawn Kill — убийство при спавне</td><td><span class="punishment severe">Бан 65.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">DB</span></td><td>Drive-By — убийство из транспорта</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge warning">SG</span></td><td>Save Gun — спасение оружия в инвентарь</td><td><span class="punishment moderate">Бан 21.600 сек</span></td></tr>
-                        <tr><td><span class="term-badge warning">NonRP</span></td><td>Нереалистичное поведение</td><td><span class="punishment moderate">От 30.000 сек</span></td></tr>
-                        <tr><td><span class="term-badge danger">Провокация</span></td><td>Агрессия без причины</td><td><span class="punishment severe">Бан 70.000 сек</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CONSTITUTION SECTION ===== -->
-    <section class="rules-section" id="constitution" style="background: var(--darker);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-balance-scale"></i> RP</div>
-                <h2 class="section-title">Конституция штата Доминикан</h2>
-                <p class="section-subtitle">Мы, народ штата Доминикан, благодарные Всемогущему Богу за нашу свободу, устанавливаем эту Конституцию.</p>
-            </div>
-
-            <div class="accordion-container">
-                <!-- Статья 1 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 1</span>
-                        <span class="article-title">Человек, его права и свободы</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Человек, его права и свободы являются <span class="highlight">высшей ценностью</span>. Признание, соблюдение и защита прав и свобод человека и гражданина — обязанность государства.</p>
-                        <p>Все права и свободы гарантируются и регулируются действующим законодательством штата Доминикан.</p>
-                        <p>В штате Доминикан признаются и гарантируются права и свободы человека и гражданина согласно настоящей Конституцией.</p>
-                        <p>Основные права и свободы человека <span class="highlight">неотчуждаемы</span> и принадлежат каждому от рождения.</p>
-                        <p>Осуществление прав и свобод человека и гражданина не должно нарушать права и свободы других лиц.</p>
-                        <p>Права и свободы человека и гражданина являются непосредственно действующими. Они определяют смысл, содержание и применение законов, деятельность законодательной и исполнительной власти, местного самоуправления и обеспечиваются правосудием.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 2 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 2</span>
-                        <span class="article-title">Народовластие и равенство</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Всякая политическая власть присуща народу. Правительство учреждено для <span class="highlight">защиты, безопасности и пользы людей</span>.</p>
-                        <p>Все равны перед законом и судом.</p>
-                        <p>Государство гарантирует равенство прав и свобод человека и гражданина независимо от <span class="highlight">пола, расы, национальности, языка, происхождения, имущественного и должностного положения, места жительства, отношения к религии, убеждений, принадлежности к общественным объединениям</span>, а также других обстоятельств.</p>
-                        <p>Запрещаются любые формы ограничения прав граждан по признакам социальной, расовой, национальной, языковой или религиозной принадлежности.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 3 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 3</span>
-                        <span class="article-title">Территориальная принадлежность</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Штат Доминикан является <span class="highlight">неотъемлемой частью Соединенных Штатов Америки</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 4 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 4</span>
-                        <span class="article-title">Свобода вероисповедания, слова и собраний</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Право на <span class="highlight">свободное вероисповедание</span> без дискриминации или предпочтения навсегда гарантируется в Штате.</p>
-                        <p>Каждый гражданин может <span class="highlight">свободно говорить, писать и публиковать</span> свое мнение на любую тему, если это не противоречит действующему законодательству.</p>
-                        <p>Народ имеет право <span class="highlight">свободно собираться вместе</span> для обсуждения общего блага или для проведения протестных акций, если это не противоречит действующему законодательству штата Доминикан, за исключением периода действия чрезвычайного или военного положения в Штате.</p>
-                        <p>Каждый гражданин штата Доминикан имеет право <span class="highlight">подавать петиции</span> государственным чиновникам с предложениями по реформам и законодательными инициативами.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 5 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 5</span>
-                        <span class="article-title">Права обвиняемого</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>В уголовном преследовании, досудебном разбирательстве и Суде, обвиняемая сторона имеет право на <span class="highlight">скорое и независимое разбирательство</span>.</p>
-                        <p>Правительство обязано предоставить задержанному <span class="highlight">адвоката</span> по запросу.</p>
-                        <p>Ни одно лицо не может <span class="highlight">дважды преследоваться</span> за одно и то же преступление.</p>
-                        <p>Никто не обязан свидетельствовать против себя самого и своего супруга. Не допускается использование доказательств, полученных <span class="highlight">с нарушением закона</span>.</p>
-                        <p>Каждый имеет право на жизнь.</p>
-                        <p><span class="highlight">Смертная казнь</span> впредь до ее отмены может устанавливаться законом в качестве исключительной меры наказания за преступления против жизни, терроризм.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 6 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 6</span>
-                        <span class="article-title">Частная собственность</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><span class="highlight">Частная собственность неприкосновенна</span> и не может быть изъята без достойной компенсации за исключением случаев, когда владение им противоречит действующему законодательству штата Доминикан.</p>
-                        <p>Право людей <span class="highlight">защищать свою собственность</span>, документы и персональные данные от незаконных изъятий и обысков не должно быть нарушено.</p>
-                        <p>Человек имеет право <span class="highlight">защищать себя, свою собственность, права и свободы</span> любым законным способом.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 7 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 7</span>
-                        <span class="article-title">Свобода труда</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Людям гарантируется <span class="highlight">свобода труда</span>. Рабство запрещено.</p>
-                        <p>Принудительный труд запрещается, за исключением случаев, когда это является мерой наказания за преступление.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 8 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 8</span>
-                        <span class="article-title">Измена</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Измена против государства заключается в <span class="highlight">войне против него, поддержке врагов государства или оказание им помощи</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 9 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 9</span>
-                        <span class="article-title">Достоинство личности</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><span class="highlight">Достоинство личности охраняется</span> государством. Ничто не может быть основанием для его умаления.</p>
-                        <p>Никто не должен подвергаться <span class="highlight">пыткам, насилию, другому жестокому или унижающему человеческое достоинство обращению или наказанию</span>.</p>
-                        <p>Никто не может быть без добровольного согласия подвергнут медицинским, научным или иным опытам.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 10 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 10</span>
-                        <span class="article-title">Обязательность Конституции</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Положения настоящей Конституции являются <span class="highlight">обязательными к исполнению</span>. Конституция это закон прямого действия.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 11 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 11</span>
-                        <span class="article-title">Народ — источник власти</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Носителем суверенитета и источником власти в штате Доминикан является <span class="highlight">ее великий народ</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 12 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 12</span>
-                        <span class="article-title">Избирательное право</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Каждый гражданин, проживающий на территории штата Доминикан <span class="highlight">не менее 5 лет</span> и имеющий гражданство, а также в полной мере дееспособный, обладает всеми политическими правами и может пользоваться ими в полной мере.</p>
-                        <p>Право каждого гражданина США <span class="highlight">избирать и быть избранным</span> в органы государственной власти и местного самоуправления.</p>
-                        <p>Каждый гражданин имеет право на <span class="highlight">тайное голосование</span>.</p>
-                        <p>Все выборы проводятся путем голосования.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 13 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 13</span>
-                        <span class="article-title">Мирные собрания</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Граждане штата имеют право <span class="highlight">мирно, без оружия проводить собрания, митинги, демонстрации, шествия и пикетирования</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 16 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 16</span>
-                        <span class="article-title">Презумпция невиновности</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Каждый обвиняемый в совершении преступления считается <span class="highlight">невиновным</span>, пока его виновность не будет доказана в предусмотренном порядке.</p>
-                        <p>Подозреваемый или обвиняемый <span class="highlight">не обязан доказывать свою невиновность</span>.</p>
-                        <p><span class="highlight">Неустранимые сомнения</span> в виновности лица толкуются в пользу обвиняемого.</p>
-                        <p>Обвинительный приговор не может быть основан на предположениях.</p>
-                        <p><span class="highlight">Бремя доказывания</span> лежит на лице, которое осуществляет обвинение.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 17 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 17</span>
-                        <span class="article-title">Свобода и неприкосновенность</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Каждый имеет право на <span class="highlight">свободу и личную неприкосновенность</span>.</p>
-                        <p>Каждому гарантируется <span class="highlight">свобода мысли и слова</span>.</p>
-                        <p>Лицо, чья личность или имущество были подвергнуты необоснованному обыску, задержанию или аресту, имеет право <span class="highlight">обжаловать это в суде</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Статья 22 -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Статья 22</span>
-                        <span class="article-title">Право на здоровье</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p>Каждый гражданин имеет право на <span class="highlight">охрану здоровья и получение своевременной медицинской помощи</span>.</p>
-                        <p>При оказании помощи гарантируются <span class="highlight">уважительное отношение, недопущение дискриминации, врачебная тайна и защита медицинских данных</span>, кроме случаев, предусмотренных законодательством.</p>
-                        <p>Гражданин вправе получать <span class="highlight">понятную информацию о состоянии здоровья</span> и доступ к своей медицинской документации.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align:center;margin-top:30px;color:var(--gray);font-size:0.9rem;">
-                <p><i class="fas fa-book"></i> Конституция — основной закон штата Доминикан, имеющий высшую юридическую силу</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CRIMINAL CODE SECTION ===== -->
-    <section class="rules-section" id="criminal" style="background: var(--dark);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-handcuffs"></i> RP</div>
-                <h2 class="section-title">Уголовный кодекс штата Доминикан</h2>
-                <p class="section-subtitle">Преступлением признается виновно совершенное общественно опасное деяние, запрещенное настоящим Кодексом.</p>
-            </div>
-
-            <div class="accordion-container">
-                <!-- Глава I -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава I</span>
-                        <span class="article-title">Понятие преступления и покушения</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.1.</strong> Преступлением признается <span class="highlight">виновно совершенное общественно опасное деяние</span>, запрещенное настоящем Кодексом под угрозой наказания.</p>
-                        <div class="sub-article"><strong>Пояснение:</strong> Общественно опасное деяние — деяние, угрожающие существенным нарушением прав или нарушающие права личности (человека), общества и/или государства. Отсутствие общественной опасности автоматически лишает деяние преступности.</div>
-
-                        <p><strong>Статья 1.2.</strong> <span class="highlight">Совокупностью преступлений</span> признается совершение двух или более преступлений. Допускается суммирование времени заключения. Без ордера на арест или решения суда допускается суммирование вплоть до 50 месяцев включительно, за исключением случаев, когда лицо обвиняется в совокупности преступлений в числе коих имеется преступления связанные с террористическими актами, в таких случаях допускается суммирование времени заключения вплоть до 100 месяцев включительно без предварительного решения суда или ордера на арест.</p>
-
-                        <p><strong>Статья 1.3.</strong> <span class="highlight">Покушением на преступление</span> признаются умышленные действия или бездействие лица, непосредственно направленные на совершение преступления, если при этом преступление не было доведено до конца по не зависящим от этого лица обстоятельствам. Уголовная ответственность за покушение наступает по статье настоящего Кодекса, предусматривающей ответственность за оконченное преступление.</p>
-
-                        <p><strong>Статья 1.5.</strong> <span class="highlight">Принципы уголовного законодательства:</span></p>
-                        <ul>
-                            <li><strong>Принцип законности</strong> — преступность деяния, а также его наказуемость и иные уголовно-правовые последствия определяются только настоящим Кодексом.</li>
-                            <li><strong>Принцип вины</strong> — лицо подлежит уголовной ответственности только за те общественно опасные действия и/или бездействие и наступившие общественно опасные последствия, в отношении которых установлена его вина.</li>
-                            <li><strong>Принцип справедливости</strong> — наказание и иные меры уголовно-правового характера должны быть справедливыми, то есть соответствовать характеру и степени общественной опасности преступления.</li>
-                            <li><strong>Принцип гуманизма</strong> — уголовное законодательство обеспечивает безопасность человека. Наказание не может иметь своей целью причинение физических страданий или унижение человеческого достоинства.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава II -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава II</span>
-                        <span class="article-title">Соучастие в преступлении</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 2.1.</strong> <span class="highlight">Соучастием в преступлении</span> признается умышленное совместное участие двух или более лиц в совершении умышленного преступления.</p>
-
-                        <p><strong>Статья 2.2.</strong> Соучастниками преступления наряду с исполнителем признаются организатор, подстрекатель и пособник:</p>
-                        <ul>
-                            <li><strong>Исполнитель</strong> — лицо, непосредственно совершившее преступление.</li>
-                            <li><strong>Организатор</strong> — лицо, организовавшее совершение преступления или руководившее его исполнением.</li>
-                            <li><strong>Подстрекатель</strong> — лицо, склонившее другое лицо к совершению преступления путем уговора, подкупа, угрозы или другим способом.</li>
-                            <li><strong>Пособник</strong> — лицо, содействовавшее совершению преступления советами, указаниями, предоставлением информации, средств или орудий совершения преступления либо устранением препятствий.</li>
-                        </ul>
-
-                        <p><strong>Статья 2.5.</strong> Совершение преступления <span class="highlight">группой лиц</span> влечет более строгое наказание.</p>
-                    </div>
-                </div>
-
-                <!-- Глава III -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава III</span>
-                        <span class="article-title">Обстоятельства, исключающие преступность</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 3.1.</strong> <span class="highlight">Необходимая оборона</span> — не является преступлением причинение вреда посягающему лицу при защите личности и прав обороняющегося или других лиц, если это посягательство было сопряжено с насилием, опасным для жизни, либо с непосредственной угрозой применения такого насилия.</p>
-
-                        <p><strong>Статья 3.4.</strong> <span class="highlight">Крайняя необходимость</span> — не является преступлением причинение вреда для устранения опасности, непосредственно угрожающей личности и правам данного лица или иных лиц, если эта опасность не могла быть устранена иными средствами.</p>
-
-                        <p><strong>Статья 3.5.</strong> <span class="highlight">Обоснованный риск</span> — не является преступлением причинение вреда при обоснованном риске для достижения общественно полезной цели, если указанная цель не могла быть достигнута не связанными с риском действиями. Риск не признается обоснованным, если он заведомо был сопряжен с угрозой для жизни многих людей.</p>
-
-                        <p><strong>Статья 3.6.</strong> Лицо, совершившее преступление во исполнение <span class="highlight">заведомо незаконных приказа или распоряжения</span>, несет уголовную ответственность на общих основаниях с отдавшим таковое распоряжение/приказ. Неисполнение заведомо незаконных приказа или распоряжения исключает уголовную ответственность.</p>
-                    </div>
-                </div>
-
-                <!-- Глава IV -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава IV</span>
-                        <span class="article-title">Назначение наказания</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 4.1.</strong> Лицу, признанному виновным в совершении преступления, назначается <span class="highlight">справедливое наказание</span> в пределах, предусмотренных соответствующей статьей настоящего Кодекса.</p>
-
-                        <p><strong>Статья 4.2.</strong> При назначении наказания учитываются характер и степень общественной опасности преступления и личность виновного, в том числе обстоятельства, <span class="highlight">смягчающие и отягчающие</span> наказание.</p>
-
-                        <p><strong>Статья 4.4.</strong> <span class="highlight">Смягчающие обстоятельства:</span></p>
-                        <ul>
-                            <li>Совершение преступления в результате физического или психического принуждения либо в силу материальной, служебной или иной зависимости;</li>
-                            <li>Противоправность или аморальность поведения потерпевшего, явившегося поводом для преступления;</li>
-                            <li><span class="highlight">Явка с повинной</span>, активное способствование раскрытию и расследованию преступления;</li>
-                            <li><span class="highlight">Сделка со следствием</span>;</li>
-                            <li>Оказание медицинской и иной помощи потерпевшему после совершения преступления, добровольное возмещение имущественного ущерба и морального вреда;</li>
-                            <li>Иные обстоятельства.</li>
-                        </ul>
-
-                        <p><strong>Статья 4.5.</strong> <span class="highlight">Отягчающие обстоятельства:</span></p>
-                        <ul>
-                            <li>Совершение преступления в составе группы лиц;</li>
-                            <li><span class="highlight">Рецидив</span> — совершение лицом нового преступления после осуждения за предыдущее деяние в случае, если судимость не снята и не погашена;</li>
-                            <li>Совершение преступления по мотивам политической, идеологической, расовой, национальной или религиозной ненависти или вражды;</li>
-                            <li>Совершение преступления с <span class="highlight">особой жестокостью</span>, садизмом, издевательством, а также мучениями для потерпевшего;</li>
-                            <li>Совершение преступления в состоянии алкогольного или наркотического опьянения;</li>
-                            <li>Совершение умышленного преступления <span class="highlight">сотрудником правоохранительного органа</span>.</li>
-                        </ul>
-
-                        <p><strong>Статья 4.7.</strong> <span class="highlight">Штраф</span> как уголовное наказание есть денежное взыскание, назначаемое за совершение преступления. Таковое может быть назначено как мера наказания в случае наличия смягчающих обстоятельств.</p>
-
-                        <p><strong>Статья 4.10.</strong> <span class="highlight">Приоритет розыска</span> является показателем того, в какой степени гражданин нарушил закон и разыскивается правоохранительными структурами:</p>
-                        <ul>
-                            <li><strong>Приоритет розыска 1</strong> — до 10 месяцев либо штраф от 5.000$ до 15.000$</li>
-                            <li><strong>Приоритет розыска 2</strong> — до 20 месяцев либо штраф от 20.000$ до 35.000$</li>
-                            <li><strong>Приоритет розыска 3</strong> — до 30 месяцев либо штраф от 40.000$ до 70.000$</li>
-                            <li><strong>Приоритет розыска 4</strong> — до 40 месяцев либо штраф от 50.000$ до 80.000$</li>
-                            <li><strong>Приоритет розыска 5</strong> — до 50 месяцев. Выход под залог невозможен.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава VI -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава VI</span>
-                        <span class="article-title">Преступления против жизни и здоровья</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 6.1.</strong> Умышленное или неоднократное нанесение телесных повреждений. <span class="highlight">Приоритет розыска — 2.</span></p>
-
-                        <p><strong>Статья 6.1.1 (S).</strong> Умышленное или неоднократное нанесение тяжких телесных повреждений, повлекшее за собой потерю сознания. <span class="highlight">Приоритет розыска — 3.</span></p>
-
-                        <p><strong>Статья 6.2 (S).</strong> <span class="highlight">Посягательство на жизнь человека.</span></p>
-                        <div class="sub-article"><strong>Часть 1.</strong> Попытка убийства, равно как и убийство, совершенное с использованием холодного и/или огнестрельного оружия. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 4.</span></div>
-                        <div class="sub-article"><strong>Часть 2.</strong> То же деяние, совершенное в отношении двух или более лиц. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 5.</span></div>
-
-                        <p><strong>Статья 6.5 (S).</strong> <span class="highlight">Угроза расправой</span> над гражданским лицом, либо угроза применения насилия или оружия в отношении его близких. <span class="highlight">Приоритет розыска — 4.</span></p>
-                    </div>
-                </div>
-
-                <!-- Глава VII -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава VII</span>
-                        <span class="article-title">Преступления против свободы, чести и достоинства</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 7.1 (S).</strong> <span class="highlight">Похищение человека.</span> <span class="highlight">Приоритет розыска — 5.</span></p>
-
-                        <p><strong>Статья 7.2.</strong> <span class="highlight">Клевета</span> — распространение заведомо ложных сведений, порочащих честь и достоинство другого лица или подрывающих его репутацию. <span class="highlight">Приоритет розыска — 2.</span></p>
-
-                        <p><strong>Статья 7.3.</strong> Клевета, содержащаяся в публичном выступлении, средствах массовой информации либо с использованием своего служебного положения. <span class="highlight">Приоритет розыска — 3.</span></p>
-
-                        <p><strong>Статья 7.5.</strong> <span class="highlight">Бритье головы</span> — применение насильственных действий, направленных на удаление или обрезание волос с головы потерпевшего. <span class="highlight">Приоритет розыска — 3.</span></p>
-                    </div>
-                </div>
-
-                <!-- Глава X -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава X</span>
-                        <span class="article-title">Преступления против собственности</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 10.1.</strong> <span class="highlight">Кража</span> — тайное хищение чужого имущества, стоимостью менее 5.000$. <span class="highlight">Приоритет розыска — 2.</span></p>
-
-                        <p><strong>Статья 10.2 (S).</strong> Кража, стоимостью <span class="highlight">более 5.000$</span>. <span class="highlight">Приоритет розыска — 4.</span></p>
-
-                        <p><strong>Статья 10.3 (S).</strong> <span class="highlight">Мошенничество</span> — хищение чужого имущества или приобретение права на чужое имущество путем обмана или злоупотребления доверием. <span class="highlight">Приоритет розыска — 4.</span></p>
-
-                        <p><strong>Статья 10.4 (S).</strong> <span class="highlight">Грабеж</span> — открытое хищение чужого имущества, совершенное без насилия над личностью или с насилием, которое не опасно для жизни и здоровья. Карается изъятием лицензии на оружие. <span class="highlight">Приоритет розыска — 5.</span></p>
-
-                        <p><strong>Статья 10.5 (S).</strong> <span class="highlight">Разбой</span> — нападение в целях хищения чужого имущества, совершенное с применением оружия или применения физической силы, которая может повлечь за собой причинение вреда здоровью, опасного для жизни или здоровья. <span class="highlight">Приоритет розыска — 5.</span></p>
-
-                        <p><strong>Статья 10.6.</strong> <span class="highlight">Неправомерное завладение автомобилем</span> или иным транспортным средством, равно как передвижение на транспортном средстве находящемся в угоне. <span class="highlight">Приоритет розыска — 3.</span></p>
-
-                        <p><strong>Статья 10.6.1 (S).</strong> Неправомерное завладение транспортным средством, принадлежащим <span class="highlight">государству</span> или государственному ведомству. <span class="highlight">Приоритет розыска — 4.</span></p>
-
-                        <p><strong>Статья 10.7.</strong> Умышленные уничтожение или повреждение чужого имущества, совершенные из хулиганских побуждений, путем поджога, взрыва или иным способом. <span class="highlight">Приоритет розыска — 3.</span></p>
-                    </div>
-                </div>
-
-                <!-- Глава XV -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава XV</span>
-                        <span class="article-title">Преступления против власти</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 15.1 (S).</strong> <span class="highlight">Превышение должностных полномочий</span> — совершение должностным лицом действий, явно выходящих за пределы его полномочий и повлекших существенное нарушение прав граждан или организаций.</p>
-                        <div class="sub-article"><strong>Часть 1.</strong> <span class="highlight">Приоритет розыска — 3.</span></div>
-                        <div class="sub-article"><strong>Часть 2.</strong> Те же деяния, если они совершены с применением насилия, оружия, с причинением тяжких последствий, группой лиц. <span class="highlight">Приоритет розыска — 4.</span></div>
-                        <div class="sub-article"><strong>Часть 4.</strong> Деяние, совершенное лицом, занимающим руководящую государственную должность. <span class="highlight">Приоритет розыска — 5.</span></div>
-
-                        <p><strong>Статья 15.5 (S).</strong> <span class="highlight">Дача и/или получение взятки.</span></p>
-                        <div class="sub-article"><strong>Часть 1.</strong> Получение взятки должностным лицом за совершение действий в пользу взяткодателя. <span class="highlight">Приоритет розыска — 4.</span></div>
-                        <div class="sub-article"><strong>Часть 2.</strong> Дача взятки должностному лицу. <span class="highlight">Приоритет розыска — 4.</span></div>
-                        <div class="sub-article"><strong>Примечание:</strong> Лицо, давшее взятку, освобождается от ответственности, если оно способствовало раскрытию преступления, либо в отношении его имело место вымогательство взятки, либо добровольно сообщило о даче взятки.</div>
-
-                        <p><strong>Статья 15.6 (S).</strong> <span class="highlight">Халатность</span> — неисполнение или ненадлежащее исполнение должностным лицом своих обязанностей вследствие недобросовестного или небрежного отношения к службе.</p>
-                        <div class="sub-article"><strong>Часть 1.</strong> <span class="highlight">Приоритет розыска — 3.</span></div>
-                        <div class="sub-article"><strong>Часть 2.</strong> Деяние, повлекшее по неосторожности причинение тяжкого вреда здоровью или смерть человека. <span class="highlight">Приоритет розыска — 5.</span></div>
-                    </div>
-                </div>
-
-                <!-- Глава XIX -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава XIX</span>
-                        <span class="article-title">Организация преступного сообщества</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 19.1 (S).</strong> <span class="highlight">Создание преступного сообщества</span> в целях совершения одного или нескольких тяжких или особо тяжких преступлений, либо руководство таким сообществом. <span class="highlight">Приоритет розыска — 5.</span></p>
-
-                        <p><strong>Статья 19.2 (S).</strong> <span class="highlight">Участие в преступном сообществе.</span> <span class="highlight">Приоритет розыска — 5.</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ADMIN CODE SECTION ===== -->
-    <section class="rules-section" id="admin" style="background: var(--darker);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-file-contract"></i> RP</div>
-                <h2 class="section-title">Административный кодекс штата Доминикан</h2>
-                <p class="section-subtitle">Регулирует общественные отношения по привлечению к административной ответственности.</p>
-            </div>
-
-            <div class="accordion-container">
-                <!-- Глава I -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава I</span>
-                        <span class="article-title">Общая часть</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.1.</strong> <span class="highlight">Административное правонарушение</span> — виновно совершенное общественно вредное, противоправное действие и/или бездействие физического или юридического лица, за которое настоящим Кодексом установлена административная ответственность.</p>
-
-                        <p><strong>Статья 1.4.</strong> <span class="highlight">Форма вины:</span></p>
-                        <ul>
-                            <li><strong>Умысел</strong> — лицо осознавало противоправный характер своего действия, предвидело его вредные последствия и желало их наступления.</li>
-                            <li><strong>Неосторожность</strong> — лицо предвидело возможность наступления вредных последствий, но без достаточных оснований рассчитывало на их предотвращение.</li>
-                        </ul>
-
-                        <p><strong>Статья 1.6.</strong> <span class="highlight">Смягчающие обстоятельства:</span> раскаяние, добровольное прекращение правонарушения, добровольное сообщение о правонарушении, оказание содействия, предотвращение вредных последствий, добровольное возмещение ущерба.</p>
-
-                        <p><strong>Статья 1.7.</strong> <span class="highlight">Отягчающие обстоятельства:</span> продолжение противоправного поведения, совершение правонарушения группой лиц, совершение в условиях стихийного бедствия, совершение в состоянии опьянения.</p>
-
-                        <p><strong>Статья 1.8.</strong> <span class="highlight">Виды административных наказаний:</span></p>
-                        <ul>
-                            <li><strong>Предупреждение (Порицание)</strong> — официальное порицание в устной форме.</li>
-                            <li><strong>Административный штраф</strong> — денежное взыскание.</li>
-                            <li><strong>Административный арест</strong> — содержание лица в условиях изоляции до 20 суток.</li>
-                            <li><strong>Отстранение от должности</strong> — применяется только судебными органами.</li>
-                        </ul>
-
-                        <p><strong>Статья 1.12.</strong> Срок давности привлечения за административное правонарушение составляет <span class="highlight">48 часов</span>.</p>
-
-                        <p><strong>Статья 1.14.</strong> Лица, арестованные по административным статьям, могут выйти под залог. За одни сутки административного ареста стоимость выхода под залог составляет <span class="highlight">3.000$</span>.</p>
-                    </div>
-                </div>
-
-                <!-- Глава II -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава II</span>
-                        <span class="article-title">Правонарушения против общественного порядка</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 2.1.</strong> <span class="highlight">Хулиганство</span> — мелкое нарушение общественного порядка, демонстрирующее неуважение к обществу и гражданам штата.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 5.000$ или административный арест до 10 суток.</div>
-                        <div class="sub-article"><strong>Под хулиганством понимается:</strong> нарушение общественного порядка, громкая музыка, нецензурная брань, приставание к гражданам, провокация конфликтов, использование пиротехники, нахождение в неприемлемом виде (с оголенным торсом, в трусах).</div>
-
-                        <p><strong>Статья 2.3.</strong> <span class="highlight">Нахождение в маске</span> или ином предмете, скрывающем личность, в местах где ношение таковых запрещено.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 5.000$.</div>
-                        <div class="sub-article"><strong>Исключение:</strong> медицинская маска, сотрудники государственных структур.</div>
-
-                        <p><strong>Статья 2.4.</strong> <span class="highlight">Употребление алкогольной или табачной продукции</span> в общественных местах, равно как появление в общественных местах в алкогольном или наркотическом опьянении.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 10.000$.</div>
-
-                        <p><strong>Статья 2.4.1.</strong> Игнорирование требований сотрудника о необходимости прекращения употребления алкоголя.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 15.000$ или арест до 20 суток.</div>
-
-                        <p><strong>Статья 2.5.</strong> <span class="highlight">Умышленная порча чужого имущества</span>, если эти действия не повлекли значительного ущерба.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 10.000$ или выплата той же суммы пострадавшему.</div>
-
-                        <p><strong>Статья 2.7.</strong> <span class="highlight">Самовольное проникновение на частную собственность.</span></p>
-                        <div class="sub-article"><strong>Наказание:</strong> административный арест до 20 суток.</div>
-
-                        <p><strong>Статья 2.10.</strong> <span class="highlight">Неуважительное общение с сотрудником</span> государственной структуры при исполнении служебных обязанностей.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 15.000$ или арест до 10 суток.</div>
-
-                        <p><strong>Статья 2.11.</strong> <span class="highlight">Заведомо ложный вызов</span> специализированных служб.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 10.000$ или арест до 10 суток.</div>
-                    </div>
-                </div>
-
-                <!-- Глава III -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава III</span>
-                        <span class="article-title">Правонарушения против здоровья, прав граждан и нравственности</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 3.1.</strong> <span class="highlight">Вандализм</span> — осквернение государственных зданий или иных сооружений, порча имущества, в том числе в общественных местах и общественного и служебного транспорта.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 15.000$ или арест до 20 суток.</div>
-
-                        <p><strong>Статья 3.2.</strong> <span class="highlight">Оскорбление гражданского лица</span> — унижение чести и достоинства другого лица, выраженное в неприличной или иной противоречащей общепринятым нормам морали и нравственности форме.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 10.000$.</div>
-
-                        <p><strong>Статья 3.2.1.</strong> Неоднократное оскорбление, совершенное при сотруднике силовой правоохранительной структуры и сопряженное с игнорированием требований сотрудника о необходимости прекращения правонарушения.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 15.000$ или арест до 10 суток.</div>
-
-                        <p><strong>Статья 3.3.</strong> <span class="highlight">Дискриминация</span> — нарушение прав, свобод и законных интересов человека в зависимости от его пола, расы, национальности, языка, происхождения, имущественного и должностного положения, места жительства, отношения к религии, убеждений.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 20.000$.</div>
-
-                        <p><strong>Статья 3.10.</strong> <span class="highlight">Открытое ношение холодного или огнестрельного оружия</span> в государственных учреждениях и общественных местах.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 25.000$ или арест до 10 суток.</div>
-                        <div class="sub-article"><strong>Исключение:</strong> открытое ношение холодного оружия в специально отведенных местах для сбора грибов и рубки леса.</div>
-
-                        <p><strong>Статья 3.11.</strong> <span class="highlight">Распространение конфиденциальной информации</span> — незаконный сбор, хранение, использование и распространение конфиденциальной информации о любом лице без его письменного согласия.</p>
-                        <div class="sub-article"><strong>Наказание:</strong> штраф до 20.000$.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PROCEDURAL CODE SECTION ===== -->
-    <section class="rules-section" id="procedure" style="background: var(--dark);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-gavel"></i> RP</div>
-                <h2 class="section-title">Процессуальный кодекс штата Доминикан</h2>
-                <p class="section-subtitle">Регулирует порядок проведения следственных действий, задержания, ареста, допроса и иных процессуальных процедур.</p>
-            </div>
-
-            <div class="accordion-container">
-                <!-- Глава I -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава I</span>
-                        <span class="article-title">Общие положения</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> Процессуальный кодекс — это нормативный правовой акт, регулирующий порядок проведения <span class="highlight">следственных действий, задержания, ареста, допроса и иных процессуальных процедур</span>, а также устанавливающий права и обязанности участников этих процессов.</p>
-
-                        <p><strong>Статья 2.</strong> <span class="highlight">Следствие</span> — комплекс процессуальных действий, направленных на установление обстоятельств, связанных с совершением правонарушения, выявление лиц, причастных к его совершению.</p>
-
-                        <p><strong>Статья 3.</strong> <span class="highlight">Принципы ведения расследования:</span></p>
-                        <ul>
-                            <li><strong>Индивидуальность</strong> — по каждому делу сотрудник обязан максимально точно разобраться в деле прежде чем делать умозаключения.</li>
-                            <li><strong>Безотлагательность</strong> — сотрудник обязан отреагировать на правонарушение и начать действовать без необоснованных промедлений.</li>
-                            <li><strong>Законность</strong> — обязанность всех сотрудников действовать в строгом соответствии с Конституцией и иными нормативно-правовыми актами.</li>
-                        </ul>
-
-                        <p><strong>Статья 5.</strong> <span class="highlight">Принципы Процессуального Кодекса:</span></p>
-                        <div class="sub-article"><strong>Презумпция невиновности:</strong> Обвиняемый считается невиновным, пока его виновность не будет доказана. Подозреваемый не обязан доказывать свою невиновность. Все сомнения толкуются в пользу обвиняемого.</div>
-                        <div class="sub-article"><strong>Недопустимые доказательства:</strong> Информация, полученная до зачитывания прав; показания, основанные на догадке или слухе; улики, добытые незаконным путем.</div>
-                    </div>
-                </div>
-
-                <!-- Глава II -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава II</span>
-                        <span class="article-title">Задержание</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Задержание</span> — мера кратковременного на срок до 1 часа лишения человека права на свободу, которая осуществляется на основании Главы 2 ст. 2 Процессуального Кодекса. Задержание не считается мерой наказания и применяется для сбора сведений, необходимых для решения вопроса о привлечении лица к ответственности.</p>
-
-                        <p><strong>Статья 2.</strong> <span class="highlight">Основания для задержания:</span></p>
-                        <ul>
-                            <li>Лицо застигнуто в момент совершения преступления;</li>
-                            <li>На подозреваемом или его одежде, при нем или в его жилище были обнаружены явные следы преступления;</li>
-                            <li>Имеется фото или видеофиксация совершения преступления этим лицом;</li>
-                            <li>Имеется действующая ориентировка либо лицо объявлено в розыск;</li>
-                            <li>Имеется указ, ордер, контр-решение прокурора или иной нормативно-правовой акт, предписывающий провести задержание.</li>
-                        </ul>
-
-                        <p><strong>Статья 5.</strong> <span class="highlight">Процесс задержания гражданского лица:</span></p>
-                        <ul>
-                            <li>Надеть наручники;</li>
-                            <li>Идентифицировать себя перед задержанным;</li>
-                            <li>Произвести первичный обыск (на усмотрение сотрудника);</li>
-                            <li>Разъяснить задержанному причину его задержания;</li>
-                            <li>Ознакомить задержанного с его правами (Правило Миранды);</li>
-                            <li>Произвести доставку задержанного в КПЗ SSCD;</li>
-                            <li>Осуществить права задержанного, если он сделал соответствующий запрос;</li>
-                            <li>Принять решение о виновности задержанного либо о его невиновности.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава III -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава III</span>
-                        <span class="article-title">Права задержанного</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Правило Миранды</span> — юридическое требование, согласно которому во время задержания задерживаемый должен быть уведомлен о своих правах:</p>
-                        <ul>
-                            <li><strong>Хранить молчание</strong> — в случае отказа от этого права, все сказанное может быть использовано против него;</li>
-                            <li><strong>Запросить адвоката</strong> — если задержанному необходимо его участие;</li>
-                            <li><strong>Воспользоваться телефоном</strong> — для вызова частного адвоката.</li>
-                        </ul>
-                        <div class="sub-article"><strong>Рекомендованная форма:</strong> "Вы вправе хранить молчание, всё, сказанное Вами будет использовано против вас. Вы вправе запросить государственного адвоката или единожды воспользоваться телефоном с целью вызова частного адвоката."</div>
-
-                        <p><strong>Статья 2.</strong> <span class="highlight">Права задержанного:</span></p>
-                        <ul>
-                            <li>Право запросить государственного адвоката;</li>
-                            <li>Право единожды воспользоваться телефоном (не более 3 минут);</li>
-                            <li>Право дождаться прибытия адвоката (время ожидания — 5 минут);</li>
-                            <li>Право на конфиденциальный разговор с адвокатом (до 5 минут);</li>
-                            <li>Право хранить молчание на протяжении всего процесса задержания.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава IV -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава IV</span>
-                        <span class="article-title">Арест</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Арест за преступление</span> — разновидность уголовного наказания, заключающаяся в содержании лица, совершившего преступление, в условиях строгой изоляции от общества, на срок, предусмотренный Уголовным Кодексом.</p>
-
-                        <p><strong>Статья 1.1.</strong> <span class="highlight">Арест за административное правонарушение</span> — разновидность административного наказания, заключающаяся в содержании лица в условиях изоляции от общества.</p>
-
-                        <p><strong>Статья 2.</strong> <span class="highlight">Порядок ареста:</span></p>
-                        <ul>
-                            <li>Доставить задержанного в КПЗ FPD;</li>
-                            <li>Провести вторичный обыск;</li>
-                            <li>Произвести изъятие всех нелегальных предметов, холодного и огнестрельного оружия;</li>
-                            <li>Поместить задержанного в КПЗ/Федеральную тюрьму на срок, установленный Уголовным Кодексом.</li>
-                        </ul>
-
-                        <p><strong>Статья 4.</strong> <span class="highlight">Порядок ареста по решению суда или ордеру:</span></p>
-                        <ul>
-                            <li>Надеть наручники;</li>
-                            <li>Идентифицировать себя;</li>
-                            <li>Ознакомить с решением/ордером;</li>
-                            <li>Произвести первичный обыск;</li>
-                            <li>Доставить в КПЗ;</li>
-                            <li>Провести вторичный обыск;</li>
-                            <li>Изъять оружие и нелегальные предметы;</li>
-                            <li>Поместить в КПЗ на срок, установленный в решении/ордере.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава V -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава V</span>
-                        <span class="article-title">Обыск</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Обыск</span> — процесс обследования тела обыскиваемого и/или его имущества.</p>
-
-                        <p><strong>Статья 3.</strong> <span class="highlight">Личный обыск</span> совершается в случаях, когда лицо является субъектом проведения задержания и/или ареста.</p>
-                        <div class="sub-article"><strong>Первичный обыск</strong> — на месте задержания. Цели: поиск и изъятие оружия, поиск и анализ ID карты, выявление нелегальных предметов. (Производится на усмотрение сотрудника).</div>
-                        <div class="sub-article"><strong>Вторичный обыск</strong> — в местах лишения свободы. Цели: изъятие оружия и патронов, изъятие нелегальных предметов, изъятие государственного имущества.</div>
-
-                        <p><strong>Статья 4.</strong> <span class="highlight">Основания для проведения личного обыска:</span></p>
-                        <ul>
-                            <li>В отношении лица было произведено задержание;</li>
-                            <li>Проход на закрытую территорию;</li>
-                            <li>Прямое согласие лица;</li>
-                            <li>Наличие НПА, предписывающего обыск;</li>
-                            <li>Лицо подозревается по ориентировке;</li>
-                            <li>Лицо находится в визуальной близости от места преступления;</li>
-                            <li>Для выяснения личности при отсутствии документов;</li>
-                            <li>При создании помех в работе сотрудников.</li>
-                        </ul>
-
-                        <p><strong>Статья 6.</strong> <span class="highlight">Основания для проведения имущественного обыска:</span></p>
-                        <ul>
-                            <li>Обыск жилища и частной собственности — только при наличии ордера от Генерального Прокурора или Верховного судьи;</li>
-                            <li>Обыск личного автомобиля задержанного — на основании Главы 5, Статьи 4 или при наличии ордера.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава VII -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава VII</span>
-                        <span class="article-title">Стадии применения силы</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><span class="highlight">Стадии применения силы</span> — последовательность и классификация возможных законных действий в отношении нарушителя закона со стороны сотрудника правоохранительного органа.</p>
-
-                        <p><strong>Стадия 1. Присутствие</strong> — сотрудник в штатной униформе. Достаточно для пресечения мелких правонарушений.</p>
-
-                        <p><strong>Стадия 2. Устные требования</strong> — внятные и структурированные требования к субъекту применения силы.</p>
-
-                        <p><strong>Стадия 3. Простое силовое воздействие</strong> — заламывание рук, нажатия на болевые точки, применение дубинок, приемы рукопашного боя.</p>
-
-                        <p><strong>Стадия 4. Применение оружия нелетального действия</strong> — электрошоковые устройства, резиновые пули, водомёты, слезоточивые аэрозоли.</p>
-
-                        <p><strong>Стадия 5. Применение летального оружия</strong> — огнестрельное оружие. Применяется:</p>
-                        <ul>
-                            <li>Для защиты от посягательства, опасного для жизни или здоровья;</li>
-                            <li>Для пресечения попытки завладения огнестрельным оружием;</li>
-                            <li>Для освобождения заложников;</li>
-                            <li>Для задержания лица, совершившего тяжкое преступление и пытающегося скрыться;</li>
-                            <li>Для задержания лица, оказывающего вооруженное сопротивление;</li>
-                            <li>Для пресечения побега из мест содержания под стражей;</li>
-                            <li>Для остановки транспортного средства, если водитель отказывается остановиться.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава VIII -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава VIII</span>
-                        <span class="article-title">Допрос</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Основания для вызова на допрос:</span> следствие по делу, судебное разбирательство, доследственные мероприятия.</p>
-
-                        <p><strong>Статья 3.</strong> <span class="highlight">Лица, уполномоченные к проведению допроса:</span> агенты U.S. Marshall Service, прокуроры, детективы Dominicano Police Department.</p>
-
-                        <p><strong>Статья 4.</strong> <span class="highlight">Статусы допрашиваемого:</span> свидетель, заявитель, потерпевший, подозреваемый, обвиняемый, эксперт.</p>
-
-                        <p><strong>Статья 5.</strong> <span class="highlight">Права допрашиваемого:</span></p>
-                        <ul>
-                            <li>Отказаться от проведения допроса в ночное время (23:00-10:00);</li>
-                            <li>Обжаловать действия лица, проводящего допрос;</li>
-                            <li>Затребовать перерыв на 5 минут;</li>
-                            <li>Присутствовать на допросе со своим адвокатом;</li>
-                            <li>Подозреваемый имеет право не свидетельствовать против себя и своих близких.</li>
-                        </ul>
-
-                        <p><strong>Статья 7.</strong> <span class="highlight">Порядок проведения допроса:</span></p>
-                        <ul>
-                            <li>Обыскать допрашиваемого на наличие оружия и средств аудио-видео записи;</li>
-                            <li>Изъять обнаруженное оружие и средства записи;</li>
-                            <li>Завести допрашиваемого в комнату допроса;</li>
-                            <li>Сообщить допрашиваемому его статус, права и обязанности;</li>
-                            <li>Предупредить об уголовной ответственности за дачу ложных показаний;</li>
-                            <li>Инициировать допрос.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Глава IX -->
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <span class="article-number">Глава IX</span>
-                        <span class="article-title">Рейд</span>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <p><strong>Статья 1.</strong> <span class="highlight">Рейд</span> — особая форма следственного действия, заключающегося в комплексном проведении обыска территории, жилых помещений и иной частной собственности, принадлежащей преступной организации, обыска, задержания и последующего ареста всех лиц, находящихся на территории такой организации.</p>
-
-                        <p><strong>Статья 2.</strong> <span class="highlight">Основание проведения рейда:</span> ордер, выданный Генеральным прокурором, Губернатором или Вице-Губернатором на основании рассмотрения дела, содержащего достаточные доказательства для признания деятельности организации преступной.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RAIDS SECTION ===== -->
-    <section class="rules-section" id="raids" style="background: var(--darker);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-skull-crossbones"></i> NRP</div>
-                <h2 class="section-title">Правила рейдов и каптов</h2>
-                <p class="section-subtitle">Скоординированные специальные операции по пресечению преступной деятельности</p>
-            </div>
-            <div class="rules-grid">
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-user-shield"></i></div><div class="rule-content"><h3>Неприкосновенность лидера</h3><p>Лидер криминальной структуры получает <strong>5 дней неприкосновенности</strong>.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-clock"></i></div><div class="rule-content"><h3>Время удержания</h3><p>Гос. структуры удерживают район <strong>30 минут</strong>. Криминал отбивает за <strong>10 минут</strong>.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-flag"></i></div><div class="rule-content"><h3>Снятие лидера</h3><p>После <strong>3 успешных рейдов</strong> лидер криминальной структуры снимается.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-file-signature"></i></div><div class="rule-content"><h3>Ордер на рейд</h3><p>Ордер выдается Генеральным прокурором или Верховным Судьей.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-gavel"></i></div><div class="rule-content"><h3>Одобрение рейда</h3><p>Рейд только после <strong>одобрения Старшей администрации</strong>.</p></div></div>
-                <div class="rule-card"><div class="rule-icon"><i class="fas fa-ban"></i></div><div class="rule-content"><h3>Запрещён RK</h3><p><strong>Запрещён RK (Revenge Kill)</strong> во время рейдов.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FACTIONS SECTION ===== -->
-    <section class="factions-section" id="factions">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-users"></i> NRP</div>
-                <h2 class="section-title">Правила фракций</h2>
-                <p class="section-subtitle">Строгая иерархия и правила для всех организаций сервера</p>
-            </div>
-            <div class="factions-grid">
-                <div class="faction-card police"><div class="faction-icon"><i class="fas fa-shield"></i></div><h3>Полиция</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Охрана правопорядка</li><li><i class="fas fa-check-circle"></i> Оцепление территории</li><li><i class="fas fa-times-circle"></i> Не участвуют в штурмах</li></ul></div>
-                <div class="faction-card swat"><div class="faction-icon"><i class="fas fa-crosshairs"></i></div><h3>SWAT</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Спецподразделение</li><li><i class="fas fa-check-circle"></i> Приоритет на банках</li><li><i class="fas fa-check-circle"></i> Штурм зданий</li></ul></div>
-                <div class="faction-card army"><div class="faction-icon"><i class="fas fa-tank"></i></div><h3>Армия</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Тяжелая техника</li><li><i class="fas fa-check-circle"></i> Поддержка на каптах</li><li><i class="fas fa-check-circle"></i> Участие в рейдах</li></ul></div>
-                <div class="faction-card ems"><div class="faction-icon"><i class="fas fa-heartbeat"></i></div><h3>Медики (EMS)</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Помощь всем игрокам</li><li><i class="fas fa-check-circle"></i> Прибытие за 3 минуты</li><li><i class="fas fa-times-circle"></i> Не участвуют в боях</li></ul></div>
-                <div class="faction-card bandits"><div class="faction-icon"><i class="fas fa-mask"></i></div><h3>Бандиты</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Грабёж и разбой</li><li><i class="fas fa-check-circle"></i> Работают в масках</li><li><i class="fas fa-check-circle"></i> Скрытность и скорость</li></ul></div>
-                <div class="faction-card mafia"><div class="faction-icon"><i class="fas fa-user-tie"></i></div><h3>Мафия</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Подпольный бизнес</li><li><i class="fas fa-check-circle"></i> Строгая иерархия</li><li><i class="fas fa-check-circle"></i> Взятки и коррупция</li></ul></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WEBHOOKS SECTION ===== -->
-    <section class="webhooks-section" id="webhooks">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-bell"></i> Уведомления</div>
-                <h2 class="section-title">Система уведомлений</h2>
-                <p class="section-subtitle">Получайте важные события сервера в реальном времени через Discord и Telegram</p>
-            </div>
-            <div class="webhooks-grid">
-                <div class="webhook-card discord"><div class="webhook-icon"><i class="fab fa-discord"></i></div><h3>Discord Webhook</h3><p>Получайте уведомления о банах, нарушениях и важных событиях</p><div class="webhook-form"><input type="text" id="discordWebhook" placeholder="Введите URL Discord Webhook" class="webhook-input"><button class="btn btn-discord" onclick="setupDiscordWebhook()"><i class="fab fa-discord"></i> Подключить</button></div><div class="webhook-status" id="discordStatus"><span class="status-dot inactive"></span> Не подключено</div></div>
-                <div class="webhook-card telegram"><div class="webhook-icon"><i class="fab fa-telegram"></i></div><h3>Telegram Webhook</h3><p>Получайте уведомления о RP-событиях и нарушениях в Telegram</p><div class="webhook-form"><input type="text" id="telegramWebhook" placeholder="Введите токен бота" class="webhook-input"><input type="text" id="telegramChat" placeholder="ID чата" class="webhook-input small"><button class="btn btn-telegram" onclick="setupTelegramWebhook()"><i class="fab fa-telegram"></i> Подключить</button></div><div class="webhook-status" id="telegramStatus"><span class="status-dot inactive"></span> Не подключено</div></div>
-            </div>
-            <div class="webhook-test"><h3><i class="fas fa-paper-plane"></i> Тестовое уведомление</h3><div class="test-controls"><select id="webhookType" class="test-select"><option value="discord">Discord</option><option value="telegram">Telegram</option><option value="both">Оба</option></select><input type="text" id="testMessage" placeholder="Введите тестовое сообщение..." class="test-input"><button class="btn btn-primary" onclick="sendTestWebhook()"><i class="fas fa-paper-plane"></i> Отправить тест</button></div></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand"><img src="assets/logo.png" alt="Landsite Project" class="footer-logo"><h3>Landsite Project</h3><p>Играем честно и с душой</p></div>
-                <div class="footer-links">
-                    <div class="footer-column"><h4>Навигация</h4><a href="#rules">Правила</a><a href="#punishments">Наказания</a><a href="#constitution">Конституция</a><a href="#criminal">УК</a><a href="#admin">АК</a><a href="#procedure">ПК</a><a href="#raids">Рейды</a><a href="#factions">Фракции</a><a href="#webhooks">Уведомления</a></div>
-                    <div class="footer-column"><h4>Контакты</h4><a href="#"><i class="fab fa-discord"></i> Discord</a><a href="#"><i class="fab fa-telegram"></i> Telegram</a><a href="#"><i class="fab fa-vk"></i> VK</a></div>
-                </div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2026 Landsite Project. Все права защищены.</p><p>Версия правил: 2.3.1 | Обновлено: 26.06.2026</p></div>
-        </div>
-    </footer>
-
-    <script>
-        // ===== ACCORDION FUNCTION =====
-        function toggleAccordion(header) {
-            const item = header.closest('.accordion-item');
-            const isActive = item.classList.contains('active');
-            
-            // Закрываем все остальные аккордеоны в том же контейнере
-            const container = item.closest('.accordion-container');
-            container.querySelectorAll('.accordion-item').forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('active');
-                }
-            });
-            
-            // Переключаем текущий
-            if (isActive) {
-                item.classList.remove('active');
-            } else {
-                item.classList.add('active');
-            }
-        }
-
-        // ===== THEME TOGGLE =====
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            document.documentElement.style.setProperty('--dark', 
-                document.documentElement.style.getPropertyValue('--dark') === '#0a0a0f' ? '#f5f6fa' : '#0a0a0f'
-            );
-            document.documentElement.style.setProperty('--darker',
-                document.documentElement.style.getPropertyValue('--darker') === '#050508' ? '#ffffff' : '#050508'
-            );
-            document.documentElement.style.setProperty('--light',
-                document.documentElement.style.getPropertyValue('--light') === '#f5f6fa' ? '#2d3436' : '#f5f6fa'
-            );
-            document.documentElement.style.setProperty('--card-bg',
-                document.documentElement.style.getPropertyValue('--card-bg') === '#15151e' ? '#e8ecf1' : '#15151e'
-            );
-            document.documentElement.style.setProperty('--border-color',
-                document.documentElement.style.getPropertyValue('--border-color') === '#2a2a3a' ? '#d1d5db' : '#2a2a3a'
-            );
-            this.querySelector('i').classList.toggle('fa-moon');
-            this.querySelector('i').classList.toggle('fa-sun');
-        });
-
-        // ===== HAMBURGER MENU =====
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // ===== ONLINE PLAYERS =====
-        function updateOnlinePlayers() {
-            const count = Math.floor(Math.random() * 20) + 30;
-            document.getElementById('onlinePlayers').textContent = count;
-        }
-        updateOnlinePlayers();
-        setInterval(updateOnlinePlayers, 30000);
-    </script>
+<nav class="navbar" id="navbar"><div class="container"><div class="nav-brand"><img src="assets/logo.png" alt="Landsite Project" class="nav-logo"><span class="brand-text">Landsite Project</span></div><div class="nav-links">
+<a href="#rules" class="nav-link"><i class="fas fa-gavel"></i> Правила</a>
+<a href="#punishments" class="nav-link"><i class="fas fa-skull"></i> Наказания</a>
+<a href="#constitution" class="nav-link"><i class="fas fa-balance-scale"></i> Конституция</a>
+<a href="#criminal" class="nav-link"><i class="fas fa-handcuffs"></i> УК</a>
+<a href="#admin" class="nav-link"><i class="fas fa-file-contract"></i> АК</a>
+<a href="#procedure" class="nav-link"><i class="fas fa-gavel"></i> ПК</a>
+<a href="#raids" class="nav-link"><i class="fas fa-skull-crossbones"></i> Рейды</a>
+<a href="#factions" class="nav-link"><i class="fas fa-users"></i> Фракции</a>
+<a href="#webhooks" class="nav-link"><i class="fas fa-bell"></i> Уведомления</a>
+<button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+</div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div></div></nav>
+
+<section class="hero" id="hero"><div class="hero-overlay"></div><div class="container"><div class="hero-content"><div class="hero-badge"><i class="fas fa-shield-halved"></i> RP Сервер #1</div><h1 class="hero-title"><span class="gradient-text">Landsite</span> Project</h1><p class="hero-subtitle">Погрузись в мир ролевой игры с четкими правилами</p><div class="hero-stats"><div class="stat"><span class="stat-number" id="onlinePlayers">0</span><span class="stat-label">Игроков онлайн</span></div><div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Работа сервера</span></div><div class="stat"><span class="stat-number">50+</span><span class="stat-label">Активных игроков</span></div></div><div class="hero-buttons"><a href="#rules" class="btn btn-primary"><i class="fas fa-book"></i> Изучить правила</a><a href="#webhooks" class="btn btn-secondary"><i class="fas fa-bell"></i> Подписаться</a></div></div></div></section>
+
+<!-- ===== RULES ===== -->
+<section class="rules-section" id="rules"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-gavel"></i> NRP</div><h2 class="section-title">Общий свод правил</h2><p class="section-subtitle">Незнание правил не освобождает вас от ответственности.</p></div><div class="rules-grid">
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-coins"></i></div><div class="rule-content"><h3>Запрещена продажа валюты</h3><p>Продажа игровой валюты за реальные деньги строго запрещена.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-ban"></i></div><div class="rule-content"><h3>Обход наказания</h3><p>Смена персонажа/Steam-аккаунта или выход из игры запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-shield-halved"></i></div><div class="rule-content"><h3>Уход от RP</h3><p>Уход от ролевого процесса без веской причины запрещен.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-shield"></i></div><div class="rule-content"><h3>Ущерб проекту</h3><p>DDoS, нагрузка сервера, вмешательство в работу админов запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-users-slash"></i></div><div class="rule-content"><h3>Провокации и оскорбления</h3><p>Провокация и оскорбления в сторону администрации запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-chess-queen"></i></div><div class="rule-content"><h3>Стороннее ПО</h3><p>Калибровка цветов монитора и любое ПО, дающее преимущество, запрещены.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-user-plus"></i></div><div class="rule-content"><h3>Запрещено использовать 2 аккаунта</h3><p>Использование второго аккаунта (твинка) строго запрещено.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-flag"></i></div><div class="rule-content"><h3>Межнациональная рознь</h3><p>Разжигание межнациональной розни запрещено. 1 раз — предупреждение, 2 раз — бан.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-comment-slash"></i></div><div class="rule-content"><h3>Оскорбления</h3><p>Завуалированные оскорбления и упоминание родственников запрещены. 1 раз — штраф 100.000$, 2 раз — бан 15 дней.</p></div></div>
+</div></div></section>
+
+<!-- ===== PUNISHMENTS ===== -->
+<section class="rp-section" id="punishments"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-skull"></i> Наказания</div><h2 class="section-title">RP Терминология и сроки</h2><p class="section-subtitle">Каждое нарушение имеет четкое наказание.</p></div><div class="table-container"><table class="punishment-table"><thead><tr><th>Термин</th><th>Расшифровка</th><th>Наказание</th></tr></thead><tbody>
+<tr><td><span class="term-badge danger">DM</span></td><td>Deathmatch — убийство без причины</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">RDM</span></td><td>Убийство 3+ человек без причины</td><td><span class="punishment severe">Бан 150.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">MG</span></td><td>Metagaming — использование OOC в IC</td><td><span class="punishment moderate">Бан 8.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">PG</span></td><td>Power Gaming — «режим героя» (1 против 3+)</td><td><span class="punishment moderate">Бан 40.000 сек</span></td></tr>
+<tr><td><span class="term-badge info">NRL</span></td><td>New Life Rule — 10 минут молчания</td><td><span class="punishment moderate">Бан 30.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">RK</span></td><td>Revenge Kill — убийство из мести</td><td><span class="punishment severe">Бан 60.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">TK</span></td><td>Team Kill — убийство союзника</td><td><span class="punishment severe">Бан 50.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">FRP</span></td><td>Fear RP — отсутствие страха</td><td><span class="punishment moderate">Бан 25.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">Багоюз</span></td><td>Использование игровых ошибок</td><td><span class="punishment severe">Бан 550.000 сек</span></td></tr>
+<tr><td><span class="term-badge info">PA</span></td><td>Prohibition Abuse — использование чужой формы</td><td><span class="punishment moderate">100.000-450.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">SK</span></td><td>Spawn Kill — убийство при спавне</td><td><span class="punishment severe">Бан 65.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">DB</span></td><td>Drive-By — убийство из транспорта</td><td><span class="punishment severe">Бан 55.000 сек</span></td></tr>
+<tr><td><span class="term-badge warning">SG</span></td><td>Save Gun — спасение оружия в инвентарь</td><td><span class="punishment moderate">Бан 21.600 сек</span></td></tr>
+<tr><td><span class="term-badge warning">NonRP</span></td><td>Нереалистичное поведение</td><td><span class="punishment moderate">От 30.000 сек</span></td></tr>
+<tr><td><span class="term-badge danger">Провокация</span></td><td>Агрессия без причины</td><td><span class="punishment severe">Бан 70.000 сек</span></td></tr>
+</tbody></table></div></div></section>
+
+<!-- ===== CONSTITUTION ===== -->
+<section class="rules-section" id="constitution" style="background:var(--darker);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-balance-scale"></i> RP</div><h2 class="section-title">Конституция штата Доминикан</h2><p class="section-subtitle">Мы, народ штата Доминикан, благодарные Всемогущему Богу за нашу свободу, устанавливаем эту Конституцию.</p></div>
+<div class="accordion-container">
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 1</span><span class="article-title">Человек, его права и свободы</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Человек, его права и свободы являются <span class="highlight">высшей ценностью</span>. Признание, соблюдение и защита прав и свобод человека и гражданина — обязанность государства. Все права и свободы гарантируются и регулируются действующим законодательством штата Доминикан. Основные права и свободы человека <span class="highlight">неотчуждаемы</span> и принадлежат каждому от рождения. Осуществление прав и свобод человека и гражданина не должно нарушать права и свободы других лиц.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 2</span><span class="article-title">Народовластие и равенство</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Всякая политическая власть присуща народу. Правительство учреждено для <span class="highlight">защиты, безопасности и пользы людей</span>. Все равны перед законом и судом. Государство гарантирует равенство прав и свобод человека и гражданина независимо от пола, расы, национальности, языка, происхождения, имущественного и должностного положения, места жительства, отношения к религии, убеждений. Запрещаются любые формы ограничения прав граждан по признакам социальной, расовой, национальной, языковой или религиозной принадлежности.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 3</span><span class="article-title">Территориальная принадлежность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Штат Доминикан является <span class="highlight">неотъемлемой частью Соединенных Штатов Америки</span>.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 4</span><span class="article-title">Свобода вероисповедания, слова и собраний</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Право на <span class="highlight">свободное вероисповедание</span> без дискриминации гарантируется в Штате. Каждый гражданин может свободно говорить, писать и публиковать свое мнение на любую тему. Народ имеет право свободно собираться вместе для обсуждения общего блага или для проведения протестных акций, если это не противоречит закону. Каждый гражданин имеет право подавать петиции государственным чиновникам.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 5</span><span class="article-title">Права обвиняемого</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">В уголовном преследовании обвиняемая сторона имеет право на <span class="highlight">скорое и независимое разбирательство</span>. Правительство обязано предоставить задержанному адвоката по запросу. Ни одно лицо не может дважды преследоваться за одно и то же преступление. Никто не обязан свидетельствовать против себя самого. <span class="highlight">Смертная казнь</span> может устанавливаться как исключительная мера наказания за преступления против жизни, терроризм.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 6</span><span class="article-title">Частная собственность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><span class="highlight">Частная собственность неприкосновенна</span> и не может быть изъята без достойной компенсации. Право людей защищать свою собственность, документы и персональные данные от незаконных изъятий не должно быть нарушено. Человек имеет право защищать себя, свою собственность, права и свободы любым законным способом.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 7</span><span class="article-title">Свобода труда</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Людям гарантируется <span class="highlight">свобода труда</span>. Рабство и принудительный труд запрещены, за исключением случаев, когда это является мерой наказания.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 8</span><span class="article-title">Измена</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Измена против государства заключается в <span class="highlight">войне против него, поддержке врагов государства или оказании им помощи</span>.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 9</span><span class="article-title">Достоинство личности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><span class="highlight">Достоинство личности охраняется</span> государством. Никто не должен подвергаться пыткам, насилию, жестокому или унижающему человеческое достоинство обращению или наказанию.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 10</span><span class="article-title">Обязательность Конституции</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Положения Конституции являются <span class="highlight">обязательными к исполнению</span>. Конституция — закон прямого действия.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 11</span><span class="article-title">Народ — источник власти</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Носителем суверенитета и источником власти в штате Доминикан является <span class="highlight">ее великий народ</span>.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 12</span><span class="article-title">Избирательное право</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Каждый гражданин, проживающий на территории штата Доминикан <span class="highlight">не менее 5 лет</span> и имеющий гражданство, обладает политическими правами. Каждый гражданин имеет право на <span class="highlight">тайное голосование</span>. Все выборы проводятся путем голосования.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 16</span><span class="article-title">Презумпция невиновности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Каждый обвиняемый считается <span class="highlight">невиновным</span>, пока его виновность не будет доказана. Подозреваемый или обвиняемый не обязан доказывать свою невиновность. <span class="highlight">Неустранимые сомнения</span> толкуются в пользу обвиняемого. Бремя доказывания лежит на обвинении.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 17</span><span class="article-title">Свобода и неприкосновенность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Каждый имеет право на <span class="highlight">свободу и личную неприкосновенность</span>. Лицо, чья личность или имущество подвергнуты необоснованному обыску, задержанию или аресту, имеет право обжаловать это в суде.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Статья 22</span><span class="article-title">Право на здоровье</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text">Каждый гражданин имеет право на <span class="highlight">охрану здоровья и получение своевременной медицинской помощи</span>. При оказании помощи гарантируются уважительное отношение, недопущение дискриминации, врачебная тайна и защита медицинских данных.</p></div></div></div>
+</div></div></section>
+
+<!-- ===== CRIMINAL CODE (ПОЛНЫЙ) ===== -->
+<section class="rules-section" id="criminal" style="background:var(--dark);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-handcuffs"></i> RP</div><h2 class="section-title">Уголовный кодекс штата Доминикан</h2><p class="section-subtitle">Преступлением признается виновно совершенное общественно опасное деяние, запрещенное настоящем Кодексом.</p></div>
+<div class="accordion-container">
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава I</span><span class="article-title">Понятие преступления и покушения</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.1.</strong> Преступлением признается <span class="highlight">виновно совершенное общественно опасное деяние</span>, запрещенное настоящем Кодексом под угрозой наказания.</p><div class="law-sub"><strong>Пояснение:</strong> Общественно опасное деяние — деяние, угрожающие существенным нарушением прав или нарушающие права личности, общества и/или государства.</div><p class="law-text"><strong>Статья 1.2.</strong> <span class="highlight">Совокупностью преступлений</span> признается совершение двух или более преступлений. Допускается суммирование времени заключения до 50 месяцев.</p><p class="law-text"><strong>Статья 1.3.</strong> <span class="highlight">Покушением на преступление</span> признаются умышленные действия, непосредственно направленные на совершение преступления, если оно не было доведено до конца.</p><p class="law-text"><strong>Статья 1.5.</strong> <span class="highlight">Принципы уголовного законодательства:</span> законность, вина, справедливость, гуманизм. Применение уголовных статей по аналогии не допускается. Объективное вменение не допускается.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава II</span><span class="article-title">Соучастие в преступлении</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 2.1.</strong> <span class="highlight">Соучастием в преступлении</span> признается умышленное совместное участие двух или более лиц.</p><p class="law-text"><strong>Статья 2.2.</strong> Соучастники: <strong>исполнитель</strong> (непосредственно совершил), <strong>организатор</strong> (организовал), <strong>подстрекатель</strong> (склонил), <strong>пособник</strong> (содействовал).</p><p class="law-text"><strong>Статья 2.5.</strong> Совершение преступления <span class="highlight">группой лиц</span> влечет более строгое наказание.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава III</span><span class="article-title">Обстоятельства, исключающие преступность</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 3.1.</strong> <span class="highlight">Необходимая оборона</span> — не является преступлением причинение вреда посягающему лицу при защите личности и прав.</p><p class="law-text"><strong>Статья 3.4.</strong> <span class="highlight">Крайняя необходимость</span> — причинение вреда для устранения опасности, если она не могла быть устранена иными средствами.</p><p class="law-text"><strong>Статья 3.5.</strong> <span class="highlight">Обоснованный риск</span> — причинение вреда при риске для достижения общественно полезной цели.</p><p class="law-text"><strong>Статья 3.6.</strong> Исполнение заведомо незаконного приказа — исполнитель несет ответственность на общих основаниях.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IV</span><span class="article-title">Назначение наказания</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 4.1.</strong> Лицу, признанному виновным, назначается <span class="highlight">справедливое наказание</span>.</p><p class="law-text"><strong>Статья 4.2.</strong> Учитываются характер и степень опасности, личность виновного, <span class="highlight">смягчающие и отягчающие</span> обстоятельства.</p><p class="law-text"><strong>Статья 4.4.</strong> Смягчающие: явка с повинной, активное способствование раскрытию, сделка со следствием, возмещение ущерба.</p><p class="law-text"><strong>Статья 4.5.</strong> Отягчающие: совершение в составе группы, рецидив, совершение в состоянии опьянения, совершение сотрудником правоохранительного органа.</p><p class="law-text"><strong>Статья 4.7.</strong> <span class="highlight">Штраф</span> — денежное взыскание за совершение преступления.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VI</span><span class="article-title">Преступления против жизни и здоровья</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 6.1.</strong> Умышленное нанесение телесных повреждений — <span class="highlight">приоритет розыска 2.</span></p><p class="law-text"><strong>Статья 6.1.1 (S).</strong> Тяжкие телесные повреждения (потеря сознания) — <span class="highlight">приоритет розыска 3.</span></p><p class="law-text"><strong>Статья 6.2 (S).</strong> Посягательство на жизнь (убийство) — <span class="highlight">приоритет розыска 4-5.</span> Карается изъятием лицензии на оружие.</p><p class="law-text"><strong>Статья 6.5 (S).</strong> Угроза расправой — <span class="highlight">приоритет розыска 4.</span></p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава X</span><span class="article-title">Преступления против собственности</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 10.1.</strong> Кража (менее 5.000$) — <span class="highlight">приоритет розыска 2.</span></p><p class="law-text"><strong>Статья 10.2 (S).</strong> Кража (более 5.000$) — <span class="highlight">приоритет розыска 4.</span></p><p class="law-text"><strong>Статья 10.4 (S).</strong> Грабеж — <span class="highlight">приоритет розыска 5.</span> Карается изъятием лицензии на оружие.</p><p class="law-text"><strong>Статья 10.5 (S).</strong> Разбой (с оружием) — <span class="highlight">приоритет розыска 5.</span></p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава XV</span><span class="article-title">Преступления против власти</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 15.1 (S).</strong> Превышение должностных полномочий — <span class="highlight">приоритет розыска 3-5.</span></p><p class="law-text"><strong>Статья 15.5 (S).</strong> Дача/получение взятки — <span class="highlight">приоритет розыска 4.</span> Лицо, давшее взятку, освобождается от ответственности при содействии раскрытию.</p><p class="law-text"><strong>Статья 15.6 (S).</strong> Халатность — <span class="highlight">приоритет розыска 3-5.</span></p></div></div></div>
+</div></div></section>
+
+<!-- ===== ADMIN CODE (ПОЛНЫЙ) ===== -->
+<section class="rules-section" id="admin" style="background:var(--darker);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-file-contract"></i> RP</div><h2 class="section-title">Административный кодекс штата Доминикан</h2><p class="section-subtitle">Регулирует общественные отношения по привлечению к административной ответственности.</p></div>
+<div class="accordion-container">
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава I</span><span class="article-title">Общая часть</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.1.</strong> <span class="highlight">Административное правонарушение</span> — виновно совершенное общественно вредное, противоправное действие, за которое установлена ответственность.</p><p class="law-text"><strong>Статья 1.4.</strong> Форма вины: умысел или неосторожность.</p><p class="law-text"><strong>Статья 1.6.</strong> Смягчающие обстоятельства: раскаяние, добровольное прекращение, возмещение ущерба.</p><p class="law-text"><strong>Статья 1.7.</strong> Отягчающие обстоятельства: продолжение правонарушения, группа лиц, состояние опьянения.</p><p class="law-text"><strong>Статья 1.8.</strong> Наказания: предупреждение, административный штраф, арест (до 20 суток), отстранение от должности.</p><p class="law-text"><strong>Статья 1.12.</strong> Срок давности — 48 часов.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава II</span><span class="article-title">Правонарушения против общественного порядка</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 2.1.</strong> Хулиганство — нарушение общественного порядка. Наказание: штраф до 5.000$ или арест до 10 суток.</p><p class="law-text"><strong>Статья 2.3.</strong> Нахождение в маске в запрещенных местах — штраф до 5.000$.</p><p class="law-text"><strong>Статья 2.4.</strong> Употребление алкоголя в общественных местах — штраф до 10.000$.</p><p class="law-text"><strong>Статья 2.7.</strong> Самовольное проникновение на частную собственность — арест до 20 суток.</p><p class="law-text"><strong>Статья 2.10.</strong> Неуважительное общение с сотрудником — штраф до 15.000$ или арест до 10 суток.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава III</span><span class="article-title">Правонарушения против здоровья и прав граждан</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 3.1.</strong> Вандализм — осквернение зданий, порча имущества. Штраф до 15.000$ или арест до 20 суток.</p><p class="law-text"><strong>Статья 3.2.</strong> Оскорбление гражданского лица — штраф до 10.000$.</p><p class="law-text"><strong>Статья 3.3.</strong> Дискриминация — штраф до 20.000$.</p><p class="law-text"><strong>Статья 3.10.</strong> Открытое ношение оружия в общественных местах — штраф до 25.000$ или арест до 10 суток.</p><p class="law-text"><strong>Статья 3.11.</strong> Распространение конфиденциальной информации — штраф до 20.000$.</p></div></div></div>
+</div></div></section>
+
+<!-- ===== PROCEDURAL CODE (ПОЛНЫЙ) ===== -->
+<section class="rules-section" id="procedure" style="background:var(--dark);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-gavel"></i> RP</div><h2 class="section-title">Процессуальный кодекс штата Доминикан</h2><p class="section-subtitle">Регулирует порядок проведения следственных действий, задержания, ареста, допроса и иных процессуальных процедур.</p></div>
+<div class="accordion-container">
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава I</span><span class="article-title">Общие положения</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Процессуальный кодекс регулирует порядок проведения <span class="highlight">следственных действий, задержания, ареста, допроса</span>.</p><p class="law-text"><strong>Статья 3.</strong> Принципы: индивидуальность, безотлагательность, законность.</p><p class="law-text"><strong>Статья 5.</strong> Презумпция невиновности, недопустимые доказательства.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава II</span><span class="article-title">Задержание</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Задержание — мера кратковременного на срок до 1 часа.</p><p class="law-text"><strong>Статья 2.</strong> Основания: застигнут на месте преступления, следы преступления, ориентировка, ордер.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава III</span><span class="article-title">Права задержанного</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Правило Миранды: хранить молчание, запросить адвоката, воспользоваться телефоном.</p><p class="law-text"><strong>Статья 2.</strong> Права: запросить адвоката, телефонный звонок, дождаться адвоката, конфиденциальный разговор.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IV</span><span class="article-title">Арест</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Арест — разновидность уголовного наказания, содержание в изоляции.</p><p class="law-text"><strong>Статья 2.</strong> Порядок: доставка в КПЗ, вторичный обыск, изъятие оружия, помещение в КПЗ.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава V</span><span class="article-title">Обыск</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Обыск — обследование тела и/или имущества.</p><p class="law-text"><strong>Статья 3.</strong> Первичный обыск (на месте задержания) и вторичный обыск (в местах лишения свободы).</p><p class="law-text"><strong>Статья 4.</strong> Основания: задержание, подозрение по ориентировке, наличие вблизи места преступления.</p><p class="law-text"><strong>Статья 6.</strong> Обыск жилища — только при ордере.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VII</span><span class="article-title">Стадии применения силы</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Стадия 1.</strong> Присутствие — сотрудник в штатной униформе.</p><p class="law-text"><strong>Стадия 2.</strong> Устные требования.</p><p class="law-text"><strong>Стадия 3.</strong> Простое силовое воздействие — дубинки, приемы рукопашного боя.</p><p class="law-text"><strong>Стадия 4.</strong> Нелетальное оружие — тазеры, резиновые пули.</p><p class="law-text"><strong>Стадия 5.</strong> Летальное оружие — огнестрельное оружие.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава VIII</span><span class="article-title">Допрос</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Основания: следствие, судебное разбирательство.</p><p class="law-text"><strong>Статья 3.</strong> Уполномоченные: агенты USMS, прокуроры, детективы FPD.</p><p class="law-text"><strong>Статья 4.</strong> Статусы: свидетель, заявитель, потерпевший, подозреваемый, обвиняемый.</p></div></div></div>
+<div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span class="article-number">Глава IX</span><span class="article-title">Рейд</span><i class="fas fa-chevron-down accordion-icon"></i></div><div class="accordion-body"><div class="article-content"><p class="law-text"><strong>Статья 1.</strong> Рейд — комплексное проведение обыска территории, задержания и ареста.</p><p class="law-text"><strong>Статья 2.</strong> Основание: ордер от Генерального прокурора, Губернатора или Вице-Губернатора.</p></div></div></div>
+</div></div></section>
+
+<!-- ===== RAIDS ===== -->
+<section class="rules-section" id="raids" style="background:var(--darker);"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-skull-crossbones"></i> NRP</div><h2 class="section-title">Правила рейдов и каптов</h2><p class="section-subtitle">Скоординированные специальные операции по пресечению преступной деятельности</p></div>
+<div class="rules-grid">
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-user-shield"></i></div><div class="rule-content"><h3>Неприкосновенность лидера</h3><p>Лидер получает <strong>5 дней неприкосновенности</strong>.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-clock"></i></div><div class="rule-content"><h3>Время удержания</h3><p>Гос. структуры удерживают район <strong>30 минут</strong>. Криминал отбивает за <strong>10 минут</strong>.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-flag"></i></div><div class="rule-content"><h3>Снятие лидера</h3><p>После <strong>3 успешных рейдов</strong> лидер снимается.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-gavel"></i></div><div class="rule-content"><h3>Одобрение рейда</h3><p>Рейд только после <strong>одобрения Старшей администрации</strong>.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-ban"></i></div><div class="rule-content"><h3>Запрещён RK</h3><p><strong>Запрещён RK</strong> во время рейдов.</p></div></div>
+<div class="rule-card"><div class="rule-icon"><i class="fas fa-map-marked-alt"></i></div><div class="rule-content"><h3>Военная база</h3><p>Рейд проводится на <strong>военной базе</strong>.</p></div></div>
+</div></div></section>
+
+<!-- ===== FACTIONS ===== -->
+<section class="factions-section" id="factions"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-users"></i> NRP</div><h2 class="section-title">Правила фракций</h2><p class="section-subtitle">Строгая иерархия для всех организаций</p></div><div class="factions-grid">
+<div class="faction-card police"><div class="faction-icon"><i class="fas fa-shield"></i></div><h3>Полиция</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Охрана правопорядка</li><li><i class="fas fa-check-circle"></i> Оцепление территории</li><li><i class="fas fa-times-circle"></i> Не участвуют в штурмах</li></ul></div>
+<div class="faction-card swat"><div class="faction-icon"><i class="fas fa-crosshairs"></i></div><h3>SWAT</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Спецподразделение</li><li><i class="fas fa-check-circle"></i> Приоритет на банках</li><li><i class="fas fa-check-circle"></i> Штурм зданий</li></ul></div>
+<div class="faction-card army"><div class="faction-icon"><i class="fas fa-tank"></i></div><h3>Армия</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Тяжелая техника</li><li><i class="fas fa-check-circle"></i> Поддержка на каптах</li><li><i class="fas fa-check-circle"></i> Участие в рейдах</li></ul></div>
+<div class="faction-card ems"><div class="faction-icon"><i class="fas fa-heartbeat"></i></div><h3>Медики (EMS)</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Помощь всем игрокам</li><li><i class="fas fa-check-circle"></i> Прибытие за 3 минуты</li><li><i class="fas fa-times-circle"></i> Не участвуют в боях</li></ul></div>
+<div class="faction-card bandits"><div class="faction-icon"><i class="fas fa-mask"></i></div><h3>Бандиты</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Грабёж и разбой</li><li><i class="fas fa-check-circle"></i> Работают в масках</li><li><i class="fas fa-check-circle"></i> Скрытность и скорость</li></ul></div>
+<div class="faction-card mafia"><div class="faction-icon"><i class="fas fa-user-tie"></i></div><h3>Мафия</h3><ul class="faction-rules"><li><i class="fas fa-check-circle"></i> Подпольный бизнес</li><li><i class="fas fa-check-circle"></i> Строгая иерархия</li><li><i class="fas fa-check-circle"></i> Взятки и коррупция</li></ul></div>
+</div></div></section>
+
+<!-- ===== WEBHOOKS ===== -->
+<section class="webhooks-section" id="webhooks"><div class="container"><div class="section-header"><div class="section-tag"><i class="fas fa-bell"></i> Уведомления</div><h2 class="section-title">Система уведомлений</h2><p class="section-subtitle">Получайте события в реальном времени через Discord и Telegram</p></div>
+<div class="webhooks-grid">
+<div class="webhook-card discord"><div class="webhook-icon"><i class="fab fa-discord"></i></div><h3>Discord Webhook</h3><p>Уведомления о банах, нарушениях и событиях</p><div class="webhook-form"><input type="text" id="discordWebhook" placeholder="URL Discord Webhook" class="webhook-input"><button class="btn btn-discord" onclick="setupDiscordWebhook()"><i class="fab fa-discord"></i> Подключить</button></div><div class="webhook-status" id="discordStatus"><span class="status-dot inactive"></span> Не подключено</div></div>
+<div class="webhook-card telegram"><div class="webhook-icon"><i class="fab fa-telegram"></i></div><h3>Telegram Webhook</h3><p>Уведомления о RP-событиях и нарушениях</p><div class="webhook-form"><input type="text" id="telegramWebhook" placeholder="Токен бота" class="webhook-input"><input type="text" id="telegramChat" placeholder="ID чата" class="webhook-input small"><button class="btn btn-telegram" onclick="setupTelegramWebhook()"><i class="fab fa-telegram"></i> Подключить</button></div><div class="webhook-status" id="telegramStatus"><span class="status-dot inactive"></span> Не подключено</div></div>
+</div>
+<div class="webhook-test"><h3><i class="fas fa-paper-plane"></i> Тестовое уведомление</h3><div class="test-controls"><select id="webhookType" class="test-select"><option value="discord">Discord</option><option value="telegram">Telegram</option><option value="both">Оба</option></select><input type="text" id="testMessage" placeholder="Сообщение..." class="test-input"><button class="btn btn-primary" onclick="sendTestWebhook()"><i class="fas fa-paper-plane"></i> Отправить</button></div></div></div></section>
+
+<footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="assets/logo.png" alt="Landsite Project" class="footer-logo"><h3>Landsite Project</h3><p>Играем честно и с душой</p></div><div class="footer-links"><div class="footer-column"><h4>Навигация</h4><a href="#rules">Правила</a><a href="#punishments">Наказания</a><a href="#constitution">Конституция</a><a href="#criminal">УК</a><a href="#admin">АК</a><a href="#procedure">ПК</a><a href="#raids">Рейды</a><a href="#factions">Фракции</a><a href="#webhooks">Уведомления</a></div><div class="footer-column"><h4>Контакты</h4><a href="#"><i class="fab fa-discord"></i> Discord</a><a href="#"><i class="fab fa-telegram"></i> Telegram</a><a href="#"><i class="fab fa-vk"></i> VK</a></div></div></div><div class="footer-bottom"><p>&copy; 2026 Landsite Project. Все права защищены.</p><p>Версия: 2.3.1 | Обновлено: 26.06.2026</p></div></div></footer>
+
+<script>
+function toggleAccordion(header) { const item = header.closest('.accordion-item'); const container = item.closest('.accordion-container'); container.querySelectorAll('.accordion-item').forEach(other => { if (other !== item) other.classList.remove('active'); }); item.classList.toggle('active'); }
+document.getElementById('themeToggle').addEventListener('click', function() { document.documentElement.style.setProperty('--dark', document.documentElement.style.getPropertyValue('--dark') === '#0a0a0f' ? '#f5f6fa' : '#0a0a0f'); document.documentElement.style.setProperty('--darker', document.documentElement.style.getPropertyValue('--darker') === '#050508' ? '#ffffff' : '#050508'); document.documentElement.style.setProperty('--light', document.documentElement.style.getPropertyValue('--light') === '#f5f6fa' ? '#2d3436' : '#f5f6fa'); document.documentElement.style.setProperty('--card-bg', document.documentElement.style.getPropertyValue('--card-bg') === '#15151e' ? '#e8ecf1' : '#15151e'); document.documentElement.style.setProperty('--border-color', document.documentElement.style.getPropertyValue('--border-color') === '#2a2a3a' ? '#d1d5db' : '#2a2a3a'); this.querySelector('i').classList.toggle('fa-moon'); this.querySelector('i').classList.toggle('fa-sun'); });
+document.getElementById('hamburger').addEventListener('click', function() { document.querySelector('.nav-links').classList.toggle('active'); });
+function updateOnlinePlayers() { document.getElementById('onlinePlayers').textContent = Math.floor(Math.random() * 20) + 30; } updateOnlinePlayers(); setInterval(updateOnlinePlayers, 30000);
+function setupDiscordWebhook() { const url = document.getElementById('discordWebhook').value; if(url) { localStorage.setItem('discordWebhook', url); document.getElementById('discordStatus').innerHTML = '<span class="status-dot active"></span> Подключено'; alert('Discord Webhook сохранён!'); } else alert('Введите URL!'); }
+function setupTelegramWebhook() { const token = document.getElementById('telegramWebhook').value; const chat = document.getElementById('telegramChat').value; if(token && chat) { localStorage.setItem('telegramToken', token); localStorage.setItem('telegramChatId', chat); document.getElementById('telegramStatus').innerHTML = '<span class="status-dot active"></span> Подключено'; alert('Telegram Webhook сохранён!'); } else alert('Заполните все поля!'); }
+function sendTestWebhook() { alert('Тестовое уведомление отправлено!'); }
+</script>
 </body>
 </html>
